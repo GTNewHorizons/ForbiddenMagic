@@ -67,7 +67,7 @@ public class ForbiddenRecipes {
         ForbiddenResearch.recipes.put("BlackInk", CraftingManager.getInstance().addRecipe(new ItemStack(ForbiddenItems.resource, 2, 1), new Object[]{"#", Character.valueOf('#'), new ItemStack(ForbiddenBlocks.blackFlower, 1, 0)}));
 
         if(thaumcraft.common.config.Config.researchDifficulty != -1)
-            ForbiddenResearch.recipes.put("Crystalwell", ThaumcraftApi.addShapelessArcaneCraftingRecipe("CRYSTALWELL", new ItemStack(ForbiddenItems.crystalwell, 1, 0), (new AspectList()).add(Aspect.WATER, 1).add(Aspect.ORDER, 1), new Object[] { new ItemStack(ConfigItems.itemInkwell, 1, 32767), "dyeBlack", new ItemStack(ConfigItems.itemShard, 1, 32767), new ItemStack(ConfigItems.itemShard, 1, 32767) }));
+            ForbiddenResearch.recipes.put("Crystalwell", ThaumcraftApi.addShapelessArcaneCraftingRecipe("CRYSTALWELL", new ItemStack(ForbiddenItems.crystalwell, 1, 0), (new AspectList()).add(Aspect.WATER, 1).add(Aspect.ORDER, 1), new Object[] { new ItemStack(ConfigItems.itemInkwell, 1, 32767), "dyeBlack", new ItemStack(ConfigItems.itemShard, 1, 6), new ItemStack(ConfigItems.itemShard, 1, 6) }));
         else
             ForbiddenResearch.recipes.put("Crystalwell", ThaumcraftApi.addShapelessArcaneCraftingRecipe("CRYSTALWELL", new ItemStack(ForbiddenItems.crystalwell, 1, 0), (new AspectList()).add(Aspect.WATER, 1).add(Aspect.ORDER, 1), new Object[] { new ItemStack(ConfigItems.itemInkwell, 1, 32767), "dyeBlack", new ItemStack(ConfigBlocks.blockCrystal, 1, 6), new ItemStack(ConfigItems.itemShard, 1, 6), new ItemStack(ConfigItems.itemShard, 1, 6), new ItemStack(ConfigItems.itemShard, 1, 6) }));
 
