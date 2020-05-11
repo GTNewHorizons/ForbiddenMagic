@@ -20,6 +20,9 @@ buildscript {
 
 apply plugin: 'forge'
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 // define the properties file
 ext.configFile = file "build.properties"
 
@@ -40,7 +43,8 @@ minecraft {
 }
 
 dependencies {
-    compile fileTree(dir: 'lib', include: '*.jar')
+    compile files('libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar')
+    //compile fileTree(dir: 'lib', include: '*.jar')
 }
 
 processResources
