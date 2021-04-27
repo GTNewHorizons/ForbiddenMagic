@@ -1,6 +1,9 @@
 buildscript {
     repositories {
-        mavenCentral()
+        maven {//added, fixes some of the 501 issues
+            name = "mavenCentral"
+            url = "https://repo1.maven.org/maven2/"
+        }
         maven {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
@@ -17,6 +20,9 @@ buildscript {
 
 apply plugin: 'forge'
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 // define the properties file
 ext.configFile = file "build.properties"
 
@@ -32,12 +38,13 @@ group= "com.github.spitefulfox.forbiddenmagic" // http://maven.apache.org/guides
 archivesBaseName = "Forbidden Magic"
 
 minecraft {
-    version = "1.7.10-10.13.1.1225"
+    version = "1.7.10-10.13.4.1614-1.7.10"
     assetDir = "eclipse/assets"
 }
 
 dependencies {
-    compile fileTree(dir: 'lib', include: '*.jar')
+    compile files('libs/Thaumcraft-deobf-1.7.10-4.2.3.5.jar')
+    //compile fileTree(dir: 'lib', include: '*.jar')
 }
 
 processResources
