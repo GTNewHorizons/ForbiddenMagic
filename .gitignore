@@ -25,6 +25,7 @@
 .classpath
 .project
 .settings/*
+.idea
 *.bat
 *.iml
 Forbidden-Magic.ipr
