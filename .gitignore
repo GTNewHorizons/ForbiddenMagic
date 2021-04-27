@@ -25,3 +25,4 @@
 .classpath
 .project
 .settings/*
+.idea
