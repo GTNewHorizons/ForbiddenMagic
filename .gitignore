@@ -25,3 +25,7 @@
 .classpath
 .project
 .settings/*
+*.bat
+*.iml
+Forbidden-Magic.ipr
+Forbidden-Magic.iws
