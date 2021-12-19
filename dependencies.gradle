@@ -1,0 +1,18 @@
+// Add your dependencies here
+
+dependencies {
+    compile("com.github.GTNewHorizons:Baubles:master-SNAPSHOT:dev")
+
+    compile("thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev")
+
+    compileOnly("com.github.GTNewHorizons:BloodMagic:master-SNAPSHOT:dev") {
+        transitive = false
+    }
+    compileOnly("com.github.GTNewHorizons:Botania:master-SNAPSHOT:api") {
+        transitive = false
+    }
+
+    compileOnly("curse.maven:ee3-65509:2305023") {
+        transitive = false
+    }
+}
