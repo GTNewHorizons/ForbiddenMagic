@@ -25,7 +25,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 import java.util.Collection;
 
-@Mod(modid = "ForbiddenMagic", name = "Forbidden Magic", dependencies = "required-after:Thaumcraft@[4.2.2.0,);after:ThaumicTinkerer;after:AWWayofTime;after:Botania")
+@Mod(modid = "ForbiddenMagic", name = "Forbidden Magic", version = "GRADLETOKEN_VERSION", dependencies = "required-after:Thaumcraft@[4.2.2.0,);after:ThaumicTinkerer;after:AWWayofTime;after:Botania")
 public class Forbidden {
     @Instance("ForbiddenMagic")
     public static Forbidden instance;
