@@ -368,3 +368,6 @@ forbidden.lexicon.tainthistle=腐化蓟
 forbidden.lexicon.tainthistle.0=那令人厌恶的&1腐化蓟&0原本是生长于魔法实验后产生的腐化物质中的植物.它会消灭掉它能找到的一切物质,并试图转化为Mana.因为植物学是一项环境友好型的业务,所以这里也没什么可以多说的.<br>&o比Spirit Vine更具有入侵性&r
 forbidden.lexicon.bloodthorn=血荆棘
 forbidden.lexicon.bloodthorn.0=源自一些令人作呕并且极度扭曲的血魔法师的实验,&1血荆棘&0是一种神秘红色花朵,长期浸泡于血液之中,直到它发展出了吞噬一切生命力的特性.它会消耗魔力并对周围的所有与炼金术不相配的生物施加以极高级别的虚弱.<br>&o崖昆(Yakone)的遗产&r
+
+# Rituals
+ritual.SpiteSanity.name=暂抑扭曲
