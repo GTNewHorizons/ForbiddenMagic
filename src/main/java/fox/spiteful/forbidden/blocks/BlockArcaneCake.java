@@ -2,8 +2,9 @@ package fox.spiteful.forbidden.blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCake;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,8 +17,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import squeek.applecore.api.food.FoodValues;
+import squeek.applecore.api.food.IEdibleBlock;
+import squeek.applecore.api.food.ItemFoodProxy;
 
-public class BlockArcaneCake extends Block {
+@Optional.Interface(iface = "squeek.applecore.api.food.IEdibleBlock", modid = "AppleCore")
+public class BlockArcaneCake extends Block implements IEdibleBlock {
+    private boolean isEdibleAtMaxHunger = false;
     @SideOnly(Side.CLIENT)
     private IIcon cakeTopIcon;
     @SideOnly(Side.CLIENT)
@@ -105,16 +111,19 @@ public class BlockArcaneCake extends Block {
     }
 
     private void eatCakeSlice(World world, int x, int y, int z, EntityPlayer player) {
-        if (player.canEat(false)) {
+        if (!player.canEat(isEdibleAtMaxHunger)) return;
+
+        if (Loader.isModLoaded("AppleCore")) {
+            onEatenCompatibility(new ItemStack(this), player);
+        } else {
             player.getFoodStats().addStats(2, 1.0F);
-            int l = world.getBlockMetadata(x, y, z) + 1;
+        }
 
-            if (l >= 12) {
-                world.setBlockToAir(x, y, z);
-            } else {
-                world.setBlockMetadataWithNotify(x, y, z, l, 2);
-            }
-
+        int nextMeta = world.getBlockMetadata(x, y, z) + 1;
+        if (nextMeta >= 12) {
+            world.setBlockToAir(x, y, z);
+        } else {
+            world.setBlockMetadataWithNotify(x, y, z, nextMeta, 2);
         }
     }
 
@@ -163,5 +172,22 @@ public class BlockArcaneCake extends Block {
     @Override
     public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
         return new ItemStack(this);
+    }
+
+    // === AppleCore methods ===
+
+    @Override
+    public void setEdibleAtMaxHunger(boolean edibleAtMaxHunger) {
+        isEdibleAtMaxHunger = edibleAtMaxHunger;
+    }
+
+    @Override
+    public FoodValues getFoodValues(ItemStack itemStack) {
+        return new FoodValues(2, 1.0f);
+    }
+
+    @Optional.Method(modid = "AppleCore")
+    public void onEatenCompatibility(ItemStack itemStack, EntityPlayer player) {
+        player.getFoodStats().func_151686_a(new ItemFoodProxy(this), itemStack);
     }
 }
