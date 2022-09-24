@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 
 public class PotionBloodSeal extends Potion {
-    public PotionBloodSeal(int id){
+    public PotionBloodSeal(int id) {
         super(id, true, 0xAC1919);
         this.setPotionName("potion.blood_seal");
         this.setIconIndex(4, 0);

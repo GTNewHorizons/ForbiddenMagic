@@ -6,9 +6,9 @@ package am2.api.illeffect;
  *
  */
 public enum IllEffectSeverity {
-	MINOR,
-	MODERATE,
-	MAJOR,
-	SEVERE,
-	FATAL
+    MINOR,
+    MODERATE,
+    MAJOR,
+    SEVERE,
+    FATAL
 }

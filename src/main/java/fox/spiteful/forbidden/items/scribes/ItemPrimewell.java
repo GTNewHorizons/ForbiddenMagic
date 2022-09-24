@@ -4,22 +4,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 import thaumcraft.api.IScribeTools;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.lib.network.PacketHandler;
-import thaumcraft.common.lib.network.playerdata.PacketAspectPool;
-import thaumcraft.common.lib.research.ResearchManager;
-
-import java.util.Iterator;
 
 public class ItemPrimewell extends Item implements IScribeTools {
 
@@ -32,7 +21,6 @@ public class ItemPrimewell extends Item implements IScribeTools {
         setMaxDamage(100);
         setCreativeTab(Forbidden.tab);
         setHasSubtypes(false);
-
     }
 
     @SideOnly(Side.CLIENT)
@@ -48,12 +36,12 @@ public class ItemPrimewell extends Item implements IScribeTools {
     }
 
     @Override
-    public EnumRarity getRarity(ItemStack stack){
+    public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.epic;
     }
 
     @Override
-    public void setDamage(ItemStack stack, int damage){
+    public void setDamage(ItemStack stack, int damage) {
         super.setDamage(stack, 0);
     }
 }

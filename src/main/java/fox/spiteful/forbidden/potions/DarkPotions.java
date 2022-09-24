@@ -2,19 +2,18 @@ package fox.spiteful.forbidden.potions;
 
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.ResourceLocation;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 
 public class DarkPotions {
     public static final ResourceLocation icons = new ResourceLocation("forbidden", "textures/misc/potions.png");
     public static Potion bloodSeal;
     public static Potion dragonwrack;
 
-    public static void alchemize(){
-        if(Potion.potionTypes.length < 256) {
+    public static void alchemize() {
+        if (Potion.potionTypes.length < 256) {
             Potion[] potionTypes = null;
             for (Field f : Potion.class.getDeclaredFields()) {
                 f.setAccessible(true);
@@ -35,7 +34,6 @@ public class DarkPotions {
             }
         }
 
-        if(Compat.bm)
-            bloodSeal = new PotionBloodSeal(Config.bloodSealPotionID);
+        if (Compat.bm) bloodSeal = new PotionBloodSeal(Config.bloodSealPotionID);
     }
 }

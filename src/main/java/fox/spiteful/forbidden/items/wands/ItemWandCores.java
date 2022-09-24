@@ -1,15 +1,16 @@
 package fox.spiteful.forbidden.items.wands;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.compat.Compat;
+import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import thaumcraft.api.ItemApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.WandCap;
@@ -17,28 +18,24 @@ import thaumcraft.api.wands.WandRod;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
-import fox.spiteful.forbidden.compat.Compat;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 public class ItemWandCores extends Item {
 
     public final String[] types = {
-            "tainted",
-            "infernal",
-            "soul",
-            "blood",
-            "witchwood",
-            "profane",
-            "blood_inert",
-            "livingwood",
-            "livingwood_inert",
-            "blood_staff",
-            "witchwood_staff",
-            "dreamwood",
-            "dreamwood_inert",
-            "dreamwood_staff" };
+        "tainted",
+        "infernal",
+        "soul",
+        "blood",
+        "witchwood",
+        "profane",
+        "blood_inert",
+        "livingwood",
+        "livingwood_inert",
+        "blood_staff",
+        "witchwood_staff",
+        "dreamwood",
+        "dreamwood_inert",
+        "dreamwood_staff"
+    };
     public IIcon[] icon;
 
     public ItemWandCores() {
@@ -52,8 +49,7 @@ public class ItemWandCores extends Item {
     @Override
     public void registerIcons(IIconRegister ir) {
         icon = new IIcon[types.length];
-        for (int x = 0; x < types.length; x++)
-            this.icon[x] = ir.registerIcon("forbidden:wand_rod_" + types[x]);
+        for (int x = 0; x < types.length; x++) this.icon[x] = ir.registerIcon("forbidden:wand_rod_" + types[x]);
     }
 
     @SideOnly(Side.CLIENT)
@@ -88,7 +84,16 @@ public class ItemWandCores extends Item {
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 36);
         ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("iron"));
         ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("profane"));
-        ((ItemWandCasting) wand.getItem()).storeAllVis(wand, new AspectList().add(Aspect.FIRE, 5000).add(Aspect.WATER, 5000).add(Aspect.EARTH, 5000).add(Aspect.AIR, 5000).add(Aspect.ORDER, 5000).add(Aspect.ENTROPY, 5000));
+        ((ItemWandCasting) wand.getItem())
+                .storeAllVis(
+                        wand,
+                        new AspectList()
+                                .add(Aspect.FIRE, 5000)
+                                .add(Aspect.WATER, 5000)
+                                .add(Aspect.EARTH, 5000)
+                                .add(Aspect.AIR, 5000)
+                                .add(Aspect.ORDER, 5000)
+                                .add(Aspect.ENTROPY, 5000));
         list.add(wand);
         if (Compat.bm && Config.crossWand) {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);

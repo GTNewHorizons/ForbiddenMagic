@@ -1,5 +1,8 @@
 package fox.spiteful.forbidden.items.tools;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.items.ForbiddenItems;
 import net.minecraft.block.Block;
@@ -19,11 +22,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-
-import fox.spiteful.forbidden.Config;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemRidingCrop extends ItemSword {
 
@@ -50,7 +48,10 @@ public class ItemRidingCrop extends ItemSword {
             victim.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 200, 1));
             victim.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 200, 1));
         }
-        if (!player.worldObj.isRemote && !Config.noLust && player.worldObj.provider.dimensionId == -1 && player.worldObj.rand.nextInt(15) == 1) {
+        if (!player.worldObj.isRemote
+                && !Config.noLust
+                && player.worldObj.provider.dimensionId == -1
+                && player.worldObj.rand.nextInt(15) == 1) {
             EntityItem ent = victim.entityDropItem(new ItemStack(ForbiddenItems.deadlyShards, 1, 4), 1.0F);
             ent.motionY += player.worldObj.rand.nextFloat() * 0.05F;
             ent.motionX += (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.1F;

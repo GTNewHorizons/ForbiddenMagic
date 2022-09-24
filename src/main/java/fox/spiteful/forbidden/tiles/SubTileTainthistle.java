@@ -9,7 +9,6 @@
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  *
  */
-
 package fox.spiteful.forbidden.tiles;
 
 import net.minecraft.block.Block;
@@ -20,8 +19,6 @@ import thaumcraft.common.config.ConfigBlocks;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.SubTileGenerating;
-
-import java.util.Random;
 
 public class SubTileTainthistle extends SubTileGenerating {
 
@@ -34,7 +31,7 @@ public class SubTileTainthistle extends SubTileGenerating {
     public void onUpdate() {
         super.onUpdate();
         boolean didSomething = false;
-        if(this.ticksExisted % 80 == 0) {
+        if (this.ticksExisted % 80 == 0) {
             if (!supertile.getWorldObj().isRemote) {
                 for (int ex = supertile.xCoord - range; ex <= supertile.xCoord + range; ex++) {
                     for (int wy = supertile.yCoord - range; wy <= supertile.yCoord + range; wy++) {
@@ -55,9 +52,8 @@ public class SubTileTainthistle extends SubTileGenerating {
                 }
             }
         }
-        if(burnTime > 0){
-            if(supertile.getWorldObj().rand.nextInt(8) == 0)
-                doBurnParticles();
+        if (burnTime > 0) {
+            if (supertile.getWorldObj().rand.nextInt(8) == 0) doBurnParticles();
             burnTime--;
         }
     }
@@ -68,16 +64,25 @@ public class SubTileTainthistle extends SubTileGenerating {
     }
 
     public void doBurnParticles() {
-        Thaumcraft.proxy.reservoirBubble(supertile.getWorldObj(), supertile.xCoord, supertile.yCoord, supertile.zCoord, 0x4D00FF);
+        Thaumcraft.proxy.reservoirBubble(
+                supertile.getWorldObj(), supertile.xCoord, supertile.yCoord, supertile.zCoord, 0x4D00FF);
     }
 
-    public boolean isFlux(int x, int y, int z){
+    public boolean isFlux(int x, int y, int z) {
         Block target = supertile.getWorldObj().getBlock(x, y, z);
         return target == ConfigBlocks.blockFluxGas || target == ConfigBlocks.blockFluxGoo;
     }
 
     public void playSound() {
-        supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.drink", 0.05F, 0.5F + (float) Math.random() * 0.5F);
+        supertile
+                .getWorldObj()
+                .playSoundEffect(
+                        supertile.xCoord,
+                        supertile.yCoord,
+                        supertile.zCoord,
+                        "random.drink",
+                        0.05F,
+                        0.5F + (float) Math.random() * 0.5F);
     }
 
     @Override
@@ -123,8 +128,7 @@ public class SubTileTainthistle extends SubTileGenerating {
     }
 
     @Override
-    public IIcon getIcon(){
+    public IIcon getIcon() {
         return BotaniaAPI.getSignatureForName("tainthistle").getIconForStack(null);
     }
-
 }

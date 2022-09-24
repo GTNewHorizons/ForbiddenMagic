@@ -1,5 +1,8 @@
 package fox.spiteful.forbidden.items.tools;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,11 +14,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraft.api.IRepairable;
-
-import fox.spiteful.forbidden.Config;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemDiabolistFork extends ItemSword implements IRepairable {
 
@@ -29,10 +27,8 @@ public class ItemDiabolistFork extends ItemSword implements IRepairable {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir) {
-        if (Config.spork)
-            this.icon = ir.registerIcon("forbidden:spork");
-        else
-            this.icon = ir.registerIcon("forbidden:fork");
+        if (Config.spork) this.icon = ir.registerIcon("forbidden:spork");
+        else this.icon = ir.registerIcon("forbidden:fork");
     }
 
     @Override

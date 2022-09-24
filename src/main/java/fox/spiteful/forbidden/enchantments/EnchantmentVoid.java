@@ -2,12 +2,11 @@ package fox.spiteful.forbidden.enchantments;
 
 import fox.spiteful.forbidden.items.tools.ItemMorphAxe;
 import fox.spiteful.forbidden.items.tools.ItemMorphPickaxe;
+import fox.spiteful.forbidden.items.tools.ItemMorphShovel;
 import fox.spiteful.forbidden.items.tools.ItemMorphSword;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
-
-import fox.spiteful.forbidden.items.tools.ItemMorphShovel;
 
 public class EnchantmentVoid extends Enchantment {
     public EnchantmentVoid(int id) {
@@ -32,7 +31,10 @@ public class EnchantmentVoid extends Enchantment {
 
     @Override
     public boolean canApply(ItemStack item) {
-        return (item.getItem() instanceof ItemMorphPickaxe || item.getItem() instanceof ItemMorphAxe || item.getItem() instanceof ItemMorphSword || item.getItem() instanceof ItemMorphShovel);
+        return (item.getItem() instanceof ItemMorphPickaxe
+                || item.getItem() instanceof ItemMorphAxe
+                || item.getItem() instanceof ItemMorphSword
+                || item.getItem() instanceof ItemMorphShovel);
     }
 
     @Override

@@ -29,10 +29,8 @@ public class EnchantmentCorrupting extends Enchantment {
 
     @Override
     public boolean canApply(ItemStack item) {
-        if (item.getItem() instanceof ItemPickaxe || item.getItem() instanceof ItemPrimalCrusher)
-            return true;
-        else
-            return false;
+        if (item.getItem() instanceof ItemPickaxe || item.getItem() instanceof ItemPrimalCrusher) return true;
+        else return false;
     }
 
     @Override

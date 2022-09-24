@@ -1,13 +1,13 @@
 package fox.spiteful.forbidden.items;
 
-import java.util.Arrays;
-
+import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.items.baubles.*;
 import fox.spiteful.forbidden.items.scribes.*;
 import fox.spiteful.forbidden.items.tools.*;
-import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.items.wands.*;
+import java.util.Arrays;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -21,8 +21,6 @@ import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.api.wands.StaffRod;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ForbiddenItems {
     public static Item deadlyShards;
@@ -115,38 +113,150 @@ public class ForbiddenItems {
         }
 
         fork = new ItemDiabolistFork(ThaumcraftApi.toolMatThaumium).setUnlocalizedName("DiabolistFork");
-        if (Config.spork)
-            fork.setUnlocalizedName("DiabolistSpork");
+        if (Config.spork) fork.setUnlocalizedName("DiabolistSpork");
         GameRegistry.registerItem(fork, "DiabolistFork");
 
         wandCore = new ItemWandCores().setUnlocalizedName("WandCores");
         GameRegistry.registerItem(wandCore, "WandCores");
         wandCap = new ItemWandCaps().setUnlocalizedName("WandCaps");
         GameRegistry.registerItem(wandCap, "WandCaps");
-        WAND_ROD_TAINTED = new WandRod("tainted", 150, new ItemStack(wandCore, 1, 0), 12, new TaintedWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_tainted.png"));
-        WAND_ROD_INFERNAL = new WandRod("infernal", 150, new ItemStack(wandCore, 1, 1), 12, new InfernalWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_infernal.png"));
-        WAND_ROD_NEUTRONIUM = new WandRod("neutronium", 9001, new ItemStack(Blocks.bedrock, 1), 1000, new CreativeWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_neutronium.png"));
+        WAND_ROD_TAINTED = new WandRod(
+                "tainted",
+                150,
+                new ItemStack(wandCore, 1, 0),
+                12,
+                new TaintedWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_tainted.png"));
+        WAND_ROD_INFERNAL = new WandRod(
+                "infernal",
+                150,
+                new ItemStack(wandCore, 1, 1),
+                12,
+                new InfernalWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_infernal.png"));
+        WAND_ROD_NEUTRONIUM = new WandRod(
+                "neutronium",
+                9001,
+                new ItemStack(Blocks.bedrock, 1),
+                1000,
+                new CreativeWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_neutronium.png"));
         WAND_ROD_NEUTRONIUM.setGlowing(true);
-        WAND_ROD_BLOOD = new WandRod("blood", 100, new ItemStack(wandCore, 1, 3), 12, new BloodWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_blood.png"));
-        WAND_ROD_WITCHWOOD = new WandRod("witchwood", 100, new ItemStack(wandCore, 1, 4), 12, new ManaWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_witchwood.png"));
-        WAND_ROD_LIVINGWOOD = new WandRod("livingwood", 100, new ItemStack(wandCore, 1, 7), 12, new YandereWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_livingwood.png"));
-        WAND_ROD_DREAMWOOD = new WandRod("dreamwood", 100, new ItemStack(wandCore, 1, 11), 12, new YandereWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_dreamwood.png"));
-        WAND_ROD_EQUIVALENT = new WandRod("equivalent", 100, new ItemStack(wandCore, 1, 11), 12, new ResourceLocation("forbidden", "textures/models/wand_rod_equivalent.png"));
-        WAND_ROD_PROFANE = new WandRod("profane", 50, new ItemStack(wandCore, 1, 5), 12, new ProfaneWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_profane.png"));
-        WAND_ROD_PROFANED = new WandRod("profaned", 50, new ItemStack(Blocks.bedrock, 1), 1000, new ResourceLocation("forbidden", "textures/models/wand_rod_profaned.png"));
-        STAFF_ROD_BLOOD = new StaffRod("blood", 50, new ItemStack(wandCore, 1, 9), 24, new BloodStaffUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_blood.png"));
-        STAFF_ROD_NEUTRONIUM = new StaffRod("neutronium", 9002, new ItemStack(Blocks.bedrock, 1), 1000, new CreativeWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_neutronium.png"));
+        WAND_ROD_BLOOD = new WandRod(
+                "blood",
+                100,
+                new ItemStack(wandCore, 1, 3),
+                12,
+                new BloodWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_blood.png"));
+        WAND_ROD_WITCHWOOD = new WandRod(
+                "witchwood",
+                100,
+                new ItemStack(wandCore, 1, 4),
+                12,
+                new ManaWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_witchwood.png"));
+        WAND_ROD_LIVINGWOOD = new WandRod(
+                "livingwood",
+                100,
+                new ItemStack(wandCore, 1, 7),
+                12,
+                new YandereWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_livingwood.png"));
+        WAND_ROD_DREAMWOOD = new WandRod(
+                "dreamwood",
+                100,
+                new ItemStack(wandCore, 1, 11),
+                12,
+                new YandereWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_dreamwood.png"));
+        WAND_ROD_EQUIVALENT = new WandRod(
+                "equivalent",
+                100,
+                new ItemStack(wandCore, 1, 11),
+                12,
+                new ResourceLocation("forbidden", "textures/models/wand_rod_equivalent.png"));
+        WAND_ROD_PROFANE = new WandRod(
+                "profane",
+                50,
+                new ItemStack(wandCore, 1, 5),
+                12,
+                new ProfaneWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_profane.png"));
+        WAND_ROD_PROFANED = new WandRod(
+                "profaned",
+                50,
+                new ItemStack(Blocks.bedrock, 1),
+                1000,
+                new ResourceLocation("forbidden", "textures/models/wand_rod_profaned.png"));
+        STAFF_ROD_BLOOD = new StaffRod(
+                "blood",
+                50,
+                new ItemStack(wandCore, 1, 9),
+                24,
+                new BloodStaffUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_blood.png"));
+        STAFF_ROD_NEUTRONIUM = new StaffRod(
+                "neutronium",
+                9002,
+                new ItemStack(Blocks.bedrock, 1),
+                1000,
+                new CreativeWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_neutronium.png"));
         STAFF_ROD_NEUTRONIUM.setGlowing(true);
-        STAFF_ROD_WITCHWOOD = new StaffRod("witchwood", 50, new ItemStack(wandCore, 1, 10), 24, new ManaStaffUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_witchwood.png"));
-        STAFF_ROD_DREAMWOOD = new StaffRod("dreamwood", 250, new ItemStack(wandCore, 1, 13), 25, new YandereWandUpdate(), new ResourceLocation("forbidden", "textures/models/wand_rod_dreamwood.png"));
+        STAFF_ROD_WITCHWOOD = new StaffRod(
+                "witchwood",
+                50,
+                new ItemStack(wandCore, 1, 10),
+                24,
+                new ManaStaffUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_witchwood.png"));
+        STAFF_ROD_DREAMWOOD = new StaffRod(
+                "dreamwood",
+                250,
+                new ItemStack(wandCore, 1, 13),
+                25,
+                new YandereWandUpdate(),
+                new ResourceLocation("forbidden", "textures/models/wand_rod_dreamwood.png"));
         STAFF_ROD_DREAMWOOD.setRunes(true);
-        WAND_CAP_ORICHALCUM = new DarkWandCap("orichalcum", 0.0F, new ItemStack(Blocks.command_block, 1), 1000, new ResourceLocation("forbidden", "textures/models/wand_cap_orichalcum.png"));
-        WAND_CAP_ALCHEMICAL = new DarkWandCap("alchemical", 0.9F, Arrays.asList(new Aspect[] { Aspect.WATER }), 0.8F, new ItemStack(wandCap, 1, 0), 7, new ResourceLocation("forbidden", "textures/models/wand_cap_alchemical.png"));
-        WAND_CAP_VINTEUM = new DarkWandCap("vinteum", 0.9F, new ItemStack(wandCap, 1, 1), 6, new ResourceLocation("forbidden", "textures/models/wand_cap_vinteum.png"));
-        WAND_CAP_MANASTEEL = new DarkWandCap("manasteel", 0.9F, new ItemStack(wandCap, 1, 3), 6, new ResourceLocation("forbidden", "textures/models/wand_cap_manasteel.png"));
-        WAND_CAP_ELEMENTIUM = new DarkWandCap("elementium", 0.8F, new ItemStack(wandCap, 1, 5), 9, new ResourceLocation("forbidden", "textures/models/wand_cap_elementium.png"));
-        WAND_CAP_TERRASTEEL = new DarkWandCap("terrasteel", 1.8F, new ItemStack(wandCap, 1, 2), 1, new ResourceLocation("forbidden", "textures/models/wand_cap_terrasteel.png"));
-
+        WAND_CAP_ORICHALCUM = new DarkWandCap(
+                "orichalcum",
+                0.0F,
+                new ItemStack(Blocks.command_block, 1),
+                1000,
+                new ResourceLocation("forbidden", "textures/models/wand_cap_orichalcum.png"));
+        WAND_CAP_ALCHEMICAL = new DarkWandCap(
+                "alchemical",
+                0.9F,
+                Arrays.asList(new Aspect[] {Aspect.WATER}),
+                0.8F,
+                new ItemStack(wandCap, 1, 0),
+                7,
+                new ResourceLocation("forbidden", "textures/models/wand_cap_alchemical.png"));
+        WAND_CAP_VINTEUM = new DarkWandCap(
+                "vinteum",
+                0.9F,
+                new ItemStack(wandCap, 1, 1),
+                6,
+                new ResourceLocation("forbidden", "textures/models/wand_cap_vinteum.png"));
+        WAND_CAP_MANASTEEL = new DarkWandCap(
+                "manasteel",
+                0.9F,
+                new ItemStack(wandCap, 1, 3),
+                6,
+                new ResourceLocation("forbidden", "textures/models/wand_cap_manasteel.png"));
+        WAND_CAP_ELEMENTIUM = new DarkWandCap(
+                "elementium",
+                0.8F,
+                new ItemStack(wandCap, 1, 5),
+                9,
+                new ResourceLocation("forbidden", "textures/models/wand_cap_elementium.png"));
+        WAND_CAP_TERRASTEEL = new DarkWandCap(
+                "terrasteel",
+                1.8F,
+                new ItemStack(wandCap, 1, 2),
+                1,
+                new ResourceLocation("forbidden", "textures/models/wand_cap_terrasteel.png"));
 
         resource = new ItemResource().setUnlocalizedName("FMResource");
         GameRegistry.registerItem(resource, "FMResource");
@@ -180,10 +290,9 @@ public class ForbiddenItems {
         ridingCrop = new ItemRidingCrop(ToolMaterial.WOOD).setUnlocalizedName("RidingCrop");
         GameRegistry.registerItem(ridingCrop, "RidingCrop");
 
-        if(!Config.noLust) {
+        if (!Config.noLust) {
             subCollar = new ItemSubCollar().setUnlocalizedName("SubCollar");
             GameRegistry.registerItem(subCollar, "SubCollar");
-
         }
 
         ringFood = new ItemRingNutrition().setUnlocalizedName("RingNutrition");
@@ -197,12 +306,12 @@ public class ForbiddenItems {
 
         blinkFocus = new ItemFocusBlink().setUnlocalizedName("BlinkFocus");
         GameRegistry.registerItem(blinkFocus, "BlinkFocus");
-
     }
 
-    public static FocusUpgradeType getUpgrade(int id, ResourceLocation icon, String name, String text, AspectList aspects){
+    public static FocusUpgradeType getUpgrade(
+            int id, ResourceLocation icon, String name, String text, AspectList aspects) {
         if (id >= FocusUpgradeType.types.length) {
-            FocusUpgradeType[] temp = new FocusUpgradeType[id+1];
+            FocusUpgradeType[] temp = new FocusUpgradeType[id + 1];
             System.arraycopy(FocusUpgradeType.types, 0, temp, 0, FocusUpgradeType.types.length);
             FocusUpgradeType.types = temp;
         }

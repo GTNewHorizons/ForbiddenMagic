@@ -1,20 +1,6 @@
 package fox.spiteful.forbidden;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.registry.VillagerRegistry;
-import fox.spiteful.forbidden.potions.DarkPotions;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
-import org.apache.logging.log4j.Level;
-import thaumcraft.api.wands.WandTriggerRegistry;
-
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
-import fox.spiteful.forbidden.compat.Compat;
-import fox.spiteful.forbidden.enchantments.DarkEnchantments;
-import fox.spiteful.forbidden.items.ForbiddenItems;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,22 +8,40 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.VillagerRegistry;
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.enchantments.DarkEnchantments;
+import fox.spiteful.forbidden.items.ForbiddenItems;
+import fox.spiteful.forbidden.potions.DarkPotions;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
+import thaumcraft.api.wands.WandTriggerRegistry;
 
-import java.util.Collection;
-
-@Mod(modid = "ForbiddenMagic", name = "Forbidden Magic", version = "GRADLETOKEN_VERSION", dependencies = "required-after:Thaumcraft@[4.2.2.0,);after:ThaumicTinkerer;after:AWWayofTime;after:Botania")
+@Mod(
+        modid = "ForbiddenMagic",
+        name = "Forbidden Magic",
+        version = "GRADLETOKEN_VERSION",
+        dependencies = "required-after:Thaumcraft@[4.2.2.0,);after:ThaumicTinkerer;after:AWWayofTime;after:Botania")
 public class Forbidden {
     @Instance("ForbiddenMagic")
     public static Forbidden instance;
-    public static CreativeTabs tab = new CreativeTabs("forbidden"){
+
+    public static CreativeTabs tab = new CreativeTabs("forbidden") {
         @Override
         public Item getTabIconItem() {
             return ForbiddenItems.fork;
         }
     };
     public static CreativeTabs crysTab;
-    @SidedProxy(clientSide = "fox.spiteful.forbidden.client.ClientProxy", serverSide = "fox.spiteful.forbidden.CommonProxy")
+
+    @SidedProxy(
+            clientSide = "fox.spiteful.forbidden.client.ClientProxy",
+            serverSide = "fox.spiteful.forbidden.CommonProxy")
     public static CommonProxy proxy;
+
     public static WandOverlord wandLord;
     public static FMEventHandler events;
 
@@ -46,7 +50,7 @@ public class Forbidden {
         instance = this;
         Config.configurate(event.getSuggestedConfigurationFile());
         if (Config.wrathCage)
-            crysTab = new CreativeTabs("mobcrystal"){
+            crysTab = new CreativeTabs("mobcrystal") {
                 @Override
                 public Item getTabIconItem() {
                     return ForbiddenItems.mobCrystal;
@@ -58,8 +62,7 @@ public class Forbidden {
         ForbiddenItems.addItems();
         ForbiddenBlocks.addBlocks();
         DarkEnchantments.hex();
-        if(Compat.bm)
-            DarkPotions.alchemize();
+        if (Compat.bm) DarkPotions.alchemize();
         proxy.registerRenderInfo();
     }
 

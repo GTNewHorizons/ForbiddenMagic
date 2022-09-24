@@ -12,8 +12,15 @@ public class CreativeWandUpdate implements IWandRodOnUpdate {
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
         for (int x = 0; x < primals.length; x++) {
-            if (((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x]) < ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack)) {
-                ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack) - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x]), true);
+            if (((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x])
+                    < ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack)) {
+                ((ItemWandCasting) itemstack.getItem())
+                        .addVis(
+                                itemstack,
+                                primals[x],
+                                ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack)
+                                        - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x]),
+                                true);
             }
         }
     }
