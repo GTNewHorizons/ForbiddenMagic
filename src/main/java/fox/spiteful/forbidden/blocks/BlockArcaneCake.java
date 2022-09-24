@@ -1,9 +1,10 @@
 package fox.spiteful.forbidden.blocks;
 
-import java.util.Random;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,8 +16,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import squeek.applecore.api.food.FoodValues;
 import squeek.applecore.api.food.IEdibleBlock;
 import squeek.applecore.api.food.ItemFoodProxy;
@@ -24,10 +23,13 @@ import squeek.applecore.api.food.ItemFoodProxy;
 @Optional.Interface(iface = "squeek.applecore.api.food.IEdibleBlock", modid = "AppleCore")
 public class BlockArcaneCake extends Block implements IEdibleBlock {
     private boolean isEdibleAtMaxHunger = false;
+
     @SideOnly(Side.CLIENT)
     private IIcon cakeTopIcon;
+
     @SideOnly(Side.CLIENT)
     private IIcon cakeBottomIcon;
+
     @SideOnly(Side.CLIENT)
     private IIcon cakeInsideIcon;
 
@@ -59,8 +61,15 @@ public class BlockArcaneCake extends Block implements IEdibleBlock {
         float f = 0.0625F;
         float f1 = (float) (1 + l) / 12.0F;
         float f2 = 0.5F;
-        //return AxisAlignedBB.getAABBPool().getAABB((double) ((float) x + f1), (double) y, (double) ((float) z + f), (double) ((float) (x + 1) - f), (double) ((float) y + f2 - f), (double) ((float) (z + 1) - f));
-        return AxisAlignedBB.getBoundingBox((double)((float)x + f1), (double)y, (double)((float)z + f), (double)((float)(x + 1) - f), (double)((float)y + f2 - f), (double)((float)(z + 1) - f));
+        // return AxisAlignedBB.getAABBPool().getAABB((double) ((float) x + f1), (double) y, (double) ((float) z + f),
+        // (double) ((float) (x + 1) - f), (double) ((float) y + f2 - f), (double) ((float) (z + 1) - f));
+        return AxisAlignedBB.getBoundingBox(
+                (double) ((float) x + f1),
+                (double) y,
+                (double) ((float) z + f),
+                (double) ((float) (x + 1) - f),
+                (double) ((float) y + f2 - f),
+                (double) ((float) (z + 1) - f));
     }
 
     @Override
@@ -75,14 +84,23 @@ public class BlockArcaneCake extends Block implements IEdibleBlock {
         float f = 0.0625F;
         float f1 = (float) (1 + l) / 12.0F;
         float f2 = 0.5F;
-        //return AxisAlignedBB.getAABBPool().getAABB((double) ((float) x + f1), (double) y, (double) ((float) z + f), (double) ((float) (x + 1) - f), (double) ((float) y + f2), (double) ((float) (z + 1) - f));
-        return AxisAlignedBB.getBoundingBox((double)((float)x + f1), (double)y, (double)((float)z + f), (double)((float)(x + 1) - f), (double)((float)y + f2), (double)((float)(z + 1) - f));
+        // return AxisAlignedBB.getAABBPool().getAABB((double) ((float) x + f1), (double) y, (double) ((float) z + f),
+        // (double) ((float) (x + 1) - f), (double) ((float) y + f2), (double) ((float) (z + 1) - f));
+        return AxisAlignedBB.getBoundingBox(
+                (double) ((float) x + f1),
+                (double) y,
+                (double) ((float) z + f),
+                (double) ((float) (x + 1) - f),
+                (double) ((float) y + f2),
+                (double) ((float) (z + 1) - f));
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIcon(int par1, int x) {
-        return par1 == 1 ? this.cakeTopIcon : (par1 == 0 ? this.cakeBottomIcon : (x > 0 && par1 == 4 ? this.cakeInsideIcon : this.blockIcon));
+        return par1 == 1
+                ? this.cakeTopIcon
+                : (par1 == 0 ? this.cakeBottomIcon : (x > 0 && par1 == 4 ? this.cakeInsideIcon : this.blockIcon));
     }
 
     @SideOnly(Side.CLIENT)
@@ -100,7 +118,8 @@ public class BlockArcaneCake extends Block implements IEdibleBlock {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(
+            World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
         this.eatCakeSlice(world, x, y, z, player);
         return true;
     }

@@ -1,9 +1,12 @@
 package fox.spiteful.forbidden.blocks;
 
-import java.util.Random;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import fox.spiteful.forbidden.tiles.TileEntityWrathCage;
+import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -16,12 +19,6 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.items.ForbiddenItems;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWrathCage extends BlockContainer {
     protected BlockWrathCage() {
@@ -49,14 +46,13 @@ public class BlockWrathCage extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(
+            World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
         ItemStack held = player.getCurrentEquippedItem();
         if (held != null && held.getItem() == ForbiddenItems.mobCrystal) {
             NBTTagCompound nbttagcompound = held.getTagCompound();
-            if (nbttagcompound == null)
-                return false;
-            if(!nbttagcompound.hasKey("mob"))
-                return false;
+            if (nbttagcompound == null) return false;
+            if (!nbttagcompound.hasKey("mob")) return false;
             String string = nbttagcompound.getString("mob");
             if (string != null) {
                 if (!world.isRemote) {
@@ -80,8 +76,7 @@ public class BlockWrathCage extends BlockContainer {
             }
         } else if (held != null && held.getItem() == ForbiddenItems.fork && Config.wrathCost > 0) {
             TileEntityWrathCage spawner = (TileEntityWrathCage) world.getTileEntity(x, y, z);
-            if (++spawner.mode > 2)
-                spawner.mode = 0;
+            if (++spawner.mode > 2) spawner.mode = 0;
             player.swingItem();
         }
         return false;
@@ -101,13 +96,13 @@ public class BlockWrathCage extends BlockContainer {
             String mob = spawner.getSpawnerLogic().getEntityNameToSpawn();
             crystal.stackTagCompound.setString("mob", mob);
 
-            EntityItem entityitem = new EntityItem(world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), crystal);
+            EntityItem entityitem = new EntityItem(
+                    world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), crystal);
 
             entityitem.motionX = (double) ((float) world.rand.nextGaussian() * 0.05F);
             entityitem.motionY = (double) ((float) world.rand.nextGaussian() * 0.05F + 0.2F);
             entityitem.motionZ = (double) ((float) world.rand.nextGaussian() * 0.05F);
             world.spawnEntityInWorld(entityitem);
-
         }
 
         super.onBlockPreDestroy(world, x, y, z, side);

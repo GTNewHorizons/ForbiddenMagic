@@ -1,8 +1,10 @@
 package fox.spiteful.forbidden.items;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
+import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -10,13 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
-import fox.spiteful.forbidden.Config;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 public class ItemDeadlyShard extends Item {
-    public static final String[] vices = new String[] { "wrath", "envy", "taint", "pride", "lust", "sloth", "greed" };
+    public static final String[] vices = new String[] {"wrath", "envy", "taint", "pride", "lust", "sloth", "greed"};
 
     @SideOnly(Side.CLIENT)
     public IIcon[] icons;
@@ -26,8 +23,7 @@ public class ItemDeadlyShard extends Item {
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.setCreativeTab(Forbidden.tab);
-        if (Config.noLust)
-            vices[4] = "despair";
+        if (Config.noLust) vices[4] = "despair";
     }
 
     @SideOnly(Side.CLIENT)

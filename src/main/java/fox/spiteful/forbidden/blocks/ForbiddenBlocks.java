@@ -1,11 +1,10 @@
 package fox.spiteful.forbidden.blocks;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.tiles.TileEntityWrathCage;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ForbiddenBlocks {
     public static Block arcaneCake;
@@ -35,7 +34,8 @@ public class ForbiddenBlocks {
         taintLog = GameRegistry.registerBlock(new BlockLogTainted().setBlockName("TaintLog"), "TaintLog");
         taintPlanks = GameRegistry.registerBlock(new BlockPlanksTainted().setBlockName("TaintPlank"), "TaintPlank");
         taintLeaves = GameRegistry.registerBlock(new BlockLeavesTainted().setBlockName("TaintLeaves"), "TaintLeaves");
-        taintSapling = GameRegistry.registerBlock(new BlockSaplingTainted().setBlockName("TaintSapling"), "TaintSapling");
+        taintSapling =
+                GameRegistry.registerBlock(new BlockSaplingTainted().setBlockName("TaintSapling"), "TaintSapling");
 
         taintStone = GameRegistry.registerBlock(new BlockStoneTainted(), ItemBlockStoneTainted.class, "TaintBlock");
     }

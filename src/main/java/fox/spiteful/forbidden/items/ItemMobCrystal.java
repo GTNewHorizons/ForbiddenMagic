@@ -1,8 +1,10 @@
 package fox.spiteful.forbidden.items;
 
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
+import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,11 +14,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import thaumcraft.api.aspects.Aspect;
-
-import fox.spiteful.forbidden.Config;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMobCrystal extends Item {
 
@@ -34,13 +31,12 @@ public class ItemMobCrystal extends Item {
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean z) {
         if (stack.hasTagCompound()) {
             NBTTagCompound nbttagcompound = stack.getTagCompound();
-            if(nbttagcompound.hasKey("mob")) {
+            if (nbttagcompound.hasKey("mob")) {
                 String string = nbttagcompound.getString("mob");
 
                 if (string != null) {
                     Aspect mobAspect = Config.spawnerMobs.get(string);
-                    if (mobAspect != null)
-                        list.add(mobAspect.getName());
+                    if (mobAspect != null) list.add(mobAspect.getName());
                 }
             }
         }
@@ -62,8 +58,7 @@ public class ItemMobCrystal extends Item {
             NBTTagCompound nbttagcompound = stack.getTagCompound();
             String string = nbttagcompound.getString("mob");
 
-            if (string != null)
-                return icons[1];
+            if (string != null) return icons[1];
         }
 
         return icons[0];
@@ -74,8 +69,7 @@ public class ItemMobCrystal extends Item {
     public IIcon getIconIndex(ItemStack stack) {
         if (stack.hasTagCompound()) {
             NBTTagCompound nbttagcompound = stack.getTagCompound();
-            if (nbttagcompound.hasKey("mob"))
-                return icons[1];
+            if (nbttagcompound.hasKey("mob")) return icons[1];
         }
 
         return icons[0];
@@ -98,11 +92,15 @@ public class ItemMobCrystal extends Item {
     public String getItemStackDisplayName(ItemStack stack) {
         if (stack.hasTagCompound()) {
             NBTTagCompound nbttagcompound = stack.getTagCompound();
-            if(nbttagcompound.hasKey("mob")) {
+            if (nbttagcompound.hasKey("mob")) {
                 String string = nbttagcompound.getString("mob");
 
                 if (string != null)
-                    return ("" + StatCollector.translateToLocal("item.MobCrystal.name").replace("%s", StatCollector.translateToLocal("entity." + string + ".name"))).trim();
+                    return (""
+                                    + StatCollector.translateToLocal("item.MobCrystal.name")
+                                            .replace(
+                                                    "%s", StatCollector.translateToLocal("entity." + string + ".name")))
+                            .trim();
             }
         }
 

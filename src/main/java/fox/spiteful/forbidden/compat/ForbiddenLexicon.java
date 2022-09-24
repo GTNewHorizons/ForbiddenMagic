@@ -7,14 +7,13 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 
 public class ForbiddenLexicon extends LexiconEntry implements IAddonEntry {
 
-
-    public ForbiddenLexicon(String name, LexiconCategory category){
+    public ForbiddenLexicon(String name, LexiconCategory category) {
         super(name, category);
         BotaniaAPI.addEntry(this, category);
     }
 
     @Override
-    public String getSubtitle(){
+    public String getSubtitle() {
         return "[Forbidden Magic x Botania]";
     }
 

@@ -5,24 +5,20 @@ import WayofTime.alchemicalWizardry.api.rituals.IMasterRitualStone;
 import WayofTime.alchemicalWizardry.api.rituals.RitualComponent;
 import WayofTime.alchemicalWizardry.api.rituals.RitualEffect;
 import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.potions.PotionWarpWard;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class RitualSanity extends RitualEffect
-{
+public class RitualSanity extends RitualEffect {
     public static final int crystallosDrain = 4;
 
     @Override
-    public void performEffect(IMasterRitualStone ritualStone)
-    {
+    public void performEffect(IMasterRitualStone ritualStone) {
         String owner = ritualStone.getOwner();
 
         int currentEssence = SoulNetworkHandler.getCurrentEssence(owner);
@@ -33,14 +29,14 @@ public class RitualSanity extends RitualEffect
 
         int timeDelay = 600;
 
-        if (world.getWorldTime() % timeDelay != 0)
-        {
+        if (world.getWorldTime() % timeDelay != 0) {
             return;
         }
 
         boolean crazy = world.getWorldTime() % (timeDelay * 4) == 0;
 
-        boolean hasCrystallos = this.canDrainReagent(ritualStone, ReagentRegistry.crystallosReagent, crystallosDrain, false);
+        boolean hasCrystallos =
+                this.canDrainReagent(ritualStone, ReagentRegistry.crystallosReagent, crystallosDrain, false);
 
         int range = 15 * (hasCrystallos ? 3 : 1);
         int vertRange = 15 * (hasCrystallos ? 3 : 1);
@@ -48,42 +44,41 @@ public class RitualSanity extends RitualEffect
         float posX = x + 0.5f;
         float posY = y + 0.5f;
         float posZ = z + 0.5f;
-        List<EntityPlayer> list = world.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(posX - 0.5f, posY - 0.5f, posZ - 0.5f, posX + 0.5f, posY + 0.5f, posZ + 0.5f).expand(range, vertRange, range));
+        List<EntityPlayer> list = world.getEntitiesWithinAABB(
+                EntityPlayer.class,
+                AxisAlignedBB.getBoundingBox(
+                                posX - 0.5f, posY - 0.5f, posZ - 0.5f, posX + 0.5f, posY + 0.5f, posZ + 0.5f)
+                        .expand(range, vertRange, range));
         int entityCount = 0;
 
-        for (EntityPlayer player : list)
-        {
-            entityCount ++;
+        for (EntityPlayer player : list) {
+            entityCount++;
         }
 
         int cost = this.getCostPerRefresh();
 
-        if (currentEssence < cost * entityCount)
-        {
+        if (currentEssence < cost * entityCount) {
             SoulNetworkHandler.causeNauseaToPlayer(owner);
 
-        } else
-        {
+        } else {
             entityCount = 0;
 
-            for (EntityPlayer player : list)
-            {
+            for (EntityPlayer player : list) {
                 PotionEffect effect = player.getActivePotionEffect(PotionWarpWard.instance);
-                if (effect == null || effect.getDuration() <= timeDelay)
-                {
+                if (effect == null || effect.getDuration() <= timeDelay) {
                     PotionEffect ward = new PotionEffect(PotionWarpWard.instance.id, timeDelay + 2, 0, true);
                     ward.getCurativeItems().clear();
                     player.addPotionEffect(ward);
                     entityCount++;
-                    if(crazy && world.rand.nextInt(35) <= 3)
-                        Thaumcraft.proxy.getPlayerKnowledge().addWarpTemp(player.getDisplayName(), 1 + world.rand.nextInt(3));
+                    if (crazy && world.rand.nextInt(35) <= 3)
+                        Thaumcraft.proxy
+                                .getPlayerKnowledge()
+                                .addWarpTemp(player.getDisplayName(), 1 + world.rand.nextInt(3));
                 }
             }
 
-            if (entityCount > 0)
-            {
-                if (hasCrystallos)
-                {
+            if (entityCount > 0) {
+                if (hasCrystallos) {
                     this.canDrainReagent(ritualStone, ReagentRegistry.crystallosReagent, crystallosDrain, true);
                 }
                 SoulNetworkHandler.syphonFromNetwork(owner, cost * entityCount);
@@ -92,14 +87,12 @@ public class RitualSanity extends RitualEffect
     }
 
     @Override
-    public int getCostPerRefresh()
-    {
+    public int getCostPerRefresh() {
         return 15000;
     }
 
     @Override
-    public List<RitualComponent> getRitualComponentList()
-    {
+    public List<RitualComponent> getRitualComponentList() {
         ArrayList<RitualComponent> sanityRitual = new ArrayList();
         sanityRitual.add(new RitualComponent(4, 1, 0, RitualComponent.DUSK));
         sanityRitual.add(new RitualComponent(-4, 1, 0, RitualComponent.DUSK));

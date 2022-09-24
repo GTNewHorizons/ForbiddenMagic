@@ -20,18 +20,19 @@ import thaumcraft.common.lib.potions.PotionThaumarhia;
 
 public class ItemFruitTainted extends ItemFood {
 
-    public ItemFruitTainted(){
+    public ItemFruitTainted() {
         super(4, 0.8F, false);
         setCreativeTab(Forbidden.tab);
     }
 
     public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
-        if(!world.isRemote && player instanceof EntityPlayerMP) {
+        if (!world.isRemote && player instanceof EntityPlayerMP) {
             Thaumcraft.addStickyWarpToPlayer(player, 1);
             player.addPotionEffect(getEffect(PotionFluxTaint.instance.id, 600, false));
             player.addPotionEffect(getEffect(Potion.hunger.id, 600, false));
-            if(world.rand.nextFloat() < 0.4F){
-                player.addChatMessage(new ChatComponentText(EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("warp.text.15")));
+            if (world.rand.nextFloat() < 0.4F) {
+                player.addChatMessage(new ChatComponentText(
+                        EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("warp.text.15")));
                 player.addPotionEffect(getEffect(PotionThaumarhia.instance.id, 600, true));
             }
         }
@@ -44,10 +45,9 @@ public class ItemFruitTainted extends ItemFood {
         this.itemIcon = iconRegister.registerIcon("forbidden:taint_fruit");
     }
 
-    private PotionEffect getEffect(int id, int duration, boolean ambient){
+    private PotionEffect getEffect(int id, int duration, boolean ambient) {
         PotionEffect potion = new PotionEffect(id, duration, 0, ambient);
         potion.getCurativeItems().clear();
         return potion;
     }
-
 }

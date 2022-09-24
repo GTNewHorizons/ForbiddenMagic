@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 
 public class ItemTaintCoal extends Item {
 
-    public ItemTaintCoal(){
+    public ItemTaintCoal() {
         super();
         setCreativeTab(Forbidden.tab);
     }

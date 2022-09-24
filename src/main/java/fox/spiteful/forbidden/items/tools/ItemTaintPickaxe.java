@@ -1,17 +1,15 @@
 package fox.spiteful.forbidden.items.tools;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.Forbidden;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import thaumcraft.api.IRepairable;
-
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.Forbidden;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTaintPickaxe extends ItemPickaxe implements IRepairable {
     public IIcon icon;
@@ -39,6 +37,8 @@ public class ItemTaintPickaxe extends ItemPickaxe implements IRepairable {
 
     @Override
     public boolean getIsRepairable(ItemStack stack, ItemStack stack2) {
-        return stack2.isItemEqual(new ItemStack(Config.thaumcraftResource.getItem(), 1, 2)) ? true : super.getIsRepairable(stack, stack2);
+        return stack2.isItemEqual(new ItemStack(Config.thaumcraftResource.getItem(), 1, 2))
+                ? true
+                : super.getIsRepairable(stack, stack2);
     }
 }

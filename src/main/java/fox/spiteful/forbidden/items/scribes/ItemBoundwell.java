@@ -5,6 +5,8 @@ import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
+import java.util.Iterator;
+import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -20,10 +22,7 @@ import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.playerdata.PacketAspectPool;
 import thaumcraft.common.lib.research.ResearchManager;
 
-import java.util.Iterator;
-import java.util.List;
-
-public class ItemBoundwell extends Item implements IScribeTools, IBindable{
+public class ItemBoundwell extends Item implements IScribeTools, IBindable {
     @SideOnly(Side.CLIENT)
     public IIcon icon;
 
@@ -53,22 +52,26 @@ public class ItemBoundwell extends Item implements IScribeTools, IBindable{
         if (itemstack.getItemDamage() >= 100) {
             player.swingItem();
             if (!world.isRemote) {
-                if (player.capabilities.isCreativeMode)
-                    itemstack.setItemDamage(0);
+                if (player.capabilities.isCreativeMode) itemstack.setItemDamage(0);
                 else {
                     SoulNetworkHandler.syphonAndDamageFromNetwork(itemstack, player, 10000);
-                    if(player.getHealth() > 0){
+                    if (player.getHealth() > 0) {
                         itemstack.setItemDamage(0);
-                    }
-                    else
-                        return itemstack;
+                    } else return itemstack;
                 }
                 Aspect aspect;
                 short amount;
-                for(Iterator count = Aspect.getPrimalAspects().iterator(); count.hasNext(); PacketHandler.INSTANCE.sendTo(new PacketAspectPool(aspect.getTag(), Short.valueOf(amount), Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(player.getCommandSenderName(), aspect))), (EntityPlayerMP)player))
-                {
-                    aspect = (Aspect)count.next();
-                    amount = (short)(world.rand.nextInt(4) + 4);
+                for (Iterator count = Aspect.getPrimalAspects().iterator();
+                        count.hasNext();
+                        PacketHandler.INSTANCE.sendTo(
+                                new PacketAspectPool(
+                                        aspect.getTag(),
+                                        Short.valueOf(amount),
+                                        Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(
+                                                player.getCommandSenderName(), aspect))),
+                                (EntityPlayerMP) player)) {
+                    aspect = (Aspect) count.next();
+                    amount = (short) (world.rand.nextInt(4) + 4);
                     Thaumcraft.proxy.playerKnowledge.addAspectPool(player.getCommandSenderName(), aspect, amount);
                     ResearchManager.scheduleSave(player);
                 }
@@ -81,7 +84,8 @@ public class ItemBoundwell extends Item implements IScribeTools, IBindable{
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean z) {
         if (stack.hasTagCompound()) {
             list.add("");
-            list.add(StatCollector.translateToLocal("tooltip.currentowner") + " " + stack.stackTagCompound.getString("ownerName"));
+            list.add(StatCollector.translateToLocal("tooltip.currentowner") + " "
+                    + stack.stackTagCompound.getString("ownerName"));
         }
     }
 
@@ -93,5 +97,4 @@ public class ItemBoundwell extends Item implements IScribeTools, IBindable{
     public boolean hasEffect(ItemStack stack, int pass) {
         return stack.getItemDamage() >= 100;
     }
-
 }

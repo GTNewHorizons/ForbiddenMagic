@@ -4,9 +4,9 @@ import fox.spiteful.forbidden.Forbidden;
 import net.minecraft.block.Block;
 import thaumcraft.common.config.Config;
 
-public class BlockPlanksTainted extends Block{
+public class BlockPlanksTainted extends Block {
 
-    public BlockPlanksTainted(){
+    public BlockPlanksTainted() {
         super(Config.taintMaterial);
         setCreativeTab(Forbidden.tab);
         setStepSound(Block.soundTypeWood);
@@ -15,5 +15,4 @@ public class BlockPlanksTainted extends Block{
         setBlockTextureName("forbidden:taint_planks");
         this.setHarvestLevel("axe", 0);
     }
-
 }

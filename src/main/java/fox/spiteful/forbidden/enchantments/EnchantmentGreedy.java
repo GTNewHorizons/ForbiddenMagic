@@ -27,7 +27,9 @@ public class EnchantmentGreedy extends Enchantment {
 
     @Override
     public boolean canApplyTogether(Enchantment ench) {
-        return super.canApplyTogether(ench) && ench.effectId != Enchantment.looting.effectId && ench.effectId != DarkEnchantments.educational.effectId;
+        return super.canApplyTogether(ench)
+                && ench.effectId != Enchantment.looting.effectId
+                && ench.effectId != DarkEnchantments.educational.effectId;
     }
 
     @Override

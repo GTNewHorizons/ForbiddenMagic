@@ -23,10 +23,8 @@ public class EnchantmentCluster extends Enchantment {
 
     @Override
     public boolean canApply(ItemStack item) {
-        if (item.getItem() instanceof ItemMorphPickaxe)
-            return true;
-        else
-            return false;
+        if (item.getItem() instanceof ItemMorphPickaxe) return true;
+        else return false;
     }
 
     @Override

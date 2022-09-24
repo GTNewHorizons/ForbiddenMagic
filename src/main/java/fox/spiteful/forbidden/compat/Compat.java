@@ -1,8 +1,11 @@
 package fox.spiteful.forbidden.compat;
 
 import com.pahimar.ee3.api.exchange.EnergyValueRegistryProxy;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.*;
 import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,10 +20,6 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
-import fox.spiteful.forbidden.items.ForbiddenItems;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
-
 
 public class Compat {
     public static boolean tt = false;
@@ -34,8 +33,7 @@ public class Compat {
     public static boolean ee3 = false;
 
     public static void initiate() {
-        if(!Config.crossMod)
-            return;
+        if (!Config.crossMod) return;
         tt = Config.tt && Loader.isModLoaded("ThaumicTinkerer");
         kami = tt && Loader.isModLoaded("ThaumicTinkererKami");
         natura = Loader.isModLoaded("Natura");
@@ -54,7 +52,9 @@ public class Compat {
         if (tt) {
             if (!kami) {
                 try {
-                    kami = Class.forName("thaumic.tinkerer.common.core.handler.ConfigHandler").getField("enableKami").getBoolean(null);
+                    kami = Class.forName("thaumic.tinkerer.common.core.handler.ConfigHandler")
+                            .getField("enableKami")
+                            .getBoolean(null);
                 } catch (Exception e) {
                 }
             }
@@ -62,30 +62,48 @@ public class Compat {
             if (kami) {
                 try {
                     Item kamiResource = getItem("ThaumicTinkerer", "kamiResource");
-                    list = new AspectList().add(DarkAspects.NETHER, 2).add(Aspect.MAGIC, 1).add(Aspect.CRYSTAL, 1);
+                    list = new AspectList()
+                            .add(DarkAspects.NETHER, 2)
+                            .add(Aspect.MAGIC, 1)
+                            .add(Aspect.CRYSTAL, 1);
                     ThaumcraftApi.registerObjectTag(new ItemStack(kamiResource, 1, 6), list);
-                    list = new AspectList().add(Aspect.ELDRITCH, 2).add(Aspect.MAGIC, 1).add(Aspect.CRYSTAL, 1);
+                    list = new AspectList()
+                            .add(Aspect.ELDRITCH, 2)
+                            .add(Aspect.MAGIC, 1)
+                            .add(Aspect.CRYSTAL, 1);
                     ThaumcraftApi.registerObjectTag(new ItemStack(kamiResource, 1, 7), list);
 
                 } catch (Exception e) {
                     LogHandler.log(Level.INFO, e, "Forbidden Magic doesn't have Thaumic Tinkerer's nose.");
                     kami = false;
                 }
-
             }
         }
 
         if (natura) {
             try {
-                list = (new AspectList()).add(Aspect.BEAST, 2).add(DarkAspects.NETHER, 4).add(DarkAspects.SLOTH, 2);
+                list = (new AspectList())
+                        .add(Aspect.BEAST, 2)
+                        .add(DarkAspects.NETHER, 4)
+                        .add(DarkAspects.SLOTH, 2);
                 ThaumcraftApi.registerEntityTag("Natura.Imp", list);
-                list = (new AspectList()).add(Aspect.BEAST, 3).add(Aspect.FIRE, 3).add(DarkAspects.NETHER, 2);
+                list = (new AspectList())
+                        .add(Aspect.BEAST, 3)
+                        .add(Aspect.FIRE, 3)
+                        .add(DarkAspects.NETHER, 2);
                 ThaumcraftApi.registerEntityTag("Natura.HeatscarSpider", list);
                 ThaumcraftApi.registerEntityTag("Natura.FlameSpider", list);
-                list = (new AspectList()).add(Aspect.BEAST, 1).add(Aspect.FIRE, 2).add(DarkAspects.NETHER, 1);
+                list = (new AspectList())
+                        .add(Aspect.BEAST, 1)
+                        .add(Aspect.FIRE, 2)
+                        .add(DarkAspects.NETHER, 1);
                 ThaumcraftApi.registerEntityTag("Natura.BabyHeatscarSpider", list);
                 ThaumcraftApi.registerEntityTag("Natura.FlameSpiderBaby", list);
-                list = (new AspectList()).add(Aspect.BEAST, 2).add(Aspect.FIRE, 4).add(DarkAspects.NETHER, 2).add(Aspect.ENTROPY, 4);
+                list = (new AspectList())
+                        .add(Aspect.BEAST, 2)
+                        .add(Aspect.FIRE, 4)
+                        .add(DarkAspects.NETHER, 2)
+                        .add(Aspect.ENTROPY, 4);
                 ThaumcraftApi.registerEntityTag("Natura.NitroCreeper", list);
 
                 i = GameRegistry.findItemStack("Natura", "Dark Tree", 1);
@@ -98,7 +116,7 @@ public class Compat {
 
                 i = GameRegistry.findItemStack("Natura", "soil.tainted", 1);
                 if (i != null) {
-                    //list = ThaumcraftApiHelper.getObjectAspects(new ItemStack(i.getItem(), 1, 0));
+                    // list = ThaumcraftApiHelper.getObjectAspects(new ItemStack(i.getItem(), 1, 0));
                     list = new AspectList().add(Aspect.EARTH, 1);
                     list.add(DarkAspects.NETHER, 1);
                     ThaumcraftApi.registerObjectTag(new ItemStack(i.getItem(), 1, OreDictionary.WILDCARD_VALUE), list);
@@ -106,7 +124,7 @@ public class Compat {
 
                 i = GameRegistry.findItemStack("Natura", "heatsand", 1);
                 if (i != null) {
-                    //list = ThaumcraftApiHelper.getObjectAspects(new ItemStack(i.getItem(), 1, 0));
+                    // list = ThaumcraftApiHelper.getObjectAspects(new ItemStack(i.getItem(), 1, 0));
                     list = new AspectList().add(Aspect.FIRE, 1).add(Aspect.EARTH, 1);
                     list.add(DarkAspects.NETHER, 1);
                     ThaumcraftApi.registerObjectTag(new ItemStack(i.getItem(), 1, OreDictionary.WILDCARD_VALUE), list);
@@ -114,9 +132,16 @@ public class Compat {
 
                 i = GameRegistry.findItemStack("Natura", "rawImphide", 1);
                 if (i != null) {
-                    list = (new AspectList()).add(Aspect.FLESH, 4).add(Aspect.HUNGER, 1).add(DarkAspects.NETHER, 1);
+                    list = (new AspectList())
+                            .add(Aspect.FLESH, 4)
+                            .add(Aspect.HUNGER, 1)
+                            .add(DarkAspects.NETHER, 1);
                     ThaumcraftApi.registerObjectTag(new ItemStack(i.getItem(), 1, 0), list);
-                    list = (new AspectList()).add(Aspect.FLESH, 4).add(Aspect.POISON, 2).add(Aspect.FIRE, 2).add(DarkAspects.NETHER, 1);
+                    list = (new AspectList())
+                            .add(Aspect.FLESH, 4)
+                            .add(Aspect.POISON, 2)
+                            .add(Aspect.FIRE, 2)
+                            .add(DarkAspects.NETHER, 1);
                     ThaumcraftApi.registerObjectTag(new ItemStack(i.getItem(), 1, 1), list);
                 }
             } catch (Exception e) {
@@ -137,19 +162,121 @@ public class Compat {
             try {
                 Class amItems = Class.forName("am2.items.ItemsCommonProxy");
                 Class amBlocks = Class.forName("am2.blocks.BlocksCommonProxy");
-                Item essence = (Item)(amItems.getField("essence").get(null));
-                Item amOre = (Item)(amItems.getField("itemOre").get(null));
-                Block witchwood = (Block)(amBlocks.getField("witchwoodLog").get(null));
+                Item essence = (Item) (amItems.getField("essence").get(null));
+                Item amOre = (Item) (amItems.getField("itemOre").get(null));
+                Block witchwood = (Block) (amBlocks.getField("witchwoodLog").get(null));
 
-                InfusionRecipe witchwood_recipe = ThaumcraftApi.addInfusionCraftingRecipe("ROD_witchwood", new ItemStack(ForbiddenItems.wandCore, 1, 4), 5, (new AspectList()).add(Aspect.MAGIC, 16).add(Aspect.EARTH, 9).add(Aspect.WATER, 9).add(Aspect.FIRE, 9).add(Aspect.AIR, 9), new ItemStack(witchwood), new ItemStack[]{new ItemStack(essence, 1, 0), new ItemStack(amOre, 1, 3), new ItemStack(essence, 1, 1), new ItemStack(essence, 1, 2), new ItemStack(essence, 1, 3), new ItemStack(essence, 1, 4), new ItemStack(amOre, 1, 6), new ItemStack(amOre, 1, 7), new ItemStack(amOre, 1, 2)});
-                (new DarkResearchItem("ROD_witchwood", "FORBIDDEN", "[AM2]", (new AspectList()).add(Aspect.MAGIC, 6).add(Aspect.TREE, 5).add(Aspect.MIND, 4), -3, 1, 3, new ItemStack(ForbiddenItems.wandCore, 1, 4))).setPages(new ResearchPage[]{new ResearchPage("forbidden.research_page.ROD_witchwood.1"), new ResearchPage(witchwood_recipe)}).setParents(new String[]{ "SCHOOLS", "ROD_silverwood", "INFUSION" }).setConcealed().registerResearchItem();
+                InfusionRecipe witchwood_recipe = ThaumcraftApi.addInfusionCraftingRecipe(
+                        "ROD_witchwood",
+                        new ItemStack(ForbiddenItems.wandCore, 1, 4),
+                        5,
+                        (new AspectList())
+                                .add(Aspect.MAGIC, 16)
+                                .add(Aspect.EARTH, 9)
+                                .add(Aspect.WATER, 9)
+                                .add(Aspect.FIRE, 9)
+                                .add(Aspect.AIR, 9),
+                        new ItemStack(witchwood),
+                        new ItemStack[] {
+                            new ItemStack(essence, 1, 0),
+                            new ItemStack(amOre, 1, 3),
+                            new ItemStack(essence, 1, 1),
+                            new ItemStack(essence, 1, 2),
+                            new ItemStack(essence, 1, 3),
+                            new ItemStack(essence, 1, 4),
+                            new ItemStack(amOre, 1, 6),
+                            new ItemStack(amOre, 1, 7),
+                            new ItemStack(amOre, 1, 2)
+                        });
+                (new DarkResearchItem(
+                                "ROD_witchwood",
+                                "FORBIDDEN",
+                                "[AM2]",
+                                (new AspectList())
+                                        .add(Aspect.MAGIC, 6)
+                                        .add(Aspect.TREE, 5)
+                                        .add(Aspect.MIND, 4),
+                                -3,
+                                1,
+                                3,
+                                new ItemStack(ForbiddenItems.wandCore, 1, 4)))
+                        .setPages(new ResearchPage[] {
+                            new ResearchPage("forbidden.research_page.ROD_witchwood.1"),
+                            new ResearchPage(witchwood_recipe)
+                        })
+                        .setParents(new String[] {"SCHOOLS", "ROD_silverwood", "INFUSION"})
+                        .setConcealed()
+                        .registerResearchItem();
                 ThaumcraftApi.addWarpToResearch("ROD_witchwood", 2);
 
-                InfusionRecipe vinteum_recipe = ThaumcraftApi.addInfusionCraftingRecipe("CAP_vinteum", new ItemStack(ForbiddenItems.wandCap, 1, 1), 5, (new AspectList()).add(Aspect.ENERGY, 12).add(Aspect.MAGIC, 6), ItemApi.getItem("itemWandCap", 6), new ItemStack[]{new ItemStack(amOre, 1, 0), new ItemStack(amOre, 1, 0), new ItemStack(amOre, 1, 0)});
-                (new DarkResearchItem("CAP_vinteum", "FORBIDDEN", "[AM2]", (new AspectList()).add(Aspect.MAGIC, 4).add(Aspect.TOOL, 1).add(Aspect.ENERGY, 2), -4, -1, 1, new ItemStack(ForbiddenItems.wandCap, 1, 1))).setPages(new ResearchPage[]{new ResearchPage("forbidden.research_page.CAP_vinteum.1"), new ResearchPage(vinteum_recipe)}).setParents(new String[]{"ROD_witchwood", "CAP_thaumium"}).setSecondary().setConcealed().registerResearchItem();
+                InfusionRecipe vinteum_recipe = ThaumcraftApi.addInfusionCraftingRecipe(
+                        "CAP_vinteum",
+                        new ItemStack(ForbiddenItems.wandCap, 1, 1),
+                        5,
+                        (new AspectList()).add(Aspect.ENERGY, 12).add(Aspect.MAGIC, 6),
+                        ItemApi.getItem("itemWandCap", 6),
+                        new ItemStack[] {
+                            new ItemStack(amOre, 1, 0), new ItemStack(amOre, 1, 0), new ItemStack(amOre, 1, 0)
+                        });
+                (new DarkResearchItem(
+                                "CAP_vinteum",
+                                "FORBIDDEN",
+                                "[AM2]",
+                                (new AspectList())
+                                        .add(Aspect.MAGIC, 4)
+                                        .add(Aspect.TOOL, 1)
+                                        .add(Aspect.ENERGY, 2),
+                                -4,
+                                -1,
+                                1,
+                                new ItemStack(ForbiddenItems.wandCap, 1, 1)))
+                        .setPages(new ResearchPage[] {
+                            new ResearchPage("forbidden.research_page.CAP_vinteum.1"), new ResearchPage(vinteum_recipe)
+                        })
+                        .setParents(new String[] {"ROD_witchwood", "CAP_thaumium"})
+                        .setSecondary()
+                        .setConcealed()
+                        .registerResearchItem();
 
-                IArcaneRecipe witchwood_staff = ThaumcraftApi.addArcaneCraftingRecipe("ROD_witchwood_staff", new ItemStack(ForbiddenItems.wandCore, 1, 10), (new AspectList()).add(Aspect.ENTROPY, 26).add(Aspect.FIRE, 26).add(Aspect.WATER, 26).add(Aspect.AIR, 26).add(Aspect.EARTH, 26).add(Aspect.ORDER, 26), new Object[]{"__D", "_B_", "B__", Character.valueOf('B'), new ItemStack(ForbiddenItems.wandCore, 1, 4), Character.valueOf('D'), new ItemStack(essence, 1, 10)});
-                (new DarkResearchItem("ROD_witchwood_staff", "FORBIDDEN", "[AM2]", (new AspectList()).add(Aspect.MAGIC, 8).add(Aspect.MIND, 7).add(Aspect.TOOL, 6), -3, -1, 2, new ItemStack(ForbiddenItems.wandCore, 1, 10))).setPages(new ResearchPage[]{new ResearchPage("forbidden.research_page.ROD_witchwood_staff.1"), new ResearchPage(witchwood_staff)}).setParents(new String[]{"ROD_silverwood_staff", "ROD_witchwood"}).setSpecial().setConcealed().registerResearchItem();
+                IArcaneRecipe witchwood_staff = ThaumcraftApi.addArcaneCraftingRecipe(
+                        "ROD_witchwood_staff",
+                        new ItemStack(ForbiddenItems.wandCore, 1, 10),
+                        (new AspectList())
+                                .add(Aspect.ENTROPY, 26)
+                                .add(Aspect.FIRE, 26)
+                                .add(Aspect.WATER, 26)
+                                .add(Aspect.AIR, 26)
+                                .add(Aspect.EARTH, 26)
+                                .add(Aspect.ORDER, 26),
+                        new Object[] {
+                            "__D",
+                            "_B_",
+                            "B__",
+                            Character.valueOf('B'),
+                            new ItemStack(ForbiddenItems.wandCore, 1, 4),
+                            Character.valueOf('D'),
+                            new ItemStack(essence, 1, 10)
+                        });
+                (new DarkResearchItem(
+                                "ROD_witchwood_staff",
+                                "FORBIDDEN",
+                                "[AM2]",
+                                (new AspectList())
+                                        .add(Aspect.MAGIC, 8)
+                                        .add(Aspect.MIND, 7)
+                                        .add(Aspect.TOOL, 6),
+                                -3,
+                                -1,
+                                2,
+                                new ItemStack(ForbiddenItems.wandCore, 1, 10)))
+                        .setPages(new ResearchPage[] {
+                            new ResearchPage("forbidden.research_page.ROD_witchwood_staff.1"),
+                            new ResearchPage(witchwood_staff)
+                        })
+                        .setParents(new String[] {"ROD_silverwood_staff", "ROD_witchwood"})
+                        .setSpecial()
+                        .setConcealed()
+                        .registerResearchItem();
             } catch (Exception e) {
                 LogHandler.log(Level.INFO, e, "Forbidden Magic was slain by a Hecate.");
                 am2 = false;
@@ -159,34 +286,49 @@ public class Compat {
         if (botan) {
             try {
                 ForbiddenBotany.flowerPowerHippymancy();
-            }
-            catch (Throwable e){
+            } catch (Throwable e) {
                 LogHandler.log(Level.INFO, e, "Forbidden Magic: Botania? Do you wanna build a snowman?");
                 botan = false;
             }
         }
 
-        if(ee3){
-            if(Config.emc){
+        if (ee3) {
+            if (Config.emc) {
                 try {
-                    for(int x = 0;x < 6;x++) {
-                        EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemShard, 1, x), 256);
+                    for (int x = 0; x < 6; x++) {
+                        EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                                new ItemStack(ConfigItems.itemShard, 1, x), 256);
                     }
-                    //EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemShard, 1, 6), 354);
-                    //EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 0), 83);
-                    //EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 1), 459);
-                    //EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 2), 272);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 3), 64);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 4), 32);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 6), 32);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 7), 112);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 8), 2056);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 9), 5120);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 11), 32);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 12), 32);
-                    //EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 14), 354);
-                    //EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 15), 5986);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 18), 227.556F);
+                    // EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemShard, 1, 6),
+                    // 354);
+                    // EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 0),
+                    // 83);
+                    // EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 1),
+                    // 459);
+                    // EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1, 2),
+                    // 272);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 3), 64);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 4), 32);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 6), 32);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 7), 112);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 8), 2056);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 9), 5120);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 11), 32);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 12), 32);
+                    // EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1,
+                    // 14), 354);
+                    // EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigItems.itemResource, 1,
+                    // 15), 5986);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigItems.itemResource, 1, 18), 227.556F);
                     EnergyValueRegistryProxy.addPreAssignedEnergyValue(ConfigItems.itemZombieBrain, 1024);
                     EnergyValueRegistryProxy.addPreAssignedEnergyValue(ConfigItems.itemWispEssence, 1024);
                     EnergyValueRegistryProxy.addPreAssignedEnergyValue(ConfigItems.itemManaBean, 32);
@@ -202,47 +344,69 @@ public class Compat {
                     EnergyValueRegistryProxy.addPreAssignedEnergyValue(ConfigItems.itemHelmetCultistRobe, 1536);
                     EnergyValueRegistryProxy.addPreAssignedEnergyValue(ConfigItems.itemLegsCultistRobe, 2048);
 
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 0), 64);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2), 392);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), 392);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 264);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7), 264);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 11), 1);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 12), 1);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 14), 1);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 15), 1);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCustomPlant, 1, 0), 64);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCustomPlant, 1, 1), 256);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCustomPlant, 1, 2), 64);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCustomPlant, 1, 3), 768);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCustomPlant, 1, 5), 16);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockMetalDevice, 1, 0), 1792);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockTable, 1, 0), 28);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockTable, 1, 15), 28);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockEldritch, 1, 4), 4);
-                    for(int x = 0;x < 7;x++) {
-                        EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockCrystal, 1, x), 1536);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 0), 64);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 2), 392);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 3), 392);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6), 264);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7), 264);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 11), 1);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 12), 1);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 14), 1);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 15), 1);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCustomPlant, 1, 0), 64);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCustomPlant, 1, 1), 256);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCustomPlant, 1, 2), 64);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCustomPlant, 1, 3), 768);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockCustomPlant, 1, 5), 16);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockMetalDevice, 1, 0), 1792);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockTable, 1, 0), 28);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockTable, 1, 15), 28);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockEldritch, 1, 4), 4);
+                    for (int x = 0; x < 7; x++) {
+                        EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                                new ItemStack(ConfigBlocks.blockCrystal, 1, x), 1536);
                     }
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockMagicalLog, 1, 1), 64);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 0), 1);
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 1), 1);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockMagicalLog, 1, 1), 64);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 0), 1);
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ConfigBlocks.blockMagicalLeaves, 1, 1), 1);
 
                     EnergyValueRegistryProxy.addPreAssignedEnergyValue(ForbiddenBlocks.starBlock, 221184);
 
-                    for(int x = 0;x < 7;x++) {
-                        EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ForbiddenItems.deadlyShards, 1, x), 256);
+                    for (int x = 0; x < 7; x++) {
+                        EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                                new ItemStack(ForbiddenItems.deadlyShards, 1, x), 256);
                     }
-                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(new ItemStack(ForbiddenItems.gluttonyShard, 1), 256);
-                }
-                catch(Throwable e){
+                    EnergyValueRegistryProxy.addPreAssignedEnergyValue(
+                            new ItemStack(ForbiddenItems.gluttonyShard, 1), 256);
+                } catch (Throwable e) {
                     LogHandler.log(Level.INFO, e, "Forbidden Magic appears to be having trouble with EE3, eh?");
                     ee3 = false;
                 }
             }
-
         }
 
-        if(special){
+        if (special) {
             Config.spawnerMobs.put("SpecialMobs.SpecialCaveSpider", Aspect.POISON);
             Config.spawnerMobs.put("SpecialMobs.BabyCaveSpider", Aspect.POISON);
             Config.spawnerMobs.put("SpecialMobs.FlyingCaveSpider", Aspect.POISON);
@@ -292,10 +456,8 @@ public class Compat {
             Config.spawnerMobs.put("SpecialMobs.VampirePigZombie", Aspect.GREED);
 
             Aspect silver;
-            if(Config.silverfishEmeralds)
-                silver = Aspect.GREED;
-            else
-                silver = Aspect.BEAST;
+            if (Config.silverfishEmeralds) silver = Aspect.GREED;
+            else silver = Aspect.BEAST;
 
             Config.spawnerMobs.put("SpecialMobs.SpecialSilverfish", silver);
             Config.spawnerMobs.put("SpecialMobs.BlindingSilverfish", silver);
@@ -336,10 +498,9 @@ public class Compat {
             Config.spawnerMobs.put("SpecialMobs.GiantZombie", Aspect.FLESH);
             Config.spawnerMobs.put("SpecialMobs.HungryZombie", Aspect.FLESH);
             Config.spawnerMobs.put("SpecialMobs.PlagueZombie", Aspect.FLESH);
-
         }
 
-        if(twilight){
+        if (twilight) {
             Config.spawnerMobs.put("TwilightForest.Wild Boar", Aspect.BEAST);
             Config.spawnerMobs.put("TwilightForest.Bighorn Sheep", Aspect.CLOTH);
             Config.spawnerMobs.put("TwilightForest.Wild Deer", Aspect.BEAST);
@@ -361,10 +522,8 @@ public class Compat {
             Config.spawnerMobs.put("TwilightForest.Minoshroom", Aspect.PLANT);
             Config.spawnerMobs.put("TwilightForest.Fire Beetle", Aspect.FIRE);
             Config.spawnerMobs.put("TwilightForest.Slime Beetle", Aspect.SLIME);
-            if(!Config.noLust)
-                Config.spawnerMobs.put("TwilightForest.Pinch Beetle", DarkAspects.LUST);
-            else
-                Config.spawnerMobs.put("TwilightForest.Pinch Beetle", Aspect.BEAST);
+            if (!Config.noLust) Config.spawnerMobs.put("TwilightForest.Pinch Beetle", DarkAspects.LUST);
+            else Config.spawnerMobs.put("TwilightForest.Pinch Beetle", Aspect.BEAST);
             Config.spawnerMobs.put("TwilightForest.Maze Slime", Aspect.SLIME);
             Config.spawnerMobs.put("TwilightForest.Mist Wolf", Aspect.BEAST);
             Config.spawnerMobs.put("TwilightForest.King Spider", DarkAspects.PRIDE);
@@ -379,18 +538,16 @@ public class Compat {
             Config.spawnerMobs.put("TwilightForest.Yeti", Aspect.COLD);
             Config.spawnerMobs.put("TwilightForest.WinterWolf", Aspect.COLD);
         }
-
     }
 
     public static Item getItem(String mod, String item) throws ItemNotFoundException {
         Item target = GameRegistry.findItem(mod, item);
-        if(target == null)
-            throw new ItemNotFoundException(mod, item);
+        if (target == null) throw new ItemNotFoundException(mod, item);
         return target;
     }
 
     public static class ItemNotFoundException extends Exception {
-        public ItemNotFoundException(String mod, String item){
+        public ItemNotFoundException(String mod, String item) {
             super("Unable to find item " + item + " in mod " + mod + "! Are you using the correct version of the mod?");
         }
     }
