@@ -1,12 +1,7 @@
 package fox.spiteful.forbidden.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.items.ForbiddenItems;
-import fox.spiteful.forbidden.tiles.TileEntityWrathCage;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -20,7 +15,15 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.items.ForbiddenItems;
+import fox.spiteful.forbidden.tiles.TileEntityWrathCage;
+
 public class BlockWrathCage extends BlockContainer {
+
     protected BlockWrathCage() {
         super(Material.iron);
         this.setCreativeTab(Forbidden.tab);
@@ -46,8 +49,8 @@ public class BlockWrathCage extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+            float hitY, float hitZ) {
         ItemStack held = player.getCurrentEquippedItem();
         if (held != null && held.getItem() == ForbiddenItems.mobCrystal) {
             NBTTagCompound nbttagcompound = held.getTagCompound();
@@ -97,7 +100,11 @@ public class BlockWrathCage extends BlockContainer {
             crystal.stackTagCompound.setString("mob", mob);
 
             EntityItem entityitem = new EntityItem(
-                    world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), crystal);
+                    world,
+                    (double) ((float) x + f),
+                    (double) ((float) y + f1),
+                    (double) ((float) z + f2),
+                    crystal);
 
             entityitem.motionX = (double) ((float) world.rand.nextGaussian() * 0.05F);
             entityitem.motionY = (double) ((float) world.rand.nextGaussian() * 0.05F + 0.2F);

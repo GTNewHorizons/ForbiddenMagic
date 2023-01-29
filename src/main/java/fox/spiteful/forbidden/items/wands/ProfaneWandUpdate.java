@@ -3,6 +3,7 @@ package fox.spiteful.forbidden.items.wands;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.api.wands.WandRod;

@@ -1,6 +1,7 @@
 package am2.api.spell.enums;
 
 public enum SpellModifiers {
+
     SPEED(1.0D),
     GRAVITY(0),
     BOUNCE(0),

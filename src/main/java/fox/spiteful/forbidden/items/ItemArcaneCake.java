@@ -1,9 +1,5 @@
 package fox.spiteful.forbidden.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -13,23 +9,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+
 public class ItemArcaneCake extends Item {
+
     public ItemArcaneCake() {
         this.setCreativeTab(Forbidden.tab);
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World yWorld,
-            int z,
-            int par5,
-            int par6,
-            int par7,
-            float par8,
-            float par9,
-            float par10) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World yWorld, int z, int par5, int par6, int par7,
+            float par8, float par9, float par10) {
         Block block = yWorld.getBlock(z, par5, par6);
 
         if (block == Blocks.snow_layer && (yWorld.getBlockMetadata(z, par5, par6) & 7) < 1) {

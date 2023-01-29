@@ -1,21 +1,24 @@
 package am2.api.events;
 
-import am2.api.spell.enums.SpellModifiers;
-import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
+import am2.api.spell.enums.SpellModifiers;
+import cpw.mods.fml.common.eventhandler.Event;
+
 /**
  * Called whenever a spell's modified variable is calculated
+ * 
  * @author Mithion
  *
  */
 public class ModifierCalculatedEvent extends Event {
+
     // The attribute being modified
     public final SpellModifiers attribute;
     // The caster of the spell
     public final EntityLivingBase caster;
-    // The spell being cast.  This is a copy of the ItemStack.
+    // The spell being cast. This is a copy of the ItemStack.
     public final ItemStack spell;
     // the initial value of the variable
     public final double initialValue;
@@ -30,13 +33,8 @@ public class ModifierCalculatedEvent extends Event {
         MULTIPLY
     }
 
-    public ModifierCalculatedEvent(
-            ItemStack spell,
-            EntityLivingBase caster,
-            SpellModifiers attribute,
-            double initialValue,
-            double modifiedValue,
-            OperationType operation) {
+    public ModifierCalculatedEvent(ItemStack spell, EntityLivingBase caster, SpellModifiers attribute,
+            double initialValue, double modifiedValue, OperationType operation) {
         this.spell = spell;
         this.caster = caster;
         this.attribute = attribute;

@@ -1,15 +1,18 @@
 package am2.api.events;
 
-import cpw.mods.fml.common.eventhandler.Event;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.eventhandler.Event;
+
 /**
  * Fired whenever mana cost of a spell is calculated, after all predefined calculations.
+ * 
  * @author Mithion
  *
  */
 public class ManaCostEvent extends Event {
+
     public final ItemStack spell;
     public final EntityLivingBase caster;
     public float manaCost;

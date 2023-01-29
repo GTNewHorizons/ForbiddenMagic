@@ -1,14 +1,7 @@
 package fox.spiteful.forbidden.items;
 
-import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
-import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
-import WayofTime.alchemicalWizardry.api.items.interfaces.IBloodOrb;
-import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.compat.Compat;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -18,9 +11,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import thaumcraft.api.IWarpingGear;
+import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
+import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
+import WayofTime.alchemicalWizardry.api.items.interfaces.IBloodOrb;
+import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.compat.Compat;
 
 public class ItemDivineOrb extends Item implements IBloodOrb, IBindable, IWarpingGear {
+
     public ItemDivineOrb() {
         setMaxStackSize(1);
         setCreativeTab(Forbidden.tab);
@@ -38,8 +41,9 @@ public class ItemDivineOrb extends Item implements IBloodOrb, IBindable, IWarpin
         list.add(StatCollector.translateToLocal("tooltip.divineorb"));
 
         if (!(stack.stackTagCompound == null)) {
-            list.add(StatCollector.translateToLocal("tooltip.currentowner") + " "
-                    + stack.stackTagCompound.getString("ownerName"));
+            list.add(
+                    StatCollector.translateToLocal("tooltip.currentowner") + " "
+                            + stack.stackTagCompound.getString("ownerName"));
         }
     }
 

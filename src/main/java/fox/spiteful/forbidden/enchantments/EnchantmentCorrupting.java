@@ -4,9 +4,11 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+
 import thaumcraft.common.items.equipment.ItemPrimalCrusher;
 
 public class EnchantmentCorrupting extends Enchantment {
+
     public EnchantmentCorrupting(int id) {
         super(id, 1, EnumEnchantmentType.digger);
         setName("corrupting");

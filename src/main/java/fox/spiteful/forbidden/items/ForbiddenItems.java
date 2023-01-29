@@ -1,19 +1,14 @@
 package fox.spiteful.forbidden.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.compat.Compat;
-import fox.spiteful.forbidden.items.baubles.*;
-import fox.spiteful.forbidden.items.scribes.*;
-import fox.spiteful.forbidden.items.tools.*;
-import fox.spiteful.forbidden.items.wands.*;
 import java.util.Arrays;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -21,8 +16,16 @@ import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.api.wands.StaffRod;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.items.baubles.*;
+import fox.spiteful.forbidden.items.scribes.*;
+import fox.spiteful.forbidden.items.tools.*;
+import fox.spiteful.forbidden.items.wands.*;
 
 public class ForbiddenItems {
+
     public static Item deadlyShards;
     public static Item gluttonyShard;
     public static Item skullAxe;
@@ -228,7 +231,7 @@ public class ForbiddenItems {
         WAND_CAP_ALCHEMICAL = new DarkWandCap(
                 "alchemical",
                 0.9F,
-                Arrays.asList(new Aspect[] {Aspect.WATER}),
+                Arrays.asList(new Aspect[] { Aspect.WATER }),
                 0.8F,
                 new ItemStack(wandCap, 1, 0),
                 7,
@@ -308,8 +311,8 @@ public class ForbiddenItems {
         GameRegistry.registerItem(blinkFocus, "BlinkFocus");
     }
 
-    public static FocusUpgradeType getUpgrade(
-            int id, ResourceLocation icon, String name, String text, AspectList aspects) {
+    public static FocusUpgradeType getUpgrade(int id, ResourceLocation icon, String name, String text,
+            AspectList aspects) {
         if (id >= FocusUpgradeType.types.length) {
             FocusUpgradeType[] temp = new FocusUpgradeType[id + 1];
             System.arraycopy(FocusUpgradeType.types, 0, temp, 0, FocusUpgradeType.types.length);

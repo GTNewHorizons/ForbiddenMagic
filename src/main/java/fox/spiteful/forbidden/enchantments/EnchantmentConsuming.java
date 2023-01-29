@@ -5,9 +5,11 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
+
 import thaumcraft.common.items.equipment.ItemPrimalCrusher;
 
 public class EnchantmentConsuming extends Enchantment {
+
     public EnchantmentConsuming(int id) {
         super(id, 5, EnumEnchantmentType.digger);
         setName("consuming");
@@ -25,9 +27,9 @@ public class EnchantmentConsuming extends Enchantment {
 
     @Override
     public boolean canApply(ItemStack item) {
-        if (item.getItem() instanceof ItemPickaxe
-                || item.getItem() instanceof ItemSpade
-                || item.getItem() instanceof ItemPrimalCrusher) return true;
+        if (item.getItem() instanceof ItemPickaxe || item.getItem() instanceof ItemSpade
+                || item.getItem() instanceof ItemPrimalCrusher)
+            return true;
         else return false;
     }
 

@@ -1,11 +1,8 @@
 /**
- * This class based on a class created by <Pokefenn>.
- * It was distributed as part of the Botania Mod.
- * Get the Source Code in github:
- * https://github.com/Vazkii/Botania
+ * This class based on a class created by <Pokefenn>. It was distributed as part of the Botania Mod. Get the Source Code
+ * in github: https://github.com/Vazkii/Botania
  *
- * Botania is Open Source and distributed under a
- * Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
+ * Botania is Open Source and distributed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License
  * (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_GB)
  *
  */
@@ -14,6 +11,7 @@ package fox.spiteful.forbidden.tiles;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
+
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
 import vazkii.botania.api.BotaniaAPI;
@@ -65,7 +63,11 @@ public class SubTileTainthistle extends SubTileGenerating {
 
     public void doBurnParticles() {
         Thaumcraft.proxy.reservoirBubble(
-                supertile.getWorldObj(), supertile.xCoord, supertile.yCoord, supertile.zCoord, 0x4D00FF);
+                supertile.getWorldObj(),
+                supertile.xCoord,
+                supertile.yCoord,
+                supertile.zCoord,
+                0x4D00FF);
     }
 
     public boolean isFlux(int x, int y, int z) {
@@ -74,15 +76,13 @@ public class SubTileTainthistle extends SubTileGenerating {
     }
 
     public void playSound() {
-        supertile
-                .getWorldObj()
-                .playSoundEffect(
-                        supertile.xCoord,
-                        supertile.yCoord,
-                        supertile.zCoord,
-                        "random.drink",
-                        0.05F,
-                        0.5F + (float) Math.random() * 0.5F);
+        supertile.getWorldObj().playSoundEffect(
+                supertile.xCoord,
+                supertile.yCoord,
+                supertile.zCoord,
+                "random.drink",
+                0.05F,
+                0.5F + (float) Math.random() * 0.5F);
     }
 
     @Override

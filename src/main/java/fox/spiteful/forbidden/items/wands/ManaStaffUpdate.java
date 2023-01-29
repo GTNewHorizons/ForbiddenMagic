@@ -1,14 +1,15 @@
 package fox.spiteful.forbidden.items.wands;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.wands.IWandRodOnUpdate;
+import thaumcraft.common.items.wands.ItemWandCasting;
 import am2.api.ArsMagicaApi;
 import am2.api.IExtendedProperties;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.wands.IWandRodOnUpdate;
-import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class ManaStaffUpdate implements IWandRodOnUpdate {
 
@@ -22,10 +23,8 @@ public class ManaStaffUpdate implements IWandRodOnUpdate {
                     IExtendedProperties prop = ArsMagicaApi.instance.getExtendedProperties(player);
 
                     float cost;
-                    if (((ItemWandCasting) itemstack.getItem())
-                            .getCap(itemstack)
-                            .getTag()
-                            .equals("vinteum")) cost = 0.5F;
+                    if (((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("vinteum"))
+                        cost = 0.5F;
                     else cost = 1.0F;
 
                     if (prop == null || prop.getCurrentMana() <= 0) return;
@@ -41,8 +40,7 @@ public class ManaStaffUpdate implements IWandRodOnUpdate {
                             }
                         }
                     }
-                } catch (Throwable e) {
-                }
+                } catch (Throwable e) {}
             }
         }
     }

@@ -1,10 +1,5 @@
 package fox.spiteful.forbidden.items.tools;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.enchantments.DarkEnchantments;
-import fox.spiteful.forbidden.items.ForbiddenItems;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -17,10 +12,17 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.IWarpingGear;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.enchantments.DarkEnchantments;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 
 public class ItemMorphSword extends ItemSword implements IRepairable, IWarpingGear {
+
     public IIcon[] icon;
 
     public ItemMorphSword(ToolMaterial enumtoolmaterial) {
@@ -47,15 +49,13 @@ public class ItemMorphSword extends ItemSword implements IRepairable, IWarpingGe
 
     @Override
     public boolean getIsRepairable(ItemStack stack, ItemStack stack2) {
-        return stack2.isItemEqual(new ItemStack(ForbiddenItems.deadlyShards, 1, 1))
-                ? true
+        return stack2.isItemEqual(new ItemStack(ForbiddenItems.deadlyShards, 1, 1)) ? true
                 : super.getIsRepairable(stack, stack2);
     }
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-        if (player.isSneaking()
-                && itemstack.hasTagCompound()
+        if (player.isSneaking() && itemstack.hasTagCompound()
                 && getMaxDamage(itemstack) - itemstack.getItemDamage() > 5) {
             NBTTagCompound tags = itemstack.getTagCompound();
             byte phase = tags.getByte("phase");
@@ -66,8 +66,7 @@ public class ItemMorphSword extends ItemSword implements IRepairable, IWarpingGe
 
             if (tags.hasKey("display")) {
                 String name = tags.getCompoundTag("display").getString("Name");
-                if (name != null && !name.equals(""))
-                    tags.getCompoundTag("display").setString("Name" + phase, name);
+                if (name != null && !name.equals("")) tags.getCompoundTag("display").setString("Name" + phase, name);
                 else tags.getCompoundTag("display").removeTag("Name" + phase);
             }
             if (++phase > 2) phase = 0;
@@ -79,8 +78,7 @@ public class ItemMorphSword extends ItemSword implements IRepairable, IWarpingGe
 
             if (tags.hasKey("display")) {
                 String name = tags.getCompoundTag("display").getString("Name" + phase);
-                if (name != null && !name.equals(""))
-                    tags.getCompoundTag("display").setString("Name", name);
+                if (name != null && !name.equals("")) tags.getCompoundTag("display").setString("Name", name);
                 else tags.getCompoundTag("display").removeTag("Name");
             }
 

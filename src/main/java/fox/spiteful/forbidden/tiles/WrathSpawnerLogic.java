@@ -1,8 +1,5 @@
 package fox.spiteful.forbidden.tiles;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Config;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
@@ -12,10 +9,15 @@ import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
 
 public class WrathSpawnerLogic {
+
     /** The mob spawner we deal with */
     final TileEntityWrathCage mobSpawnerEntity;
 
@@ -76,15 +78,13 @@ public class WrathSpawnerLogic {
     }
 
     public void updateSpawnerBlock(int par1) {
-        this.mobSpawnerEntity
-                .getWorldObj()
-                .addBlockEvent(
-                        this.mobSpawnerEntity.xCoord,
-                        this.mobSpawnerEntity.yCoord,
-                        this.mobSpawnerEntity.zCoord,
-                        Blocks.mob_spawner,
-                        par1,
-                        0);
+        this.mobSpawnerEntity.getWorldObj().addBlockEvent(
+                this.mobSpawnerEntity.xCoord,
+                this.mobSpawnerEntity.yCoord,
+                this.mobSpawnerEntity.zCoord,
+                Blocks.mob_spawner,
+                par1,
+                0);
     }
 
     public World getSpawnerWorld() {
@@ -109,12 +109,9 @@ public class WrathSpawnerLogic {
         double d0;
 
         if (this.getSpawnerWorld().isRemote && (fuel > 0 || Config.wrathCost <= 0)) {
-            double d1 = (double)
-                    ((float) this.getSpawnerX() + this.getSpawnerWorld().rand.nextFloat());
-            double d2 = (double)
-                    ((float) this.getSpawnerY() + this.getSpawnerWorld().rand.nextFloat());
-            d0 = (double)
-                    ((float) this.getSpawnerZ() + this.getSpawnerWorld().rand.nextFloat());
+            double d1 = (double) ((float) this.getSpawnerX() + this.getSpawnerWorld().rand.nextFloat());
+            double d2 = (double) ((float) this.getSpawnerY() + this.getSpawnerWorld().rand.nextFloat());
+            d0 = (double) ((float) this.getSpawnerZ() + this.getSpawnerWorld().rand.nextFloat());
             // this.getSpawnerWorld().spawnParticle("smoke", d1, d2, d0, 0.0D,
             // 0.0D, 0.0D);
             // this.getSpawnerWorld().spawnParticle("flame", d1, d2, d0, 0.0D,
@@ -126,8 +123,8 @@ public class WrathSpawnerLogic {
             }
 
             this.field_98284_d = this.field_98287_c;
-            this.field_98287_c =
-                    (this.field_98287_c + (double) (1000.0F / ((float) this.spawnDelay + 200.0F))) % 360.0D;
+            this.field_98287_c = (this.field_98287_c + (double) (1000.0F / ((float) this.spawnDelay + 200.0F)))
+                    % 360.0D;
         } else if (Config.wrathCage) {
             if (Config.wrathCost > 0 && fuel <= 0) {
                 if (mobSpawnerEntity.special >= Config.wrathCost) {
@@ -174,7 +171,8 @@ public class WrathSpawnerLogic {
                 int j = this.getSpawnerWorld()
                         .getEntitiesWithinAABB(
                                 entity.getClass(),
-                                AxisAlignedBB.getBoundingBox(
+                                AxisAlignedBB
+                                        .getBoundingBox(
                                                 (double) this.getSpawnerX(),
                                                 (double) this.getSpawnerY(),
                                                 (double) this.getSpawnerZ(),
@@ -190,18 +188,14 @@ public class WrathSpawnerLogic {
                 }
 
                 d0 = (double) this.getSpawnerX()
-                        + (this.getSpawnerWorld().rand.nextDouble()
-                                        - this.getSpawnerWorld().rand.nextDouble())
+                        + (this.getSpawnerWorld().rand.nextDouble() - this.getSpawnerWorld().rand.nextDouble())
                                 * (double) this.spawnRange;
-                double d3 = (double)
-                        (this.getSpawnerY() + this.getSpawnerWorld().rand.nextInt(3) - 1);
+                double d3 = (double) (this.getSpawnerY() + this.getSpawnerWorld().rand.nextInt(3) - 1);
                 double d4 = (double) this.getSpawnerZ()
-                        + (this.getSpawnerWorld().rand.nextDouble()
-                                        - this.getSpawnerWorld().rand.nextDouble())
+                        + (this.getSpawnerWorld().rand.nextDouble() - this.getSpawnerWorld().rand.nextDouble())
                                 * (double) this.spawnRange;
                 EntityLiving entityliving = entity instanceof EntityLiving ? (EntityLiving) entity : null;
-                entity.setLocationAndAngles(
-                        d0, d3, d4, this.getSpawnerWorld().rand.nextFloat() * 360.0F, 0.0F);
+                entity.setLocationAndAngles(d0, d3, d4, this.getSpawnerWorld().rand.nextFloat() * 360.0F, 0.0F);
 
                 if (
                 // entityliving == null ||
@@ -224,14 +218,11 @@ public class WrathSpawnerLogic {
     }
 
     /**
-     * Checks if the entity's current position is a valid location to spawn this
-     * entity.
+     * Checks if the entity's current position is a valid location to spawn this entity.
      */
     public boolean entityCanSpawn(EntityLiving entity) {
         return entity.worldObj.checkNoEntityCollision(entity.boundingBox)
-                && entity.worldObj
-                        .getCollidingBoundingBoxes(entity, entity.boundingBox)
-                        .isEmpty()
+                && entity.worldObj.getCollidingBoundingBoxes(entity, entity.boundingBox).isEmpty()
                 && !entity.worldObj.isAnyLiquid(entity.boundingBox);
     }
 

@@ -1,13 +1,9 @@
 package fox.spiteful.forbidden.blocks;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.WorldGenTaintedTree;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,10 +12,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.WorldGenTaintedTree;
 
 public class BlockSaplingTainted extends BlockSapling {
+
     @SideOnly(Side.CLIENT)
     private IIcon icon;
 

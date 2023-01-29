@@ -1,10 +1,5 @@
 package fox.spiteful.forbidden.items.tools;
 
-import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.compat.Compat;
-import fox.spiteful.forbidden.potions.DarkPotions;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,9 +11,15 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
+
 import thaumcraft.api.IRepairable;
 import thaumcraft.api.IWarpingGear;
 import thaumcraft.common.config.ConfigItems;
+import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.potions.DarkPotions;
 
 public class ItemBloodRapier extends ItemSword implements IRepairable, IWarpingGear {
 
@@ -49,8 +50,7 @@ public class ItemBloodRapier extends ItemSword implements IRepairable, IWarpingG
     @Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int wat, boolean fuckObfuscation) {
         super.onUpdate(stack, world, entity, wat, fuckObfuscation);
-        if (stack.isItemDamaged()
-                && entity != null
+        if (stack.isItemDamaged() && entity != null
                 && entity.ticksExisted % 20 == 0
                 && entity instanceof EntityLivingBase) {
             stack.damageItem(-1, (EntityLivingBase) entity);
@@ -76,8 +76,7 @@ public class ItemBloodRapier extends ItemSword implements IRepairable, IWarpingG
 
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-        return par2ItemStack.isItemEqual(new ItemStack(ConfigItems.itemResource, 1, 15))
-                ? true
+        return par2ItemStack.isItemEqual(new ItemStack(ConfigItems.itemResource, 1, 15)) ? true
                 : super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 

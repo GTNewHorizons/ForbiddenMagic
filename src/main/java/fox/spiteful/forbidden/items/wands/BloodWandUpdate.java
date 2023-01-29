@@ -1,13 +1,14 @@
 package fox.spiteful.forbidden.items.wands;
 
-import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.compat.Compat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.compat.Compat;
 
 public class BloodWandUpdate implements IWandRodOnUpdate {
 
@@ -19,10 +20,8 @@ public class BloodWandUpdate implements IWandRodOnUpdate {
                 SoulNetworkHandler.checkAndSetItemOwner(itemstack, player);
 
                 int cost;
-                if (((ItemWandCasting) itemstack.getItem())
-                        .getCap(itemstack)
-                        .getTag()
-                        .equals("alchemical")) cost = Config.bloodvis - 1;
+                if (((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("alchemical"))
+                    cost = Config.bloodvis - 1;
                 else cost = Config.bloodvis;
 
                 cost = Math.max(0, cost);

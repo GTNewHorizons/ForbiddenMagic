@@ -1,5 +1,12 @@
 package am2.api;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.RangedAttribute;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.util.IIcon;
+
 import am2.api.enchantment.IAMEnchantmentHelper;
 import am2.api.entities.IEntityManager;
 import am2.api.flickers.IFlickerRegistry;
@@ -14,14 +21,9 @@ import am2.api.spell.enums.SkillPointTypes;
 import am2.api.spell.enums.SkillTrees;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.RangedAttribute;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.util.IIcon;
 
 public class ArsMagicaApi {
+
     public static final ArsMagicaApi instance = new ArsMagicaApi();
 
     /**
@@ -37,29 +39,30 @@ public class ArsMagicaApi {
     /**
      * Attributes for AM2's properties
      */
-    // Bonus to max mana.  Applied additively.
+    // Bonus to max mana. Applied additively.
     public static final IAttribute maxManaBonus = new RangedAttribute("am2.maxManaBonus", 0.0f, 0.0f, Double.MAX_VALUE)
-            .setDescription("Mana Bonus")
-            .setShouldWatch(true);
-    // Bonus to max burnout.  Applied additively.
+            .setDescription("Mana Bonus").setShouldWatch(true);
+    // Bonus to max burnout. Applied additively.
     public static final IAttribute maxBurnoutBonus = new RangedAttribute(
-                    "am2.maxBurnoutBonus", 0.0f, 0.0f, Double.MAX_VALUE)
-            .setDescription("Burnout Bonus")
-            .setShouldWatch(true);
-    // Bonus to XP gained.  Applied multiplicatively.
+            "am2.maxBurnoutBonus",
+            0.0f,
+            0.0f,
+            Double.MAX_VALUE).setDescription("Burnout Bonus").setShouldWatch(true);
+    // Bonus to XP gained. Applied multiplicatively.
     public static final IAttribute xpGainModifier = new RangedAttribute(
-                    "am2.xpMultiplier", 1.0f, 0.0f, Double.MAX_VALUE)
-            .setDescription("XP Mutiplier")
-            .setShouldWatch(true);
-    // Bonus to mana regen rate.  Applied multiplicatively.
+            "am2.xpMultiplier",
+            1.0f,
+            0.0f,
+            Double.MAX_VALUE).setDescription("XP Mutiplier").setShouldWatch(true);
+    // Bonus to mana regen rate. Applied multiplicatively.
     public static final IAttribute manaRegenTimeModifier = new RangedAttribute(
-                    "am2.manaRegenModifier", 1.0f, 0.5f, 2.0f)
-            .setDescription("Mana Regen Rate Multiplier")
-            .setShouldWatch(true);
-    // Bonus to burnout reduction rate.  Applied multiplicatively.
+            "am2.manaRegenModifier",
+            1.0f,
+            0.5f,
+            2.0f).setDescription("Mana Regen Rate Multiplier").setShouldWatch(true);
+    // Bonus to burnout reduction rate. Applied multiplicatively.
     public static final IAttribute burnoutReductionRate = new RangedAttribute("am2.burnoutReduction", 1.0f, 0.1f, 2.0f)
-            .setDescription("Burnout Reduction Rate")
-            .setShouldWatch(true);
+            .setDescription("Burnout Reduction Rate").setShouldWatch(true);
 
     private static final float manaBurnoutRatio = 0.38f;
 
@@ -69,21 +72,21 @@ public class ArsMagicaApi {
     // Getters
     // ================================================================================
     /**
-     * Gets the spell part manager.  Used to register new shapes/components/modifiers/talents
+     * Gets the spell part manager. Used to register new shapes/components/modifiers/talents
      */
     public final ISpellPartManager getSpellPartManager() {
         return spellPartManager;
     }
 
     /**
-     * Gets the enchantment helper.  Used to resolve current enchantment IDs.
+     * Gets the enchantment helper. Used to resolve current enchantment IDs.
      */
     public final IAMEnchantmentHelper getEnchantHelper() {
         return enchantmentHelper;
     }
 
     /**
-     * Gets the skill tree manager.  Used to register spell parts into the skill trees (accessible via occulus)
+     * Gets the skill tree manager. Used to register spell parts into the skill trees (accessible via occulus)
      */
     public final ISkillTreeManager getSkillTreeManager() {
         return this.skillTreeManager;
@@ -97,42 +100,44 @@ public class ArsMagicaApi {
     }
 
     /**
-     * Gets the keystone helper instance.  Used to check inventories for keys and check access to blocks lockable by keystone.
+     * Gets the keystone helper instance. Used to check inventories for keys and check access to blocks lockable by
+     * keystone.
      */
     public final IKeystoneHelper getKeystoneHelper() {
         return this.keystoneHelper;
     }
 
     /**
-     * Gets the entity manager.  Used to blacklist things from the progeny and butchery flicker operators
+     * Gets the entity manager. Used to blacklist things from the progeny and butchery flicker operators
      */
     public final IEntityManager getEntityManager() {
         return this.entityManager;
     }
 
     /**
-     * Gets the fuel helper instance.  Used to register new fuels for the Obelisk.
+     * Gets the fuel helper instance. Used to register new fuels for the Obelisk.
      */
     public final IObeliskFuelHelper getFuelHelper() {
         return this.obeliskFuelHelper;
     }
 
     /**
-     * Gets the flicker registry.  Used to register new flicker operators into the habitat.
+     * Gets the flicker registry. Used to register new flicker operators into the habitat.
      */
     public final IFlickerRegistry getFlickerOperatorRegistry() {
         return flickerOperatorRegistry;
     }
 
     /**
-     * Gets the armor imbuement registry.  Used to register new imbuements and check if imbuements are present on a given item stack.
+     * Gets the armor imbuement registry. Used to register new imbuements and check if imbuements are present on a given
+     * item stack.
      */
     public final IImbuementRegistry getArmorInfusionRegistry() {
         return this.armorInfusionRegistry;
     }
 
     /**
-     * Gets the AM recipe manager.  Used to register new essence refiner recipes.
+     * Gets the AM recipe manager. Used to register new essence refiner recipes.
      */
     public final IAMRecipeManager getEssenceRecipeManager() {
         return this.essenceRecipes;
@@ -175,30 +180,34 @@ public class ArsMagicaApi {
 
     /**
      * Registers a skill tree entry (Shape, Component, Modifier, or Talent) into the mod
-     * @param entry The skill tree entry to register
-     * @param name The unlocalized name that is used to identify this entry
-     * @param tree Which skill tree the entry should be located in
-     * @param x The x coordinate that the entry should be located at in the tree.  Typical increments are of 45 to space the items.
-     * @param y The y coordinate that the entry should be located at in the tree.  Typical increments are of 45 to space the items.
-     * @param point The type of skill point needed to unlock this entry
-     * @param prerequs Any skill tree entries that are required as prerequisites for this one.  All prerequisites must be registered before the current entry.
+     * 
+     * @param entry    The skill tree entry to register
+     * @param name     The unlocalized name that is used to identify this entry
+     * @param tree     Which skill tree the entry should be located in
+     * @param x        The x coordinate that the entry should be located at in the tree. Typical increments are of 45 to
+     *                 space the items.
+     * @param y        The y coordinate that the entry should be located at in the tree. Typical increments are of 45 to
+     *                 space the items.
+     * @param point    The type of skill point needed to unlock this entry
+     * @param prerequs Any skill tree entries that are required as prerequisites for this one. All prerequisites must be
+     *                 registered before the current entry.
      */
-    public final void registerSkillTreeEntry(
-            ISkillTreeEntry entry,
-            String name,
-            SkillTrees tree,
-            int x,
-            int y,
-            SkillPointTypes point,
-            ISkillTreeEntry... prereqs) {
+    public final void registerSkillTreeEntry(ISkillTreeEntry entry, String name, SkillTrees tree, int x, int y,
+            SkillPointTypes point, ISkillTreeEntry... prereqs) {
         spellPartManager.registerSkillTreeEntry(entry, name);
         skillTreeManager.RegisterPart(entry, x, y, tree, point, prereqs);
     }
 
     /**
-     * Registers the IIcon to use for the specified skill.  This should be called during the API's registerSkillTreeIcons event for each entry that you registered.  You get a reference to the ISpellIconManager which has the same method, so this is only here for convenience.
-     * @param name The unlocalized name that was used to register the spell.  See {@link #registerSkillTreeEntry(ISkillTreeEntry, String, SkillTrees, int, int, SkillPointTypes, ISkillTreeEntry...) registerSkillTreeEntry} method for more info on the name.
-     * @param IIcon The IIcon to use.  You need to register these IIcons with the game beforehand during your mod's load phase - AM won't do it for you.
+     * Registers the IIcon to use for the specified skill. This should be called during the API's registerSkillTreeIcons
+     * event for each entry that you registered. You get a reference to the ISpellIconManager which has the same method,
+     * so this is only here for convenience.
+     * 
+     * @param name  The unlocalized name that was used to register the spell. See
+     *              {@link #registerSkillTreeEntry(ISkillTreeEntry, String, SkillTrees, int, int, SkillPointTypes, ISkillTreeEntry...)
+     *              registerSkillTreeEntry} method for more info on the name.
+     * @param IIcon The IIcon to use. You need to register these IIcons with the game beforehand during your mod's load
+     *              phase - AM won't do it for you.
      */
     @SideOnly(Side.CLIENT)
     public final void registerSkillIcon(String name, IIcon IIcon) {
@@ -206,7 +215,7 @@ public class ArsMagicaApi {
     }
 
     /**
-     * Returns the IIcon manager.  This is used to register spell IIcons.
+     * Returns the IIcon manager. This is used to register spell IIcons.
      */
     @SideOnly(Side.CLIENT)
     public final ISpellIconManager getSpellIconManager() {

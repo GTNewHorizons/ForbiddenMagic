@@ -1,12 +1,7 @@
 package fox.spiteful.forbidden.items.scribes;
 
-import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
-import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.compat.Compat;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +10,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import thaumcraft.api.IScribeTools;
+import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
+import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.compat.Compat;
 
 public class ItemBloodwell extends Item implements IScribeTools, IBindable {
 
@@ -69,8 +71,9 @@ public class ItemBloodwell extends Item implements IScribeTools, IBindable {
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean z) {
         if (stack.hasTagCompound()) {
             list.add("");
-            list.add(StatCollector.translateToLocal("tooltip.currentowner") + " "
-                    + stack.stackTagCompound.getString("ownerName"));
+            list.add(
+                    StatCollector.translateToLocal("tooltip.currentowner") + " "
+                            + stack.stackTagCompound.getString("ownerName"));
         }
     }
 

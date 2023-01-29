@@ -1,9 +1,10 @@
 package am2.api.power;
 
-import am2.api.ArsMagicaApi;
-import cpw.mods.fml.common.FMLLog;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+
+import am2.api.ArsMagicaApi;
+import cpw.mods.fml.common.FMLLog;
 
 public final class PowerTypes {
 
@@ -13,6 +14,7 @@ public final class PowerTypes {
     public static final PowerTypes DARK = new PowerTypes(4, "Dark", "\u00A74");
 
     private static final ArrayList<PowerTypes> allPowerTypes = new ArrayList<PowerTypes>() {
+
         {
             add(LIGHT);
             add(NEUTRAL);

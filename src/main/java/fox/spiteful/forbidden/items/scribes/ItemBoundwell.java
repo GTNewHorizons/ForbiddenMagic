@@ -1,12 +1,8 @@
 package fox.spiteful.forbidden.items.scribes;
 
-import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
-import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
 import java.util.Iterator;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -15,14 +11,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import thaumcraft.api.IScribeTools;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.playerdata.PacketAspectPool;
 import thaumcraft.common.lib.research.ResearchManager;
+import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
+import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
 
 public class ItemBoundwell extends Item implements IScribeTools, IBindable {
+
     @SideOnly(Side.CLIENT)
     public IIcon icon;
 
@@ -61,14 +64,14 @@ public class ItemBoundwell extends Item implements IScribeTools, IBindable {
                 }
                 Aspect aspect;
                 short amount;
-                for (Iterator count = Aspect.getPrimalAspects().iterator();
-                        count.hasNext();
-                        PacketHandler.INSTANCE.sendTo(
+                for (Iterator count = Aspect.getPrimalAspects().iterator(); count.hasNext(); PacketHandler.INSTANCE
+                        .sendTo(
                                 new PacketAspectPool(
                                         aspect.getTag(),
                                         Short.valueOf(amount),
-                                        Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(
-                                                player.getCommandSenderName(), aspect))),
+                                        Short.valueOf(
+                                                Thaumcraft.proxy.playerKnowledge
+                                                        .getAspectPoolFor(player.getCommandSenderName(), aspect))),
                                 (EntityPlayerMP) player)) {
                     aspect = (Aspect) count.next();
                     amount = (short) (world.rand.nextInt(4) + 4);
@@ -84,8 +87,9 @@ public class ItemBoundwell extends Item implements IScribeTools, IBindable {
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean z) {
         if (stack.hasTagCompound()) {
             list.add("");
-            list.add(StatCollector.translateToLocal("tooltip.currentowner") + " "
-                    + stack.stackTagCompound.getString("ownerName"));
+            list.add(
+                    StatCollector.translateToLocal("tooltip.currentowner") + " "
+                            + stack.stackTagCompound.getString("ownerName"));
         }
     }
 

@@ -5,6 +5,7 @@ import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 
 public class EnchantmentEducational extends Enchantment {
+
     public EnchantmentEducational(int id) {
         super(id, 5, EnumEnchantmentType.weapon);
         setName("educational");
@@ -17,8 +18,7 @@ public class EnchantmentEducational extends Enchantment {
 
     @Override
     public boolean canApplyTogether(Enchantment ench) {
-        return super.canApplyTogether(ench)
-                && ench.effectId != Enchantment.looting.effectId
+        return super.canApplyTogether(ench) && ench.effectId != Enchantment.looting.effectId
                 && ench.effectId != DarkEnchantments.greedy.effectId;
     }
 

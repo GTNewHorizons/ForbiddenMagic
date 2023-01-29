@@ -1,13 +1,14 @@
 package fox.spiteful.forbidden.items.wands;
 
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.compat.Compat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.botania.api.mana.ManaItemHandler;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.compat.Compat;
 
 public class YandereWandUpdate implements IWandRodOnUpdate {
 
@@ -17,14 +18,9 @@ public class YandereWandUpdate implements IWandRodOnUpdate {
         if (Compat.botan && Config.crossWand && player.ticksExisted % 40 == 0 && checkHotbar(itemstack, player)) {
             try {
                 int cost;
-                if (((ItemWandCasting) itemstack.getItem())
-                                .getCap(itemstack)
-                                .getTag()
-                                .equals("manasteel")
-                        || ((ItemWandCasting) itemstack.getItem())
-                                .getCap(itemstack)
-                                .getTag()
-                                .equals("elementium")) cost = Config.manavis - 2;
+                if (((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("manasteel")
+                        || ((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("elementium"))
+                    cost = Config.manavis - 2;
                 else cost = Config.manavis;
 
                 cost = Math.max(0, cost);

@@ -1,5 +1,11 @@
 package fox.spiteful.forbidden;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
+
+import thaumcraft.api.wands.WandTriggerRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -14,11 +20,6 @@ import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.enchantments.DarkEnchantments;
 import fox.spiteful.forbidden.items.ForbiddenItems;
 import fox.spiteful.forbidden.potions.DarkPotions;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
-import thaumcraft.api.wands.WandTriggerRegistry;
 
 @Mod(
         modid = "ForbiddenMagic",
@@ -26,10 +27,12 @@ import thaumcraft.api.wands.WandTriggerRegistry;
         version = "GRADLETOKEN_VERSION",
         dependencies = "required-after:Thaumcraft@[4.2.2.0,);after:ThaumicTinkerer;after:AWWayofTime;after:Botania")
 public class Forbidden {
+
     @Instance("ForbiddenMagic")
     public static Forbidden instance;
 
     public static CreativeTabs tab = new CreativeTabs("forbidden") {
+
         @Override
         public Item getTabIconItem() {
             return ForbiddenItems.fork;
@@ -49,13 +52,13 @@ public class Forbidden {
     public void prelude(FMLPreInitializationEvent event) {
         instance = this;
         Config.configurate(event.getSuggestedConfigurationFile());
-        if (Config.wrathCage)
-            crysTab = new CreativeTabs("mobcrystal") {
-                @Override
-                public Item getTabIconItem() {
-                    return ForbiddenItems.mobCrystal;
-                }
-            };
+        if (Config.wrathCage) crysTab = new CreativeTabs("mobcrystal") {
+
+            @Override
+            public Item getTabIconItem() {
+                return ForbiddenItems.mobCrystal;
+            }
+        };
         Compat.initiate();
         DarkAspects.initAspects();
         Config.spawnilify();

@@ -5,6 +5,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockStoneTainted extends ItemBlock {
+
     public ItemBlockStoneTainted(Block block) {
         super(block);
         this.setHasSubtypes(true);

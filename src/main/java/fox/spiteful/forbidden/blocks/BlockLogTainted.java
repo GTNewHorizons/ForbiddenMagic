@@ -1,20 +1,23 @@
 package fox.spiteful.forbidden.blocks;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
 import java.lang.reflect.Field;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
+
 import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
 
 public class BlockLogTainted extends BlockLog {
+
     @SideOnly(Side.CLIENT)
     private IIcon sides;
 
@@ -58,10 +61,8 @@ public class BlockLogTainted extends BlockLog {
     @Override
     public IIcon getIcon(int side, int meta) {
         int logDirection = meta & 12;
-        return logDirection == 0 && (side == 1 || side == 0)
-                ? ends
-                : (logDirection == 4 && (side == 5 || side == 4)
-                        ? ends
+        return logDirection == 0 && (side == 1 || side == 0) ? ends
+                : (logDirection == 4 && (side == 5 || side == 4) ? ends
                         : (logDirection == 8 && (side == 2 || side == 3) ? ends : sides));
     }
 
@@ -70,9 +71,9 @@ public class BlockLogTainted extends BlockLog {
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
         int meta = world.getBlockMetadata(x, y, z);
         int logDirection = meta & 12;
-        if ((logDirection == 0 && (side == 1 || side == 0))
-                || (logDirection == 4 && (side == 5 || side == 4))
-                || (logDirection == 8 && (side == 2 || side == 3))) return ends;
+        if ((logDirection == 0 && (side == 1 || side == 0)) || (logDirection == 4 && (side == 5 || side == 4))
+                || (logDirection == 8 && (side == 2 || side == 3)))
+            return ends;
         else {
             Random r = new Random((long) (side + y + x * z));
             return r.nextInt(100) < 75 ? sides : r.nextBoolean() ? gross : gross2;

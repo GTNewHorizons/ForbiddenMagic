@@ -1,10 +1,12 @@
 package fox.spiteful.forbidden.tiles;
 
 import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.network.PacketHandler;
@@ -15,6 +17,7 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.SubTileFunctional;
 
 public class SubTileWhisperweed extends SubTileFunctional {
+
     private static final int cost = 6000;
     private static final int range = 3;
     public static LexiconEntry lexicon;
@@ -26,17 +29,15 @@ public class SubTileWhisperweed extends SubTileFunctional {
         if (redstoneSignal > 0) return;
 
         if (!supertile.getWorldObj().isRemote && mana >= cost && this.ticksExisted % 300 == 0) {
-            List<EntityPlayer> players = supertile
-                    .getWorldObj()
-                    .getEntitiesWithinAABB(
-                            EntityPlayer.class,
-                            AxisAlignedBB.getBoundingBox(
-                                    supertile.xCoord - range,
-                                    supertile.yCoord - range,
-                                    supertile.zCoord - range,
-                                    supertile.xCoord + range + 1,
-                                    supertile.yCoord + range + 1,
-                                    supertile.zCoord + range + 1));
+            List<EntityPlayer> players = supertile.getWorldObj().getEntitiesWithinAABB(
+                    EntityPlayer.class,
+                    AxisAlignedBB.getBoundingBox(
+                            supertile.xCoord - range,
+                            supertile.yCoord - range,
+                            supertile.zCoord - range,
+                            supertile.xCoord + range + 1,
+                            supertile.yCoord + range + 1,
+                            supertile.zCoord + range + 1));
             if (players.size() > 0) {
                 EntityPlayer player = players.get(supertile.getWorldObj().rand.nextInt(players.size()));
                 int amt = 1 + player.worldObj.rand.nextInt(3);
@@ -49,17 +50,16 @@ public class SubTileWhisperweed extends SubTileFunctional {
                     Aspect aspect;
                     if (player.worldObj.rand.nextInt(25) > 2)
                         aspect = (Aspect) Aspect.getPrimalAspects().get(player.worldObj.rand.nextInt(6));
-                    else
-                        aspect = (Aspect) Aspect.getCompoundAspects()
-                                .get(player.worldObj.rand.nextInt(
-                                        Aspect.getCompoundAspects().size()));
+                    else aspect = (Aspect) Aspect.getCompoundAspects()
+                            .get(player.worldObj.rand.nextInt(Aspect.getCompoundAspects().size()));
                     Thaumcraft.proxy.playerKnowledge.addAspectPool(player.getCommandSenderName(), aspect, (short) 1);
                     PacketHandler.INSTANCE.sendTo(
                             new PacketAspectPool(
                                     aspect.getTag(),
                                     (short) 1,
-                                    Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(
-                                            player.getCommandSenderName(), aspect))),
+                                    Short.valueOf(
+                                            Thaumcraft.proxy.playerKnowledge
+                                                    .getAspectPoolFor(player.getCommandSenderName(), aspect))),
                             (EntityPlayerMP) player);
                     ResearchManager.scheduleSave(player);
                 }

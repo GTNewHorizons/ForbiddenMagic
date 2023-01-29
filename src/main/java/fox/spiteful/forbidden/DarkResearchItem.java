@@ -1,14 +1,16 @@
 package fox.spiteful.forbidden;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class DarkResearchItem extends ResearchItem {
+
     String inter = null;
 
     public DarkResearchItem(String par1, String x) {
@@ -23,14 +25,14 @@ public class DarkResearchItem extends ResearchItem {
         super(par1, x, tags, y, z, par5, icon);
     }
 
-    public DarkResearchItem(
-            String par1, String x, String mod, AspectList tags, int y, int z, int par5, ResourceLocation icon) {
+    public DarkResearchItem(String par1, String x, String mod, AspectList tags, int y, int z, int par5,
+            ResourceLocation icon) {
         super(par1, x, tags, y, z, par5, icon);
         inter = mod;
     }
 
-    public DarkResearchItem(
-            String par1, String x, String mod, AspectList tags, int y, int z, int par5, ItemStack icon) {
+    public DarkResearchItem(String par1, String x, String mod, AspectList tags, int y, int z, int par5,
+            ItemStack icon) {
         super(par1, x, tags, y, z, par5, icon);
         inter = mod;
     }

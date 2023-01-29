@@ -1,11 +1,13 @@
 package am2.api.illeffect;
 
 import java.util.Map;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 /**
  * Base class for all ill effects.
+ * 
  * @author Mithion
  *
  */

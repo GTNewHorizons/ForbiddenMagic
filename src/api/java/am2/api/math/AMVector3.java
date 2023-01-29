@@ -7,6 +7,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 
 public class AMVector3 {
+
     public float x;
     public float y;
     public float z;
@@ -195,8 +196,8 @@ public class AMVector3 {
     }
 
     /**
-     * Writes the vector3 to the specified compound - note that the way this function works, only one vector3 can be written to a compound at a time.
-     * Use sub-compounds if you need more!
+     * Writes the vector3 to the specified compound - note that the way this function works, only one vector3 can be
+     * written to a compound at a time. Use sub-compounds if you need more!
      */
     public void writeToNBT(NBTTagCompound compound) {
         compound.setFloat("Vec3_x", x);

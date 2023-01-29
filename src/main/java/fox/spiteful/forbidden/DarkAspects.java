@@ -1,19 +1,22 @@
 package fox.spiteful.forbidden;
 
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
-import fox.spiteful.forbidden.items.ForbiddenItems;
 import java.util.Iterator;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 
 public class DarkAspects {
+
     public static Aspect NETHER;
     public static Aspect WRATH;
     public static Aspect ENVY;
@@ -27,7 +30,7 @@ public class DarkAspects {
             LUST = new Aspect(
                     "luxuria",
                     0xffc1ce,
-                    new Aspect[] {Aspect.FLESH, Aspect.HUNGER},
+                    new Aspect[] { Aspect.FLESH, Aspect.HUNGER },
                     new ResourceLocation("forbidden", "textures/aspects/luxuria.png"),
                     1);
         }
@@ -35,37 +38,37 @@ public class DarkAspects {
         NETHER = new Aspect(
                 "infernus",
                 0xff0000,
-                new Aspect[] {Aspect.FIRE, Aspect.MAGIC},
+                new Aspect[] { Aspect.FIRE, Aspect.MAGIC },
                 new ResourceLocation("forbidden", "textures/aspects/infernus.png"),
                 771);
         PRIDE = new Aspect(
                 "superbia",
                 0x9639ff,
-                new Aspect[] {Aspect.FLIGHT, Aspect.VOID},
+                new Aspect[] { Aspect.FLIGHT, Aspect.VOID },
                 new ResourceLocation("forbidden", "textures/aspects/superbia.png"),
                 1);
         GLUTTONY = new Aspect(
                 "gula",
                 0xd59c46,
-                new Aspect[] {Aspect.HUNGER, Aspect.VOID},
+                new Aspect[] { Aspect.HUNGER, Aspect.VOID },
                 new ResourceLocation("forbidden", "textures/aspects/gula.png"),
                 1);
         ENVY = new Aspect(
                 "invidia",
                 0x00ba00,
-                new Aspect[] {Aspect.SENSES, Aspect.HUNGER},
+                new Aspect[] { Aspect.SENSES, Aspect.HUNGER },
                 new ResourceLocation("forbidden", "textures/aspects/invidia.png"),
                 1);
         SLOTH = new Aspect(
                 "desidia",
                 0x6e6e6e,
-                new Aspect[] {Aspect.TRAP, Aspect.SOUL},
+                new Aspect[] { Aspect.TRAP, Aspect.SOUL },
                 new ResourceLocation("forbidden", "textures/aspects/desidia.png"),
                 771);
         WRATH = new Aspect(
                 "ira",
                 0x870404,
-                new Aspect[] {Aspect.WEAPON, Aspect.FIRE},
+                new Aspect[] { Aspect.WEAPON, Aspect.FIRE },
                 new ResourceLocation("forbidden", "textures/aspects/ira.png"),
                 771);
     }
@@ -90,8 +93,7 @@ public class DarkAspects {
         // list.add(NETHER, 2);
         // ThaumcraftApi.registerObjectTag(Block.oreNetherQuartz.blockID, -1,
         // list);
-        ThaumcraftApi.registerObjectTag(
-                "oreQuartz", (new AspectList()).add(Aspect.CRYSTAL, 3).add(NETHER, 2));
+        ThaumcraftApi.registerObjectTag("oreQuartz", (new AspectList()).add(Aspect.CRYSTAL, 3).add(NETHER, 2));
 
         list = getAspectList(new ItemStack(Items.nether_star));
         list.add(NETHER, 8).add(PRIDE, 8);
@@ -138,15 +140,15 @@ public class DarkAspects {
         list = getAspectList(new ItemStack(Items.golden_chestplate));
         if (list != null) {
             list.add(PRIDE, 1);
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(Items.golden_chestplate, 1, OreDictionary.WILDCARD_VALUE), list);
+            ThaumcraftApi
+                    .registerObjectTag(new ItemStack(Items.golden_chestplate, 1, OreDictionary.WILDCARD_VALUE), list);
         }
 
         list = getAspectList(new ItemStack(Items.golden_leggings));
         if (list != null) {
             list.add(PRIDE, 1);
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(Items.golden_leggings, 1, OreDictionary.WILDCARD_VALUE), list);
+            ThaumcraftApi
+                    .registerObjectTag(new ItemStack(Items.golden_leggings, 1, OreDictionary.WILDCARD_VALUE), list);
         }
 
         list = getAspectList(new ItemStack(Items.golden_boots));
@@ -196,11 +198,7 @@ public class DarkAspects {
         // -1, (new AspectList()).merge(Aspect.MECHANISM, 2).merge(Aspect.ORDER,
         // 2).merge(ENVY, 2));
 
-        list = (new AspectList())
-                .add(Aspect.FLESH, 6)
-                .add(Aspect.LIFE, 6)
-                .add(Aspect.ENERGY, 6)
-                .add(Aspect.BEAST, 4)
+        list = (new AspectList()).add(Aspect.FLESH, 6).add(Aspect.LIFE, 6).add(Aspect.ENERGY, 6).add(Aspect.BEAST, 4)
                 .add(GLUTTONY, 6);
         ThaumcraftApi.registerObjectTag("itemBacon", list);
 
@@ -279,13 +277,12 @@ public class DarkAspects {
         ThaumcraftApi.registerObjectTag(
                 new ItemStack(ForbiddenItems.deadlyShards, 1, 3),
                 (new AspectList()).add(NETHER, 1).add(PRIDE, 2).add(Aspect.CRYSTAL, 1));
-        if (!Config.noLust)
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(ForbiddenItems.deadlyShards, 1, 4),
-                    (new AspectList()).add(NETHER, 1).add(LUST, 2).add(Aspect.CRYSTAL, 1));
-        else
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(ForbiddenItems.deadlyShards, 1, 4), (new AspectList()).add(Aspect.VOID, 1));
+        if (!Config.noLust) ThaumcraftApi.registerObjectTag(
+                new ItemStack(ForbiddenItems.deadlyShards, 1, 4),
+                (new AspectList()).add(NETHER, 1).add(LUST, 2).add(Aspect.CRYSTAL, 1));
+        else ThaumcraftApi.registerObjectTag(
+                new ItemStack(ForbiddenItems.deadlyShards, 1, 4),
+                (new AspectList()).add(Aspect.VOID, 1));
         ThaumcraftApi.registerObjectTag(
                 new ItemStack(ForbiddenItems.gluttonyShard, 1, OreDictionary.WILDCARD_VALUE),
                 (new AspectList()).add(NETHER, 1).add(GLUTTONY, 2).add(Aspect.CRYSTAL, 1));
@@ -296,25 +293,19 @@ public class DarkAspects {
                 new ItemStack(ForbiddenItems.deadlyShards, 1, 6),
                 (new AspectList()).add(NETHER, 1).add(Aspect.GREED, 2).add(Aspect.CRYSTAL, 1));
         ThaumcraftApi.registerObjectTag(
-                new ItemStack(ForbiddenItems.resource, 1, 0), (new AspectList()).add(Aspect.CRYSTAL, 1));
+                new ItemStack(ForbiddenItems.resource, 1, 0),
+                (new AspectList()).add(Aspect.CRYSTAL, 1));
         ThaumcraftApi.registerObjectTag(
-                new ItemStack(ForbiddenItems.resource, 1, 1), (new AspectList()).add(Aspect.DARKNESS, 1));
+                new ItemStack(ForbiddenItems.resource, 1, 1),
+                (new AspectList()).add(Aspect.DARKNESS, 1));
         ThaumcraftApi.registerObjectTag(
                 new ItemStack(ForbiddenBlocks.blackFlower, 1, OreDictionary.WILDCARD_VALUE),
-                (new AspectList())
-                        .add(Aspect.PLANT, 1)
-                        .add(Aspect.LIFE, 1)
-                        .add(Aspect.SENSES, 1)
+                (new AspectList()).add(Aspect.PLANT, 1).add(Aspect.LIFE, 1).add(Aspect.SENSES, 1)
                         .add(Aspect.DARKNESS, 1));
-        if (!Config.noLust)
-            ThaumcraftApi.registerObjectTag(
-                    new ItemStack(ForbiddenItems.ridingCrop, 1, OreDictionary.WILDCARD_VALUE),
-                    (new AspectList())
-                            .add(Aspect.TREE, 2)
-                            .add(Aspect.CLOTH, 2)
-                            .add(Aspect.BEAST, 1)
-                            .add(LUST, 1)
-                            .add(Aspect.WEAPON, 1));
+        if (!Config.noLust) ThaumcraftApi.registerObjectTag(
+                new ItemStack(ForbiddenItems.ridingCrop, 1, OreDictionary.WILDCARD_VALUE),
+                (new AspectList()).add(Aspect.TREE, 2).add(Aspect.CLOTH, 2).add(Aspect.BEAST, 1).add(LUST, 1)
+                        .add(Aspect.WEAPON, 1));
         ThaumcraftApi.registerObjectTag(
                 new ItemStack(ForbiddenItems.taintFruit, 1, OreDictionary.WILDCARD_VALUE),
                 (new AspectList()).add(Aspect.TAINT, 2).add(Aspect.POISON, 1));
@@ -331,6 +322,7 @@ public class DarkAspects {
                 new ItemStack(ForbiddenBlocks.taintPlanks, 1, OreDictionary.WILDCARD_VALUE),
                 (new AspectList()).add(Aspect.TREE, 1));
         ThaumcraftApi.registerObjectTag(
-                new ItemStack(ForbiddenBlocks.taintStone, 1, 1), (new AspectList()).add(Aspect.EARTH, 1));
+                new ItemStack(ForbiddenBlocks.taintStone, 1, 1),
+                (new AspectList()).add(Aspect.EARTH, 1));
     }
 }

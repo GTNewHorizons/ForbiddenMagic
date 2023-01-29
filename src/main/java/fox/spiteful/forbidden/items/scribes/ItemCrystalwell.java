@@ -1,9 +1,7 @@
 package fox.spiteful.forbidden.items.scribes;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
 import java.util.Iterator;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import thaumcraft.api.IScribeTools;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
@@ -20,6 +19,9 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.playerdata.PacketAspectPool;
 import thaumcraft.common.lib.research.ResearchManager;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
 
 public class ItemCrystalwell extends Item implements IScribeTools {
 
@@ -53,14 +55,14 @@ public class ItemCrystalwell extends Item implements IScribeTools {
             if (!world.isRemote) {
                 Aspect aspect;
                 short amount;
-                for (Iterator count = Aspect.getPrimalAspects().iterator();
-                        count.hasNext();
-                        PacketHandler.INSTANCE.sendTo(
+                for (Iterator count = Aspect.getPrimalAspects().iterator(); count.hasNext(); PacketHandler.INSTANCE
+                        .sendTo(
                                 new PacketAspectPool(
                                         aspect.getTag(),
                                         Short.valueOf(amount),
-                                        Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(
-                                                player.getCommandSenderName(), aspect))),
+                                        Short.valueOf(
+                                                Thaumcraft.proxy.playerKnowledge
+                                                        .getAspectPoolFor(player.getCommandSenderName(), aspect))),
                                 (EntityPlayerMP) player)) {
                     aspect = (Aspect) count.next();
                     amount = (short) (world.rand.nextInt(4) + 4);
@@ -86,8 +88,9 @@ public class ItemCrystalwell extends Item implements IScribeTools {
                     new PacketAspectPool(
                             aspect.getTag(),
                             amount,
-                            Short.valueOf(Thaumcraft.proxy.playerKnowledge.getAspectPoolFor(
-                                    player.getCommandSenderName(), aspect))),
+                            Short.valueOf(
+                                    Thaumcraft.proxy.playerKnowledge
+                                            .getAspectPoolFor(player.getCommandSenderName(), aspect))),
                     (EntityPlayerMP) player);
             ResearchManager.scheduleSave(player);
             stack.setItemDamage(stack.getItemDamage() + 1);

@@ -1,9 +1,7 @@
 package fox.spiteful.forbidden.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -16,6 +14,10 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
 
 public class BlockRoseBush extends BlockBush implements IGrowable {
 
@@ -44,8 +46,8 @@ public class BlockRoseBush extends BlockBush implements IGrowable {
     /**
      * Updates the blocks bounds based on its current state. Args: world, x, y, z
      */
-    public void setBlockBoundsBasedOnState(
-            IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_) {
+    public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_,
+            int p_149719_4_) {
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
     }
 
@@ -74,13 +76,13 @@ public class BlockRoseBush extends BlockBush implements IGrowable {
     }
 
     /**
-     * Can this block stay at this position.  Similar to canPlaceBlockAt except gets checked often with plants.
+     * Can this block stay at this position. Similar to canPlaceBlockAt except gets checked often with plants.
      */
     public boolean canBlockStay(World world, int x, int y, int z) {
-        if (world.getBlock(x, y, z) != this)
-            return super.canBlockStay(
-                    world, x, y,
-                    z); // Forge: This function is called during world gen and placement, before this block is set, so
+        if (world.getBlock(x, y, z) != this) return super.canBlockStay(world, x, y, z); // Forge: This function is
+                                                                                        // called during world gen and
+                                                                                        // placement, before this block
+                                                                                        // is set, so
         // if we are not 'here' then assume it's the pre-check.
         if (world.getBlockMetadata(x, y, z) == 0) return world.getBlock(x, y - 1, z) == this;
         Block block = world.getBlock(x, y - 1, z);
@@ -119,20 +121,20 @@ public class BlockRoseBush extends BlockBush implements IGrowable {
     }
 
     @Override
-    /* Whether the plant isn't fully grown?  Who knows?  Aside from Mojang. */
+    /* Whether the plant isn't fully grown? Who knows? Aside from Mojang. */
     public boolean func_149851_a(World world, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
         return true;
     }
 
     @Override
-    /* Whether it can accept bonemeal?  Who knows?  Aside from Mojang. */
-    public boolean func_149852_a(
-            World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_) {
+    /* Whether it can accept bonemeal? Who knows? Aside from Mojang. */
+    public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_,
+            int p_149852_5_) {
         return true;
     }
 
     @Override
-    /* What happens when the block is bonemealed?  Maybe?  Fuck Obfuscation. */
+    /* What happens when the block is bonemealed? Maybe? Fuck Obfuscation. */
     public void func_149853_b(World world, Random rand, int x, int y, int z) {
         spreadFlowers(world, x, y, z, rand);
     }

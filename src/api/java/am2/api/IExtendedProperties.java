@@ -4,10 +4,12 @@ import am2.api.math.AMVector3;
 
 /**
  * Extended properties on EntityLiving used in Ars Magica.
+ * 
  * @author Mithion
  *
  */
 public interface IExtendedProperties {
+
     public float getCurrentMana();
 
     public float getMaxMana();

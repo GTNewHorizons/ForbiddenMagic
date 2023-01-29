@@ -1,20 +1,22 @@
 package fox.spiteful.forbidden.tiles;
 
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.DarkAspects;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.DarkAspects;
 
 public class TileEntityWrathCage extends TileEntity implements IAspectContainer, IEssentiaTransport {
+
     private final WrathSpawnerLogic spawnLogic = new WrathSpawnerLogic(this);
     public int wrath = 0;
     public int sloth = 0;
@@ -84,34 +86,33 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
             TileEntity te = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, current);
             if (te != null) {
                 IEssentiaTransport ic = (IEssentiaTransport) te;
-                if (ic.canOutputTo(current.getOpposite())
-                        && special < 64 // THE DIRECTION HERE MAY BE WRONG SPITEFULFOXY SO CHECK IT
+                if (ic.canOutputTo(current.getOpposite()) && special < 64 // THE DIRECTION HERE MAY BE WRONG
+                                                                          // SPITEFULFOXY SO CHECK IT
                         && ic.getEssentiaType(current.getOpposite()) == aspect
                         && ic.getEssentiaAmount(current.getOpposite()) > 0
                         && ic.takeEssentia(aspect, 1, current.getOpposite()) == 1) {
                     special++;
                     worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
                     return;
-                } else if (ic.canOutputTo(current.getOpposite())
-                        && wrath < 64
+                } else if (ic.canOutputTo(current.getOpposite()) && wrath < 64
                         && special < Config.wrathCost
                         && ic.getEssentiaType(current.getOpposite()) == DarkAspects.WRATH
                         && ic.getEssentiaAmount(current.getOpposite()) > 0
                         && ic.takeEssentia(DarkAspects.WRATH, 1, current.getOpposite()) == 1) {
-                    wrath++;
-                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-                    return;
-                } else if (ic.canOutputTo(current.getOpposite())
-                        && sloth < 64
-                        && special < Config.wrathCost
-                        && wrath < Config.wrathCost
-                        && ic.getEssentiaType(current.getOpposite()) == DarkAspects.SLOTH
-                        && ic.getEssentiaAmount(current.getOpposite()) > 0
-                        && ic.takeEssentia(DarkAspects.SLOTH, 1, current.getOpposite()) == 1) {
-                    sloth++;
-                    worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-                    return;
-                }
+                            wrath++;
+                            worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+                            return;
+                        } else
+                    if (ic.canOutputTo(current.getOpposite()) && sloth < 64
+                            && special < Config.wrathCost
+                            && wrath < Config.wrathCost
+                            && ic.getEssentiaType(current.getOpposite()) == DarkAspects.SLOTH
+                            && ic.getEssentiaAmount(current.getOpposite()) > 0
+                            && ic.takeEssentia(DarkAspects.SLOTH, 1, current.getOpposite()) == 1) {
+                                sloth++;
+                                worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+                                return;
+                            }
             }
         }
     }
@@ -149,6 +150,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * This method is used to determine of a specific aspect can be added to this container.
+     * 
      * @param tag
      * @return true or false
      */
@@ -159,6 +161,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * This method is used to add a certain amount of an aspect to the tile entity.
+     * 
      * @param tag
      * @param amount
      * @return the amount of aspect left over that could not be added.
@@ -179,6 +182,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Removes a certain amount of a specific aspect from the tile entity
+     * 
      * @param tag
      * @param amount
      * @return true if that amount of aspect was available and was removed
@@ -189,6 +193,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Checks if the tile entity contains the listed amount (or more) of the aspect
+     * 
      * @param tag
      * @param amount
      * @return
@@ -202,6 +207,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Returns how much of the aspect this tile entity contains
+     * 
      * @param tag
      * @return the amount of that aspect found
      */
@@ -214,10 +220,11 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Checks if the tile entity contains all the listed aspects and their amounts
+     * 
      * @param ot the ObjectTags object that contains the aspects and their amounts.
      * @return
      *
-     * Going away in the next major patch
+     *         Going away in the next major patch
      */
     @Deprecated
     public boolean doesContainerContain(AspectList ot) {
@@ -226,10 +233,11 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * removes a bunch of different aspects and amounts from the tile entity.
+     * 
      * @param ot the ObjectTags object that contains the aspects and their amounts.
      * @return true if all the aspects and their amounts were available and successfully removed
      *
-     * Going away in the next major patch
+     *         Going away in the next major patch
      */
     @Deprecated
     public boolean takeFromContainer(AspectList ot) {
@@ -238,6 +246,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Is this tile able to connect to other vis users/sources on the specified side?
+     * 
      * @param face
      * @return
      */
@@ -248,6 +257,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Is this side used to input essentia?
+     * 
      * @param face
      * @return
      */
@@ -257,6 +267,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Is this side used to output essentia?
+     * 
      * @param face
      * @return
      */
@@ -266,6 +277,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Sets the amount of suction this block will apply
+     * 
      * @param suction
      */
     public void setSuction(Aspect aspect, int amount) {}
@@ -273,7 +285,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
     // **
     // * Returns the amount of suction this block is applying.
     // * @param loc
-    // *         the location from where the suction is being checked
+    // * the location from where the suction is being checked
     // * @return
     // */
     // public AspectList getSuction(ForgeDirection face)
@@ -293,10 +305,9 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Returns the type of suction this block is applying.
-     * @param loc
-     *         the location from where the suction is being checked
-     * @return
-     *         a return type of null indicates the suction is untyped and the first thing available will be drawn
+     * 
+     * @param loc the location from where the suction is being checked
+     * @return a return type of null indicates the suction is untyped and the first thing available will be drawn
      */
     public Aspect getSuctionType(ForgeDirection face) {
         if (Config.wrathCost <= 0) return null;
@@ -307,8 +318,8 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Returns the strength of suction this block is applying.
-     * @param loc
-     *         the location from where the suction is being checked
+     * 
+     * @param loc the location from where the suction is being checked
      * @return
      */
     public int getSuctionAmount(ForgeDirection face) {
@@ -318,6 +329,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * remove the specified amount of vis from this transport tile
+     * 
      * @param suction
      * @return how much was actually taken
      */
@@ -327,6 +339,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * add the specified amount of vis to this transport tile
+     * 
      * @return how much was actually added
      */
     public int addEssentia(Aspect inp, int amount, ForgeDirection dir) {
@@ -344,6 +357,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * What type of essentia this contains
+     * 
      * @param face
      * @return
      */
@@ -353,6 +367,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * How much essentia this block contains
+     * 
      * @param face
      * @return
      */
@@ -364,6 +379,7 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
 
     /**
      * Essentia will not be drawn from this container unless the suction exceeds this amount.
+     * 
      * @return the amount
      */
     public int getMinimumSuction() {
@@ -371,8 +387,9 @@ public class TileEntityWrathCage extends TileEntity implements IAspectContainer,
     }
 
     /**
-     * Return true if you want the conduit to extend a little further into the block.
-     * Used by jars and alembics that have smaller than normal hitboxes
+     * Return true if you want the conduit to extend a little further into the block. Used by jars and alembics that
+     * have smaller than normal hitboxes
+     * 
      * @return
      */
     public boolean renderExtendedTube() {

@@ -1,11 +1,13 @@
 package fox.spiteful.forbidden.enchantments;
 
-import fox.spiteful.forbidden.items.tools.ItemMorphPickaxe;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 
+import fox.spiteful.forbidden.items.tools.ItemMorphPickaxe;
+
 public class EnchantmentCluster extends Enchantment {
+
     public EnchantmentCluster(int id) {
         super(id, 1, EnumEnchantmentType.digger);
         setName("cluster");

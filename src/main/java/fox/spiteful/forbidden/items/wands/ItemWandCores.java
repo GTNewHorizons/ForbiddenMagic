@@ -1,41 +1,30 @@
 package fox.spiteful.forbidden.items.wands;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.compat.Compat;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.compat.Compat;
 
 public class ItemWandCores extends Item {
 
-    public final String[] types = {
-        "tainted",
-        "infernal",
-        "soul",
-        "blood",
-        "witchwood",
-        "profane",
-        "blood_inert",
-        "livingwood",
-        "livingwood_inert",
-        "blood_staff",
-        "witchwood_staff",
-        "dreamwood",
-        "dreamwood_inert",
-        "dreamwood_staff"
-    };
+    public final String[] types = { "tainted", "infernal", "soul", "blood", "witchwood", "profane", "blood_inert",
+            "livingwood", "livingwood_inert", "blood_staff", "witchwood_staff", "dreamwood", "dreamwood_inert",
+            "dreamwood_staff" };
     public IIcon[] icon;
 
     public ItemWandCores() {
@@ -84,16 +73,10 @@ public class ItemWandCores extends Item {
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 36);
         ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("iron"));
         ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("profane"));
-        ((ItemWandCasting) wand.getItem())
-                .storeAllVis(
-                        wand,
-                        new AspectList()
-                                .add(Aspect.FIRE, 5000)
-                                .add(Aspect.WATER, 5000)
-                                .add(Aspect.EARTH, 5000)
-                                .add(Aspect.AIR, 5000)
-                                .add(Aspect.ORDER, 5000)
-                                .add(Aspect.ENTROPY, 5000));
+        ((ItemWandCasting) wand.getItem()).storeAllVis(
+                wand,
+                new AspectList().add(Aspect.FIRE, 5000).add(Aspect.WATER, 5000).add(Aspect.EARTH, 5000)
+                        .add(Aspect.AIR, 5000).add(Aspect.ORDER, 5000).add(Aspect.ENTROPY, 5000));
         list.add(wand);
         if (Compat.bm && Config.crossWand) {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);

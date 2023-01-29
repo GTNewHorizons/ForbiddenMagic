@@ -2,11 +2,14 @@ package am2.api.blocks;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 
 public class MultiblockStructureDefinition {
+
     public class BlockDec {
+
         Block block;
         int meta;
 
@@ -50,6 +53,7 @@ public class MultiblockStructureDefinition {
     }
 
     public class BlockCoord implements Comparable<BlockCoord> {
+
         public int x;
         public int y;
         public int z;
@@ -63,8 +67,7 @@ public class MultiblockStructureDefinition {
         @Override
         public boolean equals(Object obj) {
             if (obj instanceof BlockCoord) {
-                return this.x == ((BlockCoord) obj).x
-                        && this.y == ((BlockCoord) obj).y
+                return this.x == ((BlockCoord) obj).x && this.y == ((BlockCoord) obj).y
                         && this.z == ((BlockCoord) obj).z;
             }
             return false;
@@ -94,15 +97,14 @@ public class MultiblockStructureDefinition {
 
         @Override
         public int compareTo(BlockCoord o) {
-            return this.z > o.z
-                    ? 1
-                    : this.z < o.z
-                            ? -1
+            return this.z > o.z ? 1
+                    : this.z < o.z ? -1
                             : this.x > o.x ? 1 : this.x < o.x ? -1 : this.y > o.y ? 1 : this.y < o.y ? -1 : 0;
         }
     }
 
     public class StructureGroup {
+
         String name;
         int mutex;
         HashMap<BlockCoord, ArrayList<BlockDec>> allowedBlocks;
@@ -143,8 +145,7 @@ public class MultiblockStructureDefinition {
         }
 
         HashMap<BlockCoord, ArrayList<BlockDec>> getStructureLayer(int layer) {
-            HashMap<BlockCoord, ArrayList<BlockDec>> toReturn =
-                    new HashMap<MultiblockStructureDefinition.BlockCoord, ArrayList<BlockDec>>();
+            HashMap<BlockCoord, ArrayList<BlockDec>> toReturn = new HashMap<MultiblockStructureDefinition.BlockCoord, ArrayList<BlockDec>>();
 
             if (layer > getMaxLayer() || layer < getMinLayer()) {
                 return toReturn;

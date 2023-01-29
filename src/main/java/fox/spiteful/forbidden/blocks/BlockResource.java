@@ -1,11 +1,13 @@
 package fox.spiteful.forbidden.blocks;
 
-import fox.spiteful.forbidden.Forbidden;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.IBlockAccess;
 
+import fox.spiteful.forbidden.Forbidden;
+
 public class BlockResource extends Block {
+
     public BlockResource() {
 
         super(Material.iron);

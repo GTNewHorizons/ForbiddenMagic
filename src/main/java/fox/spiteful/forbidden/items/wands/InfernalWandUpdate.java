@@ -3,13 +3,14 @@ package fox.spiteful.forbidden.items.wands;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class InfernalWandUpdate implements IWandRodOnUpdate {
 
-    Aspect primals[] = {Aspect.ORDER, Aspect.ENTROPY, Aspect.AIR, Aspect.EARTH, Aspect.WATER};
+    Aspect primals[] = { Aspect.ORDER, Aspect.ENTROPY, Aspect.AIR, Aspect.EARTH, Aspect.WATER };
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
         if (player.ticksExisted % 100 == 0) {

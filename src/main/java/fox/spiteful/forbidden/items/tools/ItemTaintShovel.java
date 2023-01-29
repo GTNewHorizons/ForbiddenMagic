@@ -1,10 +1,5 @@
 package fox.spiteful.forbidden.items.tools;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,11 +9,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+
 import thaumcraft.api.IRepairable;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 
 public class ItemTaintShovel extends ItemSpade implements IRepairable {
+
     public IIcon icon;
 
     public ItemTaintShovel(ToolMaterial enumtoolmaterial) {
@@ -42,16 +44,14 @@ public class ItemTaintShovel extends ItemSpade implements IRepairable {
     }
 
     public boolean getIsRepairable(ItemStack stack, ItemStack stack2) {
-        return stack2.isItemEqual(new ItemStack(Config.thaumcraftResource.getItem(), 1, 2))
-                ? true
+        return stack2.isItemEqual(new ItemStack(Config.thaumcraftResource.getItem(), 1, 2)) ? true
                 : super.getIsRepairable(stack, stack2);
     }
 
     @Override
     public float getDigSpeed(ItemStack stack, Block block, int meta) {
         if (ForgeHooks.isToolEffective(stack, block, meta)
-                || (block.getMaterial() == Config.taintMaterial
-                        && block != ForbiddenBlocks.taintLog
+                || (block.getMaterial() == Config.taintMaterial && block != ForbiddenBlocks.taintLog
                         && block != ForbiddenBlocks.taintPlanks
                         && block != ForbiddenBlocks.taintStone)) {
             return efficiencyOnProperMaterial;
@@ -61,17 +61,8 @@ public class ItemTaintShovel extends ItemSpade implements IRepairable {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack itemstack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float par8,
-            float par9,
-            float par10) {
+    public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float par8, float par9, float par10) {
         int purified = 0;
         for (int ex = x - 5; ex < x + 6; ex++) {
             for (int wy = y - 4; wy < y + 5; wy++) {
@@ -85,7 +76,13 @@ public class ItemTaintShovel extends ItemSpade implements IRepairable {
                         float d2 = ((float) wy + world.rand.nextFloat());
                         float d0 = ((float) zee + world.rand.nextFloat());
                         Thaumcraft.proxy.nodeBolt(
-                                world, (float) player.posX, (float) player.posY, (float) player.posZ, d1, d2, d0);
+                                world,
+                                (float) player.posX,
+                                (float) player.posY,
+                                (float) player.posZ,
+                                d1,
+                                d2,
+                                d0);
                     }
                 }
             }

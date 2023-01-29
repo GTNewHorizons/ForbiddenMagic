@@ -3,15 +3,19 @@ package fox.spiteful.forbidden;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
+
 import org.apache.logging.log4j.Level;
+
 import thaumcraft.api.ItemApi;
 import thaumcraft.api.aspects.Aspect;
 
 public class Config {
+
     public static HashMap<String, Aspect> spawnerMobs = new HashMap<String, Aspect>();
     public static ArrayList<String> trash = new ArrayList<String>();
 
@@ -78,126 +82,108 @@ public class Config {
             wrathEnchID = conf.get("enchantments", "Wrath", enchCount++).getInt();
             greedyEnchID = conf.get("enchantments", "Capitalist", enchCount++).getInt();
             consumingEnchID = conf.get("enchantments", "Consuming", enchCount++).getInt();
-            educationalEnchID =
-                    conf.get("enchantments", "Educational", enchCount++).getInt();
-            corruptingEnchID =
-                    conf.get("enchantments", "Corrupting", enchCount++).getInt();
+            educationalEnchID = conf.get("enchantments", "Educational", enchCount++).getInt();
+            corruptingEnchID = conf.get("enchantments", "Corrupting", enchCount++).getInt();
             voidEnchID = conf.get("enchantments", "Voidtouched", enchCount++).getInt();
             impactEnchID = conf.get("enchantments", "Impact", enchCount++).getInt();
 
             int upgradeCount = 42;
-            hellfireUpgradeID =
-                    conf.get("focus upgrades", "Hellfire", upgradeCount).getInt(upgradeCount++);
-            pandemoniumUpgradeID =
-                    conf.get("focus upgrades", "Pandemonium", upgradeCount).getInt(upgradeCount++);
+            hellfireUpgradeID = conf.get("focus upgrades", "Hellfire", upgradeCount).getInt(upgradeCount++);
+            pandemoniumUpgradeID = conf.get("focus upgrades", "Pandemonium", upgradeCount).getInt(upgradeCount++);
 
             noLust = conf.get("general", "No Lust", noLust, "Enable to remove Luxuria aspect and related items.")
                     .getBoolean(false);
             silverfishEmeralds = conf.get(
-                            "general",
-                            "Silverfish Drop Emerald Nuggets",
-                            silverfishEmeralds,
-                            "Disable to prevent Silverfish from dropping emerald nuggets.")
-                    .getBoolean(true);
+                    "general",
+                    "Silverfish Drop Emerald Nuggets",
+                    silverfishEmeralds,
+                    "Disable to prevent Silverfish from dropping emerald nuggets.").getBoolean(true);
             greedyEnch = conf.get(
-                            "general",
-                            "Capitalist Enchantment",
-                            greedyEnch,
-                            "Disable to remove the recipe and effects of the Capitalist enchantment.")
-                    .getBoolean(true);
+                    "general",
+                    "Capitalist Enchantment",
+                    greedyEnch,
+                    "Disable to remove the recipe and effects of the Capitalist enchantment.").getBoolean(true);
             emeraldTrans = conf.get(
-                            "general",
-                            "Emerald Transmutation",
-                            emeraldTrans,
-                            "Disable to remove the Emerald Transmutation research and recipe.")
-                    .getBoolean(true);
+                    "general",
+                    "Emerald Transmutation",
+                    emeraldTrans,
+                    "Disable to remove the Emerald Transmutation research and recipe.").getBoolean(true);
             tagResearch = conf.get(
-                            "general",
-                            "Tag Research Items",
-                            tagResearch,
-                            "Disable to get rid of the [FM] tags in the Thaumonomicon.")
-                    .getBoolean(true);
+                    "general",
+                    "Tag Research Items",
+                    tagResearch,
+                    "Disable to get rid of the [FM] tags in the Thaumonomicon.").getBoolean(true);
             wrathCage = conf.get(
-                            "general",
-                            "Wrath Cage Enabled",
-                            wrathCage,
-                            "Disable if you don't want players using the Wrath Cage.")
-                    .getBoolean(true);
+                    "general",
+                    "Wrath Cage Enabled",
+                    wrathCage,
+                    "Disable if you don't want players using the Wrath Cage.").getBoolean(true);
             wrathCost = conf.get(
-                            "general",
-                            "Wrath Cage Fuel Cost",
-                            wrathCost,
-                            "Cost of essentia per round of spawns in the Wrath Cage.  Raise to increase essentia costs.  Defaults to 5.  Set to 0 to remove the need to fuel the Wrath Cage.  Setting the cost above 64 is not recommended.")
+                    "general",
+                    "Wrath Cage Fuel Cost",
+                    wrathCost,
+                    "Cost of essentia per round of spawns in the Wrath Cage.  Raise to increase essentia costs.  Defaults to 5.  Set to 0 to remove the need to fuel the Wrath Cage.  Setting the cost above 64 is not recommended.")
                     .getInt(5);
             wrathEff = conf.get(
-                            "general",
-                            "Wrath Cage Fuel Efficiency",
-                            wrathEff,
-                            "Number of spawns a Wrath Cage can get per fuel cost.  Defaults to 4.  Lower to make the cage less efficient and raise to make it more efficient.")
+                    "general",
+                    "Wrath Cage Fuel Efficiency",
+                    wrathEff,
+                    "Number of spawns a Wrath Cage can get per fuel cost.  Defaults to 4.  Lower to make the cage less efficient and raise to make it more efficient.")
                     .getInt(4);
             if (wrathEff < 0) wrathEff = 4;
             wrathCrazy = conf.get(
-                            "general",
-                            "Wrath Cage Cries Havoc",
-                            wrathCrazy,
-                            "Enable to let the Wrath Cage imprint on ANY non-boss mob.  May break your game or make your game Awesome.")
+                    "general",
+                    "Wrath Cage Cries Havoc",
+                    wrathCrazy,
+                    "Enable to let the Wrath Cage imprint on ANY non-boss mob.  May break your game or make your game Awesome.")
                     .getBoolean(false);
-            enchanting = conf.get(
-                            "general", "Enchantments Enabled", enchanting, "Disable if you don't like enchantments.")
+            enchanting = conf
+                    .get("general", "Enchantments Enabled", enchanting, "Disable if you don't like enchantments.")
                     .getBoolean(true);
-            spork = conf.get("silly", "Spork of Doom", spork, "What is this?  I don't even...")
-                    .getBoolean(false);
+            spork = conf.get("silly", "Spork of Doom", spork, "What is this?  I don't even...").getBoolean(false);
             gluttony = (byte) conf.get(
-                            "general",
-                            "Gluttony",
-                            gluttony,
-                            "Whether gluttony research is enabled. 0 = Enabled, 1 = Disabled, 2 = Hardcore")
-                    .getInt(0);
+                    "general",
+                    "Gluttony",
+                    gluttony,
+                    "Whether gluttony research is enabled. 0 = Enabled, 1 = Disabled, 2 = Hardcore").getInt(0);
             if (gluttony < 0 || gluttony > 2) gluttony = 0;
             hereticID = conf.get("general", "Heretic Villager ID", hereticID).getInt(hereticID);
 
             String trashlist = conf.get(
-                            "general",
-                            "Garbage Blocks",
-                            "dirt;sand;gravel;cobblestone;netherrack",
-                            "List of OreDict names for garbage blocks, separated by semicolons, for the Consuming enchant to eat")
+                    "general",
+                    "Garbage Blocks",
+                    "dirt;sand;gravel;cobblestone;netherrack",
+                    "List of OreDict names for garbage blocks, separated by semicolons, for the Consuming enchant to eat")
                     .getString();
             String[] trashpile = trashlist.split(";");
             for (String garbage : trashpile) {
                 trash.add(garbage);
             }
 
-            bloodSealPotionID =
-                    conf.get("potions", "Blood Seal", bloodSealPotionID).getInt(bloodSealPotionID);
-            dragonwrackPotionID =
-                    conf.get("potions", "Dragonwrack", dragonwrackPotionID).getInt(dragonwrackPotionID);
+            bloodSealPotionID = conf.get("potions", "Blood Seal", bloodSealPotionID).getInt(bloodSealPotionID);
+            dragonwrackPotionID = conf.get("potions", "Dragonwrack", dragonwrackPotionID).getInt(dragonwrackPotionID);
 
             crossMod = conf.get("compatibility", "Cross-Mod Interaction", crossMod, "Disable to keep mods segregated.")
                     .getBoolean(true);
-            crossWand = conf.get(
-                            "compatibility", "Conversion Wands", crossWand, "Disable to remove all conversion wands.")
+            crossWand = conf
+                    .get("compatibility", "Conversion Wands", crossWand, "Disable to remove all conversion wands.")
                     .getBoolean(true);
             botan = conf.get("compatibility", "Botania Interaction", botan).getBoolean(true);
-            bloodMagic = conf.get("compatibility", "Blood Magic Interaction", bloodMagic)
-                    .getBoolean(true);
+            bloodMagic = conf.get("compatibility", "Blood Magic Interaction", bloodMagic).getBoolean(true);
             am2 = conf.get(
-                            "compatibility",
-                            "Ars Magica 2 Interaction",
-                            am2,
-                            "AM2 interaction is unsupported. Enable at your own risk.")
-                    .getBoolean(true);
+                    "compatibility",
+                    "Ars Magica 2 Interaction",
+                    am2,
+                    "AM2 interaction is unsupported. Enable at your own risk.").getBoolean(true);
             tt = conf.get("compatibility", "Thaumic Tinkerer Interaction", tt).getBoolean(true);
             tc = conf.get("compatibility", "Tinkers Construct Interaction", tc).getBoolean(true);
-            special = conf.get("compatibility", "Special Mobs Interaction", special)
-                    .getBoolean(true);
-            twilight = conf.get("compatibility", "Twilight Forest Interaction", twilight)
-                    .getBoolean(true);
+            special = conf.get("compatibility", "Special Mobs Interaction", special).getBoolean(true);
+            twilight = conf.get("compatibility", "Twilight Forest Interaction", twilight).getBoolean(true);
             emc = conf.get(
-                            "compatibility",
-                            "Equivalent Exchange 3 EMC",
-                            emc,
-                            "Disable if you don't want Forbidden Magic to add EMC values to items.")
-                    .getBoolean(true);
+                    "compatibility",
+                    "Equivalent Exchange 3 EMC",
+                    emc,
+                    "Disable if you don't want Forbidden Magic to add EMC values to items.").getBoolean(true);
             // eewand = conf.get("compatibility", "Equivalent Exchange 3 Wand", eewand, "Disable to specifically disable
             // the EMC to Vis wand.").getBoolean(true);
 
@@ -216,8 +202,7 @@ public class Config {
             thaumcraftShard = ItemApi.getItem("itemShard", 0);
             thaumcraftTaintBlock = ItemApi.getBlock("blockTaint", 0);
             thaumcraftOre = ItemApi.getBlock("blockCustomOre", 0);
-            taintMaterial =
-                    Block.getBlockFromItem(thaumcraftTaintBlock.getItem()).getMaterial();
+            taintMaterial = Block.getBlockFromItem(thaumcraftTaintBlock.getItem()).getMaterial();
         } catch (Exception e) {
             LogHandler.log(Level.ERROR, e, "There was problem when retrieving information from Thaumcraft.");
             e.printStackTrace();

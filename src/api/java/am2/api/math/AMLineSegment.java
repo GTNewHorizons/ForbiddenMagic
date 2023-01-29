@@ -1,6 +1,7 @@
 package am2.api.math;
 
 public class AMLineSegment {
+
     private AMVector3 a, b;
 
     public AMLineSegment(AMVector3 a, AMVector3 b) {
@@ -24,11 +25,11 @@ public class AMLineSegment {
         float t = AMVector3.dotProduct(vVector2, vVector1);
 
         // If our projected distance from vA, "t", is less than or equal to 0, it must
-        // be closest to the end point vA.  We want to return this end point.
+        // be closest to the end point vA. We want to return this end point.
         if (t <= 0) return a.copy();
 
         // If our projected distance from vA, "t", is greater than or equal to the magnitude
-        // or distance of the line segment, it must be closest to the end point vB.  So, return vB.
+        // or distance of the line segment, it must be closest to the end point vB. So, return vB.
         if (t >= d) return b.copy();
 
         AMVector3 vVector3 = vVector2.copy().scale(t);

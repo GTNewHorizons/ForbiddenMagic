@@ -1,15 +1,18 @@
 package am2.api.events;
 
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+
 import am2.api.spell.ItemSpellBase;
 import am2.api.spell.enums.SpellCastResult;
 import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
 
 public class SpellCastingEvent {
+
     @Cancelable
     public class Pre extends Event {
+
         /**
          * The spell being cast
          */
@@ -39,12 +42,7 @@ public class SpellCastingEvent {
          */
         public final boolean isChanneled;
 
-        public Pre(
-                ItemStack stack,
-                ItemSpellBase spell,
-                EntityLivingBase caster,
-                float manaCost,
-                float burnout,
+        public Pre(ItemStack stack, ItemSpellBase spell, EntityLivingBase caster, float manaCost, float burnout,
                 boolean isChanneled) {
             this.caster = caster;
             this.spell = spell;
@@ -57,6 +55,7 @@ public class SpellCastingEvent {
 
     @Cancelable
     public class Post extends Event {
+
         /**
          * The spell being cast
          */
@@ -86,14 +85,8 @@ public class SpellCastingEvent {
          */
         public final boolean isChanneled;
 
-        public Post(
-                ItemStack stack,
-                ItemSpellBase spell,
-                EntityLivingBase caster,
-                float manaCost,
-                float burnout,
-                boolean isChanneled,
-                SpellCastResult castResult) {
+        public Post(ItemStack stack, ItemSpellBase spell, EntityLivingBase caster, float manaCost, float burnout,
+                boolean isChanneled, SpellCastResult castResult) {
             this.caster = caster;
             this.spell = spell;
             this.manaCost = manaCost;

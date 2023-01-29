@@ -4,6 +4,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.Thaumcraft;
@@ -14,6 +15,7 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.SubTileFunctional;
 
 public class SubTileEuclidaisy extends SubTileFunctional {
+
     private static final int cost = 9000;
     public static LexiconEntry lexicon;
 
@@ -34,8 +36,7 @@ public class SubTileEuclidaisy extends SubTileFunctional {
             if (supertile.getWorldObj().rand.nextInt(10) < 4) aspect = (new AspectList()).add(Aspect.AURA, 2);
             else {
                 Aspect[] aspects = Aspect.aspects.values().toArray(new Aspect[0]);
-                aspect = (new AspectList())
-                        .add(aspects[supertile.getWorldObj().rand.nextInt(aspects.length)], 2);
+                aspect = (new AspectList()).add(aspects[supertile.getWorldObj().rand.nextInt(aspects.length)], 2);
             }
             ItemStack ess = new ItemStack(ConfigItems.itemWispEssence);
             ((ItemWispEssence) ess.getItem()).setAspects(ess, aspect);

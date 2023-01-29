@@ -1,13 +1,16 @@
 package fox.spiteful.forbidden.potions;
 
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.compat.Compat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.compat.Compat;
+
 public class DarkPotions {
+
     public static final ResourceLocation icons = new ResourceLocation("forbidden", "textures/misc/potions.png");
     public static Potion bloodSeal;
     public static Potion dragonwrack;

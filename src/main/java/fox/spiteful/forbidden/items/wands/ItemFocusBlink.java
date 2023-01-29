@@ -1,12 +1,7 @@
 package fox.spiteful.forbidden.items.wands;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.DarkAspects;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.items.ForbiddenItems;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
@@ -14,12 +9,19 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.api.wands.ItemFocusBasic;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.utils.BlockUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.DarkAspects;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 
 public class ItemFocusBlink extends ItemFocusBasic {
 
@@ -47,8 +49,8 @@ public class ItemFocusBlink extends ItemFocusBasic {
     }
 
     @Override
-    public ItemStack onFocusRightClick(
-            ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition wut) {
+    public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player,
+            MovingObjectPosition wut) {
         MovingObjectPosition mop = BlockUtils.getTargetBlock(
                 world,
                 (player.prevPosX + (player.posX - player.prevPosX)),
@@ -84,7 +86,12 @@ public class ItemFocusBlink extends ItemFocusBasic {
                         break;
                 }
                 world.playAuxSFXAtEntity(
-                        (EntityPlayer) null, 1009, (int) player.posX, (int) player.posY, (int) player.posZ, 0);
+                        (EntityPlayer) null,
+                        1009,
+                        (int) player.posX,
+                        (int) player.posY,
+                        (int) player.posZ,
+                        0);
                 for (int k = 0; k < 8; ++k) {
                     world.spawnParticle(
                             "smoke",
@@ -100,7 +107,12 @@ public class ItemFocusBlink extends ItemFocusBasic {
                     List<EntityLivingBase> entities = world.getEntitiesWithinAABB(
                             EntityLivingBase.class,
                             AxisAlignedBB.getBoundingBox(
-                                    ex - range, wy - range, zee - range, ex + range, wy + range, zee + range));
+                                    ex - range,
+                                    wy - range,
+                                    zee - range,
+                                    ex + range,
+                                    wy + range,
+                                    zee + range));
                     for (EntityLivingBase entity : entities) {
                         if (entity == player) continue;
                         for (int k = 0; k < 8; ++k) {
@@ -115,14 +127,20 @@ public class ItemFocusBlink extends ItemFocusBasic {
                         }
                         int potency = wand.getFocusPotency(itemstack);
                         entity.attackEntityFrom(
-                                (new EntityDamageSource("fireball", player)).setFireDamage(), 3 + 3 * potency);
+                                (new EntityDamageSource("fireball", player)).setFireDamage(),
+                                3 + 3 * potency);
                         entity.setFire(3 + 3 * potency);
                     }
                 } else if (this.isUpgradedWith(wand.getFocusItem(itemstack), pandemonium)) {
                     List<EntityLivingBase> entities = world.getEntitiesWithinAABB(
                             EntityLivingBase.class,
                             AxisAlignedBB.getBoundingBox(
-                                    ex - range, wy - range, zee - range, ex + range, wy + range, zee + range));
+                                    ex - range,
+                                    wy - range,
+                                    zee - range,
+                                    ex + range,
+                                    wy + range,
+                                    zee + range));
                     for (EntityLivingBase entity : entities) {
                         if (!(entity instanceof IMob)) continue;
                         for (int k = 0; k < 8; ++k) {
@@ -140,7 +158,12 @@ public class ItemFocusBlink extends ItemFocusBasic {
                 }
                 player.setPositionAndUpdate(ex, wy, zee);
                 world.playAuxSFXAtEntity(
-                        (EntityPlayer) null, 1009, (int) player.posX, (int) player.posY, (int) player.posZ, 0);
+                        (EntityPlayer) null,
+                        1009,
+                        (int) player.posX,
+                        (int) player.posY,
+                        (int) player.posZ,
+                        0);
                 for (int k = 0; k < 8; ++k) {
                     world.spawnParticle(
                             "flame",
@@ -186,8 +209,7 @@ public class ItemFocusBlink extends ItemFocusBasic {
 
     @Override
     public AspectList getVisCost(ItemStack item) {
-        return this.isUpgradedWith(item, hellfire)
-                ? fireCost
+        return this.isUpgradedWith(item, hellfire) ? fireCost
                 : this.isUpgradedWith(item, pandemonium) ? switchCost : visCost;
     }
 
@@ -195,19 +217,17 @@ public class ItemFocusBlink extends ItemFocusBasic {
     public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack item, int rank) {
         switch (rank) {
             case 1:
-                return new FocusUpgradeType[] {FocusUpgradeType.frugal};
+                return new FocusUpgradeType[] { FocusUpgradeType.frugal };
             case 2:
-                return new FocusUpgradeType[] {hellfire, pandemonium, FocusUpgradeType.frugal};
+                return new FocusUpgradeType[] { hellfire, pandemonium, FocusUpgradeType.frugal };
             case 3:
             case 4:
             case 5:
-                if (this.isUpgradedWith(item, hellfire))
-                    return new FocusUpgradeType[] {
-                        FocusUpgradeType.potency, FocusUpgradeType.frugal, FocusUpgradeType.enlarge
-                    };
+                if (this.isUpgradedWith(item, hellfire)) return new FocusUpgradeType[] { FocusUpgradeType.potency,
+                        FocusUpgradeType.frugal, FocusUpgradeType.enlarge };
                 else if (this.isUpgradedWith(item, pandemonium))
-                    return new FocusUpgradeType[] {FocusUpgradeType.frugal, FocusUpgradeType.enlarge};
-                else return new FocusUpgradeType[] {FocusUpgradeType.frugal};
+                    return new FocusUpgradeType[] { FocusUpgradeType.frugal, FocusUpgradeType.enlarge };
+                else return new FocusUpgradeType[] { FocusUpgradeType.frugal };
             default:
                 return null;
         }

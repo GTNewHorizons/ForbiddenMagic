@@ -1,10 +1,7 @@
 package fox.spiteful.forbidden.blocks;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,12 +13,18 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import squeek.applecore.api.food.FoodValues;
 import squeek.applecore.api.food.IEdibleBlock;
 import squeek.applecore.api.food.ItemFoodProxy;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "squeek.applecore.api.food.IEdibleBlock", modid = "AppleCore")
 public class BlockArcaneCake extends Block implements IEdibleBlock {
+
     private boolean isEdibleAtMaxHunger = false;
 
     @SideOnly(Side.CLIENT)
@@ -98,8 +101,7 @@ public class BlockArcaneCake extends Block implements IEdibleBlock {
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIcon(int par1, int x) {
-        return par1 == 1
-                ? this.cakeTopIcon
+        return par1 == 1 ? this.cakeTopIcon
                 : (par1 == 0 ? this.cakeBottomIcon : (x > 0 && par1 == 4 ? this.cakeInsideIcon : this.blockIcon));
     }
 
@@ -118,8 +120,8 @@ public class BlockArcaneCake extends Block implements IEdibleBlock {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+            float hitY, float hitZ) {
         this.eatCakeSlice(world, x, y, z, player);
         return true;
     }

@@ -1,6 +1,7 @@
 package am2.api.math;
 
 public class AMMatrix4 {
+
     float[] mat;
 
     public AMMatrix4() {

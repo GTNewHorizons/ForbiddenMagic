@@ -1,11 +1,13 @@
 package fox.spiteful.forbidden.potions;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class PotionBloodSeal extends Potion {
+
     public PotionBloodSeal(int id) {
         super(id, true, 0xAC1919);
         this.setPotionName("potion.blood_seal");

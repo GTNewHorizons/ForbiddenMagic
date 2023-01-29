@@ -9,6 +9,7 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 
 public class EnchantmentWrath extends Enchantment {
+
     public EnchantmentWrath(int id) {
         super(id, 1, EnumEnchantmentType.weapon);
         setName("wrath");

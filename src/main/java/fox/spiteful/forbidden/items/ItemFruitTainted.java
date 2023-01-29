@@ -1,8 +1,5 @@
 package fox.spiteful.forbidden.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -14,9 +11,13 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import thaumcraft.api.potions.PotionFluxTaint;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.potions.PotionThaumarhia;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
 
 public class ItemFruitTainted extends ItemFood {
 
@@ -31,8 +32,9 @@ public class ItemFruitTainted extends ItemFood {
             player.addPotionEffect(getEffect(PotionFluxTaint.instance.id, 600, false));
             player.addPotionEffect(getEffect(Potion.hunger.id, 600, false));
             if (world.rand.nextFloat() < 0.4F) {
-                player.addChatMessage(new ChatComponentText(
-                        EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("warp.text.15")));
+                player.addChatMessage(
+                        new ChatComponentText(
+                                EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("warp.text.15")));
                 player.addPotionEffect(getEffect(PotionThaumarhia.instance.id, 600, true));
             }
         }

@@ -1,20 +1,23 @@
 package fox.spiteful.forbidden.compat;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.lib.potions.PotionWarpWard;
 import WayofTime.alchemicalWizardry.api.alchemy.energy.ReagentRegistry;
 import WayofTime.alchemicalWizardry.api.rituals.IMasterRitualStone;
 import WayofTime.alchemicalWizardry.api.rituals.RitualComponent;
 import WayofTime.alchemicalWizardry.api.rituals.RitualEffect;
 import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import java.util.ArrayList;
-import java.util.List;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.lib.potions.PotionWarpWard;
 
 public class RitualSanity extends RitualEffect {
+
     public static final int crystallosDrain = 4;
 
     @Override
@@ -35,8 +38,8 @@ public class RitualSanity extends RitualEffect {
 
         boolean crazy = world.getWorldTime() % (timeDelay * 4) == 0;
 
-        boolean hasCrystallos =
-                this.canDrainReagent(ritualStone, ReagentRegistry.crystallosReagent, crystallosDrain, false);
+        boolean hasCrystallos = this
+                .canDrainReagent(ritualStone, ReagentRegistry.crystallosReagent, crystallosDrain, false);
 
         int range = 15 * (hasCrystallos ? 3 : 1);
         int vertRange = 15 * (hasCrystallos ? 3 : 1);
@@ -46,8 +49,8 @@ public class RitualSanity extends RitualEffect {
         float posZ = z + 0.5f;
         List<EntityPlayer> list = world.getEntitiesWithinAABB(
                 EntityPlayer.class,
-                AxisAlignedBB.getBoundingBox(
-                                posX - 0.5f, posY - 0.5f, posZ - 0.5f, posX + 0.5f, posY + 0.5f, posZ + 0.5f)
+                AxisAlignedBB
+                        .getBoundingBox(posX - 0.5f, posY - 0.5f, posZ - 0.5f, posX + 0.5f, posY + 0.5f, posZ + 0.5f)
                         .expand(range, vertRange, range));
         int entityCount = 0;
 
@@ -70,10 +73,8 @@ public class RitualSanity extends RitualEffect {
                     ward.getCurativeItems().clear();
                     player.addPotionEffect(ward);
                     entityCount++;
-                    if (crazy && world.rand.nextInt(35) <= 3)
-                        Thaumcraft.proxy
-                                .getPlayerKnowledge()
-                                .addWarpTemp(player.getDisplayName(), 1 + world.rand.nextInt(3));
+                    if (crazy && world.rand.nextInt(35) <= 3) Thaumcraft.proxy.getPlayerKnowledge()
+                            .addWarpTemp(player.getDisplayName(), 1 + world.rand.nextInt(3));
                 }
             }
 

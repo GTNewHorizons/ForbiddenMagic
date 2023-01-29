@@ -1,13 +1,16 @@
 package fox.spiteful.forbidden.enchantments;
 
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.compat.Compat;
 import java.lang.reflect.Method;
+
 import net.minecraft.enchantment.Enchantment;
+
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.compat.Compat;
 
 public class DarkEnchantments {
+
     public static Enchantment cluster;
     public static Enchantment wrath;
     public static Enchantment greedy;
@@ -51,33 +54,22 @@ public class DarkEnchantments {
                         cluster,
                         "forbidden:textures/misc/lucrative.png",
                         false,
-                        (new AspectList())
-                                .add(Aspect.FIRE, 5)
-                                .add(Aspect.EARTH, 5)
-                                .add(Aspect.ORDER, 5),
+                        (new AspectList()).add(Aspect.FIRE, 5).add(Aspect.EARTH, 5).add(Aspect.ORDER, 5),
                         "CLUSTER");
                 reg.invoke(
                         null,
                         greedy,
                         "forbidden:textures/misc/greedy.png",
                         false,
-                        (new AspectList())
-                                .add(Aspect.ENTROPY, 50)
-                                .add(Aspect.EARTH, 30)
-                                .add(Aspect.ORDER, 20),
+                        (new AspectList()).add(Aspect.ENTROPY, 50).add(Aspect.EARTH, 30).add(Aspect.ORDER, 20),
                         "GREEDY");
                 reg.invoke(
                         null,
                         educational,
                         "forbidden:textures/misc/educational.png",
                         false,
-                        new AspectList()
-                                .add(Aspect.AIR, 10)
-                                .add(Aspect.FIRE, 10)
-                                .add(Aspect.WATER, 10)
-                                .add(Aspect.EARTH, 10)
-                                .add(Aspect.ORDER, 15)
-                                .add(Aspect.ENTROPY, 15),
+                        new AspectList().add(Aspect.AIR, 10).add(Aspect.FIRE, 10).add(Aspect.WATER, 10)
+                                .add(Aspect.EARTH, 10).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15),
                         "EDUCATIONAL");
                 reg.invoke(
                         null,
@@ -91,10 +83,7 @@ public class DarkEnchantments {
                         corrupting,
                         "forbidden:textures/misc/corrupting.png",
                         false,
-                        (new AspectList())
-                                .add(Aspect.ENTROPY, 20)
-                                .add(Aspect.FIRE, 15)
-                                .add(Aspect.EARTH, 10),
+                        (new AspectList()).add(Aspect.ENTROPY, 20).add(Aspect.FIRE, 15).add(Aspect.EARTH, 10),
                         "CORRUPTING");
                 reg.invoke(
                         null,

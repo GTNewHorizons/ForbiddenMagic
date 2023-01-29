@@ -1,7 +1,7 @@
 package fox.spiteful.forbidden;
 
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.init.Blocks;
@@ -9,7 +9,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+
 public class WorldGenTaintedTree extends WorldGenAbstractTree {
+
     /** The minimum height of a generated tree. */
     private final int minTreeHeight;
 
@@ -63,11 +66,21 @@ public class WorldGenTaintedTree extends WorldGenAbstractTree {
                 Block block2 = p_76484_1_.getBlock(p_76484_3_, p_76484_4_ - 1, p_76484_5_);
 
                 boolean isSoil = block2.canSustainPlant(
-                        p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, ForgeDirection.UP, (BlockSapling)
-                                Blocks.sapling);
+                        p_76484_1_,
+                        p_76484_3_,
+                        p_76484_4_ - 1,
+                        p_76484_5_,
+                        ForgeDirection.UP,
+                        (BlockSapling) Blocks.sapling);
                 if (isSoil && p_76484_4_ < 256 - l - 1) {
                     block2.onPlantGrow(
-                            p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, p_76484_3_, p_76484_4_, p_76484_5_);
+                            p_76484_1_,
+                            p_76484_3_,
+                            p_76484_4_ - 1,
+                            p_76484_5_,
+                            p_76484_3_,
+                            p_76484_4_,
+                            p_76484_5_);
                     b0 = 3;
                     byte b1 = 0;
                     int l1;
@@ -91,7 +104,12 @@ public class WorldGenTaintedTree extends WorldGenAbstractTree {
                                     if (block1.isAir(p_76484_1_, i2, k1, k2)
                                             || block1.isLeaves(p_76484_1_, i2, k1, k2)) {
                                         this.setBlockAndNotifyAdequately(
-                                                p_76484_1_, i2, k1, k2, ForbiddenBlocks.taintLeaves, 0);
+                                                p_76484_1_,
+                                                i2,
+                                                k1,
+                                                k2,
+                                                ForbiddenBlocks.taintLeaves,
+                                                0);
                                     }
                                 }
                             }
@@ -104,7 +122,12 @@ public class WorldGenTaintedTree extends WorldGenAbstractTree {
                         if (block.isAir(p_76484_1_, p_76484_3_, p_76484_4_ + k1, p_76484_5_)
                                 || block.isLeaves(p_76484_1_, p_76484_3_, p_76484_4_ + k1, p_76484_5_)) {
                             this.setBlockAndNotifyAdequately(
-                                    p_76484_1_, p_76484_3_, p_76484_4_ + k1, p_76484_5_, ForbiddenBlocks.taintLog, 0);
+                                    p_76484_1_,
+                                    p_76484_3_,
+                                    p_76484_4_ + k1,
+                                    p_76484_5_,
+                                    ForbiddenBlocks.taintLog,
+                                    0);
                         }
                     }
 
@@ -128,10 +151,8 @@ public class WorldGenTaintedTree extends WorldGenAbstractTree {
         while (true) {
             --p_76529_3_;
 
-            if (!p_76529_1_
-                            .getBlock(p_76529_2_, p_76529_3_, p_76529_4_)
-                            .isAir(p_76529_1_, p_76529_2_, p_76529_3_, p_76529_4_)
-                    || i1 <= 0) {
+            if (!p_76529_1_.getBlock(p_76529_2_, p_76529_3_, p_76529_4_)
+                    .isAir(p_76529_1_, p_76529_2_, p_76529_3_, p_76529_4_) || i1 <= 0) {
                 return;
             }
 

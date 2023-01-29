@@ -1,9 +1,11 @@
 package am2.api.flickers;
 
-import am2.api.spell.enums.Affinity;
 import net.minecraft.world.World;
 
+import am2.api.spell.enums.Affinity;
+
 public interface IFlickerFunctionality {
+
     boolean RequiresPower();
 
     int PowerPerOperation();

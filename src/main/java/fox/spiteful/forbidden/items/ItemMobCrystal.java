@@ -1,10 +1,7 @@
 package fox.spiteful.forbidden.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.Forbidden;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +10,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
+
 import thaumcraft.api.aspects.Aspect;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.Forbidden;
 
 public class ItemMobCrystal extends Item {
 
@@ -95,12 +97,8 @@ public class ItemMobCrystal extends Item {
             if (nbttagcompound.hasKey("mob")) {
                 String string = nbttagcompound.getString("mob");
 
-                if (string != null)
-                    return (""
-                                    + StatCollector.translateToLocal("item.MobCrystal.name")
-                                            .replace(
-                                                    "%s", StatCollector.translateToLocal("entity." + string + ".name")))
-                            .trim();
+                if (string != null) return ("" + StatCollector.translateToLocal("item.MobCrystal.name")
+                        .replace("%s", StatCollector.translateToLocal("entity." + string + ".name"))).trim();
             }
         }
 

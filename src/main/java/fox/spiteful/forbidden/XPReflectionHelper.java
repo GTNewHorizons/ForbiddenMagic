@@ -1,17 +1,21 @@
 package fox.spiteful.forbidden;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import java.lang.reflect.Field;
+
 import net.minecraft.entity.EntityLiving;
+
 import org.apache.logging.log4j.Level;
 
+import cpw.mods.fml.relauncher.ReflectionHelper;
+
 public class XPReflectionHelper {
+
     public static Field stupidMojangProtectedVariable;
 
     static {
         try {
-            stupidMojangProtectedVariable =
-                    ReflectionHelper.findField(EntityLiving.class, "experienceValue", "field_70728_aV");
+            stupidMojangProtectedVariable = ReflectionHelper
+                    .findField(EntityLiving.class, "experienceValue", "field_70728_aV");
             stupidMojangProtectedVariable.setAccessible(true);
         } catch (Exception e) {
             LogHandler.log(Level.ERROR, e.toString());

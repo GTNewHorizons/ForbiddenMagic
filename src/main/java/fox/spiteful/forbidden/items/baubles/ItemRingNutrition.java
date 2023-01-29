@@ -1,13 +1,7 @@
 package fox.spiteful.forbidden.items.baubles;
 
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
-import fox.spiteful.forbidden.compat.Compat;
 import java.util.List;
+
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,11 +11,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
+
 import thaumcraft.api.IRunicArmor;
 import vazkii.botania.api.item.ICosmeticAttachable;
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
+import fox.spiteful.forbidden.compat.Compat;
 
 @Optional.Interface(iface = "vazkii.botania.api.item.ICosmeticAttachable", modid = "Botania")
 public class ItemRingNutrition extends Item implements IRunicArmor, IBauble, ICosmeticAttachable {
+
     IIcon icon;
 
     public ItemRingNutrition() {
@@ -89,10 +92,9 @@ public class ItemRingNutrition extends Item implements IRunicArmor, IBauble, ICo
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 
-        if (Compat.botan && GuiScreen.isShiftKeyDown() && getCosmeticItem(stack) != null)
-            list.add(String.format(
-                            StatCollector.translateToLocal("botaniamisc.hasCosmetic"),
-                            getCosmeticItem(stack).getDisplayName())
-                    .replaceAll("&", "\u00a7"));
+        if (Compat.botan && GuiScreen.isShiftKeyDown() && getCosmeticItem(stack) != null) list.add(
+                String.format(
+                        StatCollector.translateToLocal("botaniamisc.hasCosmetic"),
+                        getCosmeticItem(stack).getDisplayName()).replaceAll("&", "\u00a7"));
     }
 }

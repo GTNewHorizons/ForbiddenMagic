@@ -1,12 +1,14 @@
 package fox.spiteful.forbidden.enchantments;
 
-import fox.spiteful.forbidden.items.tools.ItemMorphPickaxe;
-import fox.spiteful.forbidden.items.tools.ItemMorphShovel;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.item.ItemStack;
 
+import fox.spiteful.forbidden.items.tools.ItemMorphPickaxe;
+import fox.spiteful.forbidden.items.tools.ItemMorphShovel;
+
 public class EnchantmentImpact extends Enchantment {
+
     public EnchantmentImpact(int id) {
         super(id, 1, EnumEnchantmentType.digger);
         setName("impact");

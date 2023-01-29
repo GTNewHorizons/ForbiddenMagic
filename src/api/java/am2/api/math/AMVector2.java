@@ -1,6 +1,7 @@
 package am2.api.math;
 
 public class AMVector2 {
+
     public double x;
     public double y;
 
