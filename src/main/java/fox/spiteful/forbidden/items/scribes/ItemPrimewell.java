@@ -2,16 +2,16 @@ package fox.spiteful.forbidden.items.scribes;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
 import thaumcraft.api.IScribeTools;
+import thaumcraft.common.items.ItemInkwell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 
-public class ItemPrimewell extends Item implements IScribeTools {
+public class ItemPrimewell extends ItemInkwell implements IScribeTools {
 
     @SideOnly(Side.CLIENT)
     public IIcon icon;
