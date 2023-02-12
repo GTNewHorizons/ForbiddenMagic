@@ -5,13 +5,13 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import thaumcraft.api.IScribeTools;
+import thaumcraft.common.items.ItemInkwell;
 import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
 import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -19,7 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.compat.Compat;
 
-public class ItemBloodwell extends Item implements IScribeTools, IBindable {
+public class ItemBloodwell extends ItemInkwell implements IScribeTools, IBindable {
 
     @SideOnly(Side.CLIENT)
     public IIcon icon;
