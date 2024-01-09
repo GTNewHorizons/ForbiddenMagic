@@ -10,11 +10,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.common.Thaumcraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Config;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.common.Thaumcraft;
 
 public class WrathSpawnerLogic {
 

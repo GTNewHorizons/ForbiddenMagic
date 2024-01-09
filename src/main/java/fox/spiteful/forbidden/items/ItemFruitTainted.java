@@ -12,12 +12,12 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-import thaumcraft.api.potions.PotionFluxTaint;
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.lib.potions.PotionThaumarhia;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
+import thaumcraft.api.potions.PotionFluxTaint;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.lib.potions.PotionThaumarhia;
 
 public class ItemFruitTainted extends ItemFood {
 

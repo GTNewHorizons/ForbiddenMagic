@@ -8,17 +8,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.oredict.OreDictionary;
 
+import cpw.mods.fml.common.IFuelHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+import fox.spiteful.forbidden.enchantments.DarkEnchantments;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.ItemApi;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
-import cpw.mods.fml.common.IFuelHandler;
-import cpw.mods.fml.common.registry.GameRegistry;
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
-import fox.spiteful.forbidden.enchantments.DarkEnchantments;
-import fox.spiteful.forbidden.items.ForbiddenItems;
 
 public class ForbiddenRecipes {
 

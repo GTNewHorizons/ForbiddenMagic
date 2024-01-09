@@ -11,6 +11,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
+import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.forbidden.Forbidden;
 import thaumcraft.api.IScribeTools;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
@@ -18,11 +23,6 @@ import thaumcraft.common.items.ItemInkwell;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.playerdata.PacketAspectPool;
 import thaumcraft.common.lib.research.ResearchManager;
-import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
-import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.forbidden.Forbidden;
 
 public class ItemBoundwell extends ItemInkwell implements IScribeTools, IBindable {
 

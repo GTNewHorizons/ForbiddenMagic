@@ -5,7 +5,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
-import thaumcraft.api.wands.WandTriggerRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -20,6 +19,7 @@ import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.enchantments.DarkEnchantments;
 import fox.spiteful.forbidden.items.ForbiddenItems;
 import fox.spiteful.forbidden.potions.DarkPotions;
+import thaumcraft.api.wands.WandTriggerRegistry;
 
 @Mod(
         modid = "ForbiddenMagic",

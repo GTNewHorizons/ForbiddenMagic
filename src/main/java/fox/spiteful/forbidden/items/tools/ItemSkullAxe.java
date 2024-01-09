@@ -7,11 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.IIcon;
 
-import thaumcraft.api.IRepairable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
+import thaumcraft.api.IRepairable;
 
 public class ItemSkullAxe extends ItemSword implements IRepairable {
 

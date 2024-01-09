@@ -8,12 +8,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
-import fox.spiteful.forbidden.items.ForbiddenItems;
 
 public class DarkAspects {
 

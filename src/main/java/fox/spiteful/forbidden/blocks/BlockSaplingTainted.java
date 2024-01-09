@@ -13,13 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import thaumcraft.common.config.Config;
-import thaumcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.WorldGenTaintedTree;
+import thaumcraft.common.config.Config;
+import thaumcraft.common.config.ConfigBlocks;
 
 public class BlockSaplingTainted extends BlockSapling {
 

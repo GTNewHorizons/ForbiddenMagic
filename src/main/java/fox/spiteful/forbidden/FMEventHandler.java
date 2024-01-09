@@ -1,6 +1,10 @@
 package fox.spiteful.forbidden;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -23,7 +27,10 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -31,8 +38,11 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
 import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
@@ -41,16 +51,10 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.logging.log4j.Level;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.entities.ITaintedMob;
-import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraft.common.lib.utils.Utils;
-import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
-import baubles.api.BaublesApi;
-
 import com.google.common.collect.Multimap;
 
+import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import baubles.api.BaublesApi;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
@@ -62,6 +66,11 @@ import fox.spiteful.forbidden.items.baubles.ItemSubCollar;
 import fox.spiteful.forbidden.items.tools.ItemRidingCrop;
 import fox.spiteful.forbidden.items.tools.ItemTaintPickaxe;
 import fox.spiteful.forbidden.potions.DarkPotions;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.entities.ITaintedMob;
+import thaumcraft.common.config.ConfigItems;
+import thaumcraft.common.items.wands.ItemWandCasting;
+import thaumcraft.common.lib.utils.Utils;
 
 public class FMEventHandler {
 

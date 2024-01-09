@@ -13,13 +13,13 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import thaumcraft.api.IRepairable;
-import thaumcraft.api.IWarpingGear;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.enchantments.DarkEnchantments;
 import fox.spiteful.forbidden.items.ForbiddenItems;
+import thaumcraft.api.IRepairable;
+import thaumcraft.api.IWarpingGear;
 
 public class ItemMorphAxe extends ItemAxe implements IRepairable, IWarpingGear {
 

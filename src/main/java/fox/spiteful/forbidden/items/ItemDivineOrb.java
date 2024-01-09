@@ -12,7 +12,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-import thaumcraft.api.IWarpingGear;
 import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
 import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
 import WayofTime.alchemicalWizardry.api.items.interfaces.IBloodOrb;
@@ -21,6 +20,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.compat.Compat;
+import thaumcraft.api.IWarpingGear;
 
 public class ItemDivineOrb extends Item implements IBloodOrb, IBindable, IWarpingGear {
 

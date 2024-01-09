@@ -8,13 +8,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.lib.potions.PotionWarpWard;
 import WayofTime.alchemicalWizardry.api.alchemy.energy.ReagentRegistry;
 import WayofTime.alchemicalWizardry.api.rituals.IMasterRitualStone;
 import WayofTime.alchemicalWizardry.api.rituals.RitualComponent;
 import WayofTime.alchemicalWizardry.api.rituals.RitualEffect;
 import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.lib.potions.PotionWarpWard;
 
 public class RitualSanity extends RitualEffect {
 

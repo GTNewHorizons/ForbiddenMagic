@@ -1,13 +1,13 @@
 // Add your dependencies here
 
 dependencies {
-    compile('com.github.GTNewHorizons:Baubles:1.0.1.14:dev')
+    api('thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev')
+    api('com.github.GTNewHorizons:Baubles:1.0.3:dev')
 
-    compile('thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev')
+    compileOnly('com.github.GTNewHorizons:BloodMagic:1.4.3:dev')
+    compileOnly('com.github.GTNewHorizons:Botania:1.10.3-GTNH:api')
+    compileOnly("com.github.GTNewHorizons:AppleCore:3.2.12:dev")
 
-    compileOnly('com.github.GTNewHorizons:BloodMagic:1.4.1:dev') {transitive=false}
-    compileOnly('com.github.GTNewHorizons:Botania:1.9.9-GTNH:api') {transitive=false}
-    compileOnly("com.github.GTNewHorizons:AppleCore:3.2.1:dev") {transitive = false}
 
     compileOnly('curse.maven:ee3-65509:2305023')
 }

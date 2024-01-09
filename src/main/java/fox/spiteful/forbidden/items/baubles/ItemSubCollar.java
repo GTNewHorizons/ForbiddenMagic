@@ -19,15 +19,15 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.common.items.baubles.ItemAmuletVis;
-import vazkii.botania.api.item.ICosmeticAttachable;
 import baubles.api.BaublesApi;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.compat.Compat;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.common.items.baubles.ItemAmuletVis;
+import vazkii.botania.api.item.ICosmeticAttachable;
 
 @Optional.Interface(iface = "vazkii.botania.api.item.ICosmeticAttachable", modid = "Botania")
 public class ItemSubCollar extends ItemAmuletVis implements ICosmeticAttachable {

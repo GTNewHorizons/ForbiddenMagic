@@ -4,10 +4,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.research.ResearchItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchItem;
 
 public class DarkResearchItem extends ResearchItem {
 

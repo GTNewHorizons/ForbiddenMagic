@@ -14,14 +14,6 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import org.apache.logging.log4j.Level;
 
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.crafting.IArcaneRecipe;
-import thaumcraft.api.crafting.InfusionRecipe;
-import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.ConfigItems;
-import vazkii.botania.api.BotaniaAPI;
 import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.Config;
@@ -32,6 +24,14 @@ import fox.spiteful.forbidden.tiles.SubTileBloodthorn;
 import fox.spiteful.forbidden.tiles.SubTileEuclidaisy;
 import fox.spiteful.forbidden.tiles.SubTileTainthistle;
 import fox.spiteful.forbidden.tiles.SubTileWhisperweed;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.IArcaneRecipe;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
+import vazkii.botania.api.BotaniaAPI;
 
 public class ForbiddenBotany {
 
