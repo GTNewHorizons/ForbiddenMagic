@@ -8,14 +8,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
-import fox.spiteful.forbidden.items.ForbiddenItems;
 
 public class VillagerHereticManager implements IVillageTradeHandler {
 

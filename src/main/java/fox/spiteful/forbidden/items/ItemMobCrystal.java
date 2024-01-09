@@ -11,11 +11,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 
-import thaumcraft.api.aspects.Aspect;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
+import thaumcraft.api.aspects.Aspect;
 
 public class ItemMobCrystal extends Item {
 

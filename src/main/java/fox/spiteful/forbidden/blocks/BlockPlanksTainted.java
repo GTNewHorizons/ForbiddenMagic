@@ -2,8 +2,8 @@ package fox.spiteful.forbidden.blocks;
 
 import net.minecraft.block.Block;
 
-import thaumcraft.common.config.Config;
 import fox.spiteful.forbidden.Forbidden;
+import thaumcraft.common.config.Config;
 
 public class BlockPlanksTainted extends Block {
 

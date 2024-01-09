@@ -12,8 +12,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 
-import thaumcraft.api.IRunicArmor;
-import vazkii.botania.api.item.ICosmeticAttachable;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
@@ -21,6 +19,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.compat.Compat;
+import thaumcraft.api.IRunicArmor;
+import vazkii.botania.api.item.ICosmeticAttachable;
 
 @Optional.Interface(iface = "vazkii.botania.api.item.ICosmeticAttachable", modid = "Botania")
 public class ItemRingNutrition extends Item implements IRunicArmor, IBauble, ICosmeticAttachable {

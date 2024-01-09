@@ -7,6 +7,16 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.logging.log4j.Level;
 
+import com.pahimar.ee3.api.exchange.EnergyValueRegistryProxy;
+
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.DarkAspects;
+import fox.spiteful.forbidden.DarkResearchItem;
+import fox.spiteful.forbidden.LogHandler;
+import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.ItemApi;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -16,14 +26,6 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
-
-import com.pahimar.ee3.api.exchange.EnergyValueRegistryProxy;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
-import fox.spiteful.forbidden.*;
-import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
-import fox.spiteful.forbidden.items.ForbiddenItems;
 
 public class Compat {
 

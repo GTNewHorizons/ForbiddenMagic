@@ -7,13 +7,13 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.DarkAspects;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.DarkAspects;
 
 public class TileEntityWrathCage extends TileEntity implements IAspectContainer, IEssentiaTransport {
 

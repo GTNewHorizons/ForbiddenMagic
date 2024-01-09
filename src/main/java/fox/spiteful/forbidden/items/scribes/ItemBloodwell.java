@@ -10,14 +10,14 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-import thaumcraft.api.IScribeTools;
-import thaumcraft.common.items.ItemInkwell;
 import WayofTime.alchemicalWizardry.api.items.interfaces.IBindable;
 import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.compat.Compat;
+import thaumcraft.api.IScribeTools;
+import thaumcraft.common.items.ItemInkwell;
 
 public class ItemBloodwell extends ItemInkwell implements IScribeTools, IBindable {
 

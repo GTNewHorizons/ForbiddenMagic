@@ -3,12 +3,12 @@ package fox.spiteful.forbidden.items.wands;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
+import fox.spiteful.forbidden.Config;
+import fox.spiteful.forbidden.compat.Compat;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.botania.api.mana.ManaItemHandler;
-import fox.spiteful.forbidden.Config;
-import fox.spiteful.forbidden.compat.Compat;
 
 public class YandereWandUpdate implements IWandRodOnUpdate {
 

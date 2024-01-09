@@ -9,12 +9,12 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
-import thaumcraft.common.config.Config;
-import thaumcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
+import thaumcraft.common.config.Config;
+import thaumcraft.common.config.ConfigBlocks;
 
 public class BlockLogTainted extends BlockLog {
 

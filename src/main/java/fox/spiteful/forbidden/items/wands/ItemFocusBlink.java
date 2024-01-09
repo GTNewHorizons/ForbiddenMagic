@@ -7,21 +7,25 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.wands.FocusUpgradeType;
-import thaumcraft.api.wands.ItemFocusBasic;
-import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraft.common.lib.utils.BlockUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.DarkAspects;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.items.ForbiddenItems;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
+import thaumcraft.api.wands.ItemFocusBasic;
+import thaumcraft.common.items.wands.ItemWandCasting;
+import thaumcraft.common.lib.utils.BlockUtils;
 
 public class ItemFocusBlink extends ItemFocusBasic {
 

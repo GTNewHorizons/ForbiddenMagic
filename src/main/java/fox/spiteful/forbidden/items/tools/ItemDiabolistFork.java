@@ -10,11 +10,11 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import thaumcraft.api.IRepairable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
+import thaumcraft.api.IRepairable;
 
 public class ItemDiabolistFork extends ItemSword implements IRepairable {
 

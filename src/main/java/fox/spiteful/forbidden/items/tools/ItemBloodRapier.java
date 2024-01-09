@@ -12,14 +12,14 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 
-import thaumcraft.api.IRepairable;
-import thaumcraft.api.IWarpingGear;
-import thaumcraft.common.config.ConfigItems;
 import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.potions.DarkPotions;
+import thaumcraft.api.IRepairable;
+import thaumcraft.api.IWarpingGear;
+import thaumcraft.common.config.ConfigItems;
 
 public class ItemBloodRapier extends ItemSword implements IRepairable, IWarpingGear {
 

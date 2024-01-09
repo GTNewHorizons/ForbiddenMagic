@@ -5,11 +5,11 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-import thaumcraft.api.IScribeTools;
-import thaumcraft.common.items.ItemInkwell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
+import thaumcraft.api.IScribeTools;
+import thaumcraft.common.items.ItemInkwell;
 
 public class ItemPrimewell extends ItemInkwell implements IScribeTools {
 

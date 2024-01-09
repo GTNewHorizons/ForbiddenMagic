@@ -10,14 +10,14 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-import thaumcraft.api.IRepairable;
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.config.ConfigBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
+import thaumcraft.api.IRepairable;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.config.ConfigBlocks;
 
 public class ItemTaintShovel extends ItemSpade implements IRepairable {
 

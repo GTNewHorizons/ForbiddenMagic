@@ -4,10 +4,10 @@ import java.lang.reflect.Method;
 
 import net.minecraft.enchantment.Enchantment;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 
 public class DarkEnchantments {
 

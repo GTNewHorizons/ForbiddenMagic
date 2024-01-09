@@ -8,15 +8,6 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.logging.log4j.Level;
 
-import thaumcraft.api.ItemApi;
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.crafting.IArcaneRecipe;
-import thaumcraft.api.crafting.InfusionRecipe;
-import thaumcraft.api.potions.PotionFluxTaint;
-import thaumcraft.api.research.ResearchPage;
-import thaumcraft.common.config.ConfigItems;
 import WayofTime.alchemicalWizardry.api.alchemy.AlchemicalPotionCreationHandler;
 import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
 import WayofTime.alchemicalWizardry.api.bindingRegistry.BindingRegistry;
@@ -28,6 +19,15 @@ import fox.spiteful.forbidden.DarkResearchItem;
 import fox.spiteful.forbidden.LogHandler;
 import fox.spiteful.forbidden.items.ForbiddenItems;
 import fox.spiteful.forbidden.potions.DarkPotions;
+import thaumcraft.api.ItemApi;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.IArcaneRecipe;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.potions.PotionFluxTaint;
+import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigItems;
 
 public class BloodMagic {
 

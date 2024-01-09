@@ -16,14 +16,14 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 
-import thaumcraft.api.IRepairable;
-import thaumcraft.api.IWarpingGear;
-import thaumcraft.common.lib.utils.BlockUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.forbidden.Forbidden;
 import fox.spiteful.forbidden.enchantments.DarkEnchantments;
 import fox.spiteful.forbidden.items.ForbiddenItems;
+import thaumcraft.api.IRepairable;
+import thaumcraft.api.IWarpingGear;
+import thaumcraft.common.lib.utils.BlockUtils;
 
 public class ItemMorphShovel extends ItemSpade implements IRepairable, IWarpingGear {
 
