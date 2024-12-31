@@ -2,11 +2,11 @@
 
 dependencies {
     api('thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev')
-    api('com.github.GTNewHorizons:Baubles:1.0.3:dev')
+    api('com.github.GTNewHorizons:Baubles:1.0.4:dev')
 
-    compileOnly('com.github.GTNewHorizons:BloodMagic:1.4.3:dev')
-    compileOnly('com.github.GTNewHorizons:Botania:1.10.3-GTNH:api')
-    compileOnly("com.github.GTNewHorizons:AppleCore:3.2.12:dev")
+    compileOnly('com.github.GTNewHorizons:BloodMagic:1.7.0:dev')
+    compileOnly('com.github.GTNewHorizons:Botania:1.12.3-GTNH:api')
+    compileOnly("com.github.GTNewHorizons:AppleCore:3.3.4:dev")
 
 
     compileOnly('curse.maven:ee3-65509:2305023')
