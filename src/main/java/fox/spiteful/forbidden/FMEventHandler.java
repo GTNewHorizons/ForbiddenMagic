@@ -527,8 +527,9 @@ public class FMEventHandler {
                         ent.motionZ += (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.1F;
                     }
                 }
-                for (int x = 0; x < doses; x++) {
-                    ((ItemSubCollar) ForbiddenItems.subCollar).addVis(amulet, primals[randy.nextInt(6)], 1, true);
+                ItemSubCollar collar = ((ItemSubCollar) ForbiddenItems.subCollar);
+                for (int x = 0; x < Math.min(doses, event.entityLiving.getHealth()); x++) {
+                    collar.addVis(amulet, primals[randy.nextInt(6)], 1, true);
                 }
             }
         }
