@@ -528,7 +528,7 @@ public class FMEventHandler {
                     }
                 }
                 ItemSubCollar collar = ((ItemSubCollar) ForbiddenItems.subCollar);
-                for (int x = 0; x < Math.min(doses, event.entityLiving.getHealth()); x++) {
+                for (int x = 0; x < Math.min(doses, 3 * event.entityLiving.getHealth()); x++) {
                     collar.addVis(amulet, primals[randy.nextInt(6)], 1, true);
                 }
             }
