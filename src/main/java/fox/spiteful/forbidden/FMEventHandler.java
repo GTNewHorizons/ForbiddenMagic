@@ -512,7 +512,7 @@ public class FMEventHandler {
             EntityPlayer player = (EntityPlayer) event.entityLiving;
             ItemStack amulet = BaublesApi.getBaubles(player).getStackInSlot(0);
             if (amulet != null && amulet.getItem() == ForbiddenItems.subCollar) {
-                int doses = 3 * (int) event.ammount;
+                int doses = 3 * (int) Math.min(event.ammount, event.entityLiving.getHealth());
                 float max_doses = 3 * event.entityLiving.getHealth();
                 if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
                     EntityPlayer dom = (EntityPlayer) event.source.getEntity();
