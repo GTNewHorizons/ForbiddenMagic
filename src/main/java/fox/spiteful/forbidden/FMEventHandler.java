@@ -513,13 +513,11 @@ public class FMEventHandler {
             ItemStack amulet = BaublesApi.getBaubles(player).getStackInSlot(0);
             if (amulet != null && amulet.getItem() == ForbiddenItems.subCollar) {
                 int doses = 3 * (int) Math.min(event.ammount, event.entityLiving.getHealth());
-                float max_doses = 3 * event.entityLiving.getHealth();
                 if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
                     EntityPlayer dom = (EntityPlayer) event.source.getEntity();
                     int chance = 1;
                     if (dom.getHeldItem() != null && dom.getHeldItem().getItem() instanceof ItemRidingCrop) {
                         doses += 3;
-                        max_doses += 3;
                         chance += 3;
                     }
                     if (player.worldObj.provider.dimensionId == -1 && randy.nextInt(30) < chance) {
@@ -530,7 +528,7 @@ public class FMEventHandler {
                     }
                 }
                 ItemSubCollar collar = ((ItemSubCollar) ForbiddenItems.subCollar);
-                for (int x = 0; x < Math.min(doses, max_doses); x++) {
+                for (int x = 0; x < doses; x++) {
                     collar.addVis(amulet, primals[randy.nextInt(6)], 1, true);
                 }
             }
