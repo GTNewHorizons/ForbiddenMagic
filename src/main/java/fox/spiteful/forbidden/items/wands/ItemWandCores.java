@@ -56,11 +56,11 @@ public class ItemWandCores extends Item {
         }
 
         ItemStack wand = new ItemStack(ConfigItems.itemWandCasting, 1, 72);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("thaumium"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
         ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.WAND_ROD_TAINTED);
         list.add(wand);
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 72);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("thaumium"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_THAUMIUM);
         ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.WAND_ROD_INFERNAL);
         list.add(wand);
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 2000);
@@ -72,7 +72,7 @@ public class ItemWandCores extends Item {
         ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.STAFF_ROD_NEUTRONIUM);
         list.add(wand);
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 36);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("iron"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_IRON);
         ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.WAND_ROD_PROFANE);
         ((ItemWandCasting) wand.getItem()).storeAllVis(
                 wand,
@@ -114,12 +114,12 @@ public class ItemWandCores extends Item {
             list.add(wand);
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 1);
             ((ItemWandCasting) wand.getItem()).setCap(wand, ForbiddenItems.WAND_CAP_TERRASTEEL);
-            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("wood"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, ConfigItems.WAND_ROD_WOOD);
             list.add(wand);
         }
         if (Compat.ee3 && Config.crossWand) {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("void"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_VOID);
             ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.WAND_ROD_EQUIVALENT);
         }
         list.add(wand);
