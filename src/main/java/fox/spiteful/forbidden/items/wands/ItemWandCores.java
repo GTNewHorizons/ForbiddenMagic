@@ -16,8 +16,6 @@ import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.wands.WandCap;
-import thaumcraft.api.wands.WandRod;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
