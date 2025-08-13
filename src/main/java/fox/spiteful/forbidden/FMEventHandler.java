@@ -495,9 +495,9 @@ public class FMEventHandler {
             }
         }
 
-        if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
+        if (event.source.getEntity() instanceof EntityPlayer) {
             ItemStack equip = ((EntityPlayer) event.source.getEntity()).getCurrentEquippedItem();
-            if (equip != null && equip.getItem() instanceof ItemWandCasting) {
+            if (equip.getItem() instanceof ItemWandCasting) {
                 String capTag = ((ItemWandCasting) equip.getItem()).getCap(equip).getTag();
                 if (capTag.equals("alchemical") || capTag.equals("blood_iron")
                         && ((ItemWandCasting) equip.getItem()).getRod(equip).getTag().startsWith("blood")) {

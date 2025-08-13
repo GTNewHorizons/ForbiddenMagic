@@ -13,7 +13,7 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class BloodStaffUpdate implements IWandRodOnUpdate {
 
-    Aspect primals[] = Aspect.getPrimalAspects().toArray(new Aspect[0]);
+    Aspect[] primals = Aspect.getPrimalAspects().toArray(new Aspect[0]);
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
         if (Compat.bm && Config.crossWand && player.ticksExisted % 25 == 0) {
@@ -30,25 +30,23 @@ public class BloodStaffUpdate implements IWandRodOnUpdate {
 
                 cost = Math.max(0, cost);
 
-                for (int x = 0; x < primals.length; x++) {
+                for (Aspect primal : primals) {
                     int deficit = ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack)
-                            - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x]);
+                            - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primal);
                     if (deficit > 0) {
                         deficit = Math.min(deficit, 100);
                         if (player.capabilities.isCreativeMode)
-                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], 1, true);
+                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
                         else if (SoulNetworkHandler.syphonFromNetwork(itemstack, cost * deficit) > 0)
-                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], 1, true);
+                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
                         else if (syphonHealth(player)) {
-                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], 1, true);
+                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
                             return;
                         } else return;
                     }
                 }
 
-            } catch (Exception e) {
-                return;
-            }
+            } catch (Exception ignored) {}
         }
     }
 

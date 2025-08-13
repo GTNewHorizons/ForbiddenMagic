@@ -12,32 +12,29 @@ import vazkii.botania.api.mana.ManaItemHandler;
 
 public class YandereWandUpdate implements IWandRodOnUpdate {
 
-    Aspect primals[] = Aspect.getPrimalAspects().toArray(new Aspect[0]);
+    Aspect[] primals = Aspect.getPrimalAspects().toArray(new Aspect[0]);
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
         if (Compat.botan && Config.crossWand && player.ticksExisted % 40 == 0 && checkHotbar(itemstack, player)) {
             try {
                 int cost;
-                if (((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("manasteel")
-                        || ((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("elementium"))
-                    cost = Config.manavis - 2;
+                String capTag = ((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag();
+                if (capTag.equals("manasteel") || capTag.equals("elementium")) cost = Config.manavis - 2;
                 else cost = Config.manavis;
 
                 cost = Math.max(0, cost);
 
-                for (int x = 0; x < primals.length; x++) {
+                for (Aspect primal : primals) {
                     int deficit = ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack)
-                            - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x]);
+                            - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primal);
                     if (deficit > 0) {
                         deficit = Math.min(deficit, 100);
                         if (ManaItemHandler.requestManaExact(itemstack, player, cost * deficit, true))
-                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], 1, true);
+                            ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
                     }
                 }
 
-            } catch (Throwable e) {
-                return;
-            }
+            } catch (Throwable ignored) {}
         }
     }
 

@@ -9,16 +9,16 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class TaintedWandUpdate implements IWandRodOnUpdate {
 
-    Aspect primals[] = Aspect.getPrimalAspects().toArray(new Aspect[0]);
+    Aspect[] primals = Aspect.getPrimalAspects().toArray(new Aspect[0]);
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
         if (player.ticksExisted % 100 == 0
                 && player.worldObj.getBiomeGenForCoords((int) player.posX, (int) player.posZ).biomeID
                         == thaumcraft.common.config.Config.biomeTaintID) {
-            for (int x = 0; x < primals.length; x++) {
-                if (((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x])
+            for (Aspect primal : primals) {
+                if (((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primal)
                         < ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack) / 10) {
-                    ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], 1, true);
+                    ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
                 }
             }
         }

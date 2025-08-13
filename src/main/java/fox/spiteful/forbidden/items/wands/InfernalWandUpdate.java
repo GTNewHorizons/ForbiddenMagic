@@ -10,15 +10,15 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class InfernalWandUpdate implements IWandRodOnUpdate {
 
-    Aspect primals[] = { Aspect.ORDER, Aspect.ENTROPY, Aspect.AIR, Aspect.EARTH, Aspect.WATER };
+    Aspect[] primals = { Aspect.ORDER, Aspect.ENTROPY, Aspect.AIR, Aspect.EARTH, Aspect.WATER };
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
         if (player.ticksExisted % 100 == 0) {
             if (player.worldObj.provider.dimensionId == -1) {
-                for (int x = 0; x < primals.length; x++) {
-                    if (((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x])
+                for (Aspect primal : primals) {
+                    if (((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primal)
                             < ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack) / 10) {
-                        ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], 1, true);
+                        ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
                     }
                 }
             }
