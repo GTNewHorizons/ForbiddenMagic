@@ -24,7 +24,7 @@ public class ItemWandCores extends Item {
 
     public final String[] types = { "tainted", "infernal", "soul", "blood", "witchwood", "profane", "blood_inert",
             "livingwood", "livingwood_inert", "blood_staff", "witchwood_staff", "dreamwood", "dreamwood_inert",
-            "dreamwood_staff" };
+            "dreamwood_staff", "equivalent" };
     public IIcon[] icon;
 
     public ItemWandCores() {
@@ -116,9 +116,11 @@ public class ItemWandCores extends Item {
             ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("wood"));
             list.add(wand);
         }
-        wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("void"));
-        ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("equivalent"));
+        if (Compat.ee3 && Config.crossWand) {
+            wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
+            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("void"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("equivalent"));
+        }
         list.add(wand);
     }
 
