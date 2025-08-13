@@ -13,7 +13,6 @@ import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.WandCap;
-import thaumcraft.api.wands.WandRod;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
@@ -75,8 +74,8 @@ public class VillagerHereticManager implements IVillageTradeHandler {
                             new ItemStack(Items.glowstone_dust, 8 + random.nextInt(9))));
 
             ItemStack wand = new ItemStack(ConfigItems.itemWandCasting, 1, 36);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("iron"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("profane"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("iron"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.WAND_ROD_PROFANE);
             ((ItemWandCasting) wand.getItem()).storeAllVis(
                     wand,
                     new AspectList().add(Aspect.FIRE, 5000).add(Aspect.WATER, 5000).add(Aspect.EARTH, 5000)
