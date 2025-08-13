@@ -55,24 +55,24 @@ public class ItemWandCores extends Item {
         }
 
         ItemStack wand = new ItemStack(ConfigItems.itemWandCasting, 1, 72);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("thaumium"));
-        ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("tainted"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("thaumium"));
+        ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("tainted"));
         list.add(wand);
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 72);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("thaumium"));
-        ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("infernal"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("thaumium"));
+        ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("infernal"));
         list.add(wand);
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 2000);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("orichalcum"));
-        ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("neutronium"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("orichalcum"));
+        ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("neutronium"));
         list.add(wand);
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 2000);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("orichalcum"));
-        ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("neutronium_staff"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("orichalcum"));
+        ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("neutronium_staff"));
         list.add(wand);
         wand = new ItemStack(ConfigItems.itemWandCasting, 1, 36);
-        ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("iron"));
-        ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("profane"));
+        ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("iron"));
+        ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("profane"));
         ((ItemWandCasting) wand.getItem()).storeAllVis(
                 wand,
                 new AspectList().add(Aspect.FIRE, 5000).add(Aspect.WATER, 5000).add(Aspect.EARTH, 5000)
@@ -80,46 +80,46 @@ public class ItemWandCores extends Item {
         list.add(wand);
         if (Compat.bm && Config.crossWand) {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("alchemical"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("blood"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("alchemical"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("blood"));
             list.add(wand);
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 168);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("alchemical"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("blood_staff"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("alchemical"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("blood_staff"));
             list.add(wand);
         }
         if (Compat.am2 && Config.crossWand) {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 72);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("vinteum"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("witchwood"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("vinteum"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("witchwood"));
             list.add(wand);
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 144);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("vinteum"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("witchwood_staff"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("vinteum"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("witchwood_staff"));
             list.add(wand);
         }
         if (Compat.botan && Config.crossWand) {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("manasteel"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("livingwood"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("manasteel"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("livingwood"));
             list.add(wand);
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("elementium"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("dreamwood"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("elementium"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("dreamwood"));
             list.add(wand);
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 144);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("elementium"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("dreamwood_staff"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("elementium"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("dreamwood_staff"));
             list.add(wand);
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 1);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("terrasteel"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("wood"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("terrasteel"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("wood"));
             list.add(wand);
         }
         if (Compat.ee3 && Config.crossWand) {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
-            ((ItemWandCasting) wand.getItem()).setCap(wand, (WandCap) WandCap.caps.get("void"));
-            ((ItemWandCasting) wand.getItem()).setRod(wand, (WandRod) WandRod.rods.get("equivalent"));
+            ((ItemWandCasting) wand.getItem()).setCap(wand, WandCap.caps.get("void"));
+            ((ItemWandCasting) wand.getItem()).setRod(wand, WandRod.rods.get("equivalent"));
         }
         list.add(wand);
     }
