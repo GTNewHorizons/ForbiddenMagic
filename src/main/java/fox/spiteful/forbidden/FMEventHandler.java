@@ -498,7 +498,8 @@ public class FMEventHandler {
         if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
             ItemStack equip = ((EntityPlayer) event.source.getEntity()).getCurrentEquippedItem();
             if (equip != null && equip.getItem() instanceof ItemWandCasting) {
-                if (((ItemWandCasting) equip.getItem()).getCap(equip).getTag().equals("alchemical")
+                String capTag = ((ItemWandCasting) equip.getItem()).getCap(equip).getTag();
+                if (capTag.equals("alchemical") || capTag.equals("blood_iron")
                         && ((ItemWandCasting) equip.getItem()).getRod(equip).getTag().startsWith("blood")) {
                     event.entityLiving.addPotionEffect(new PotionEffect(Potion.weakness.id, 60, 2));
                 }
