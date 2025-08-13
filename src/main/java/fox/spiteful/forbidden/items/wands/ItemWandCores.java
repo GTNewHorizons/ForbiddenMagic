@@ -119,8 +119,8 @@ public class ItemWandCores extends Item {
             wand = new ItemStack(ConfigItems.itemWandCasting, 1, 84);
             ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_VOID);
             ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.WAND_ROD_EQUIVALENT);
+            list.add(wand);
         }
-        list.add(wand);
     }
 
     @Override
