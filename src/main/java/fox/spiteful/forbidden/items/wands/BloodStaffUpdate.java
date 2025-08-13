@@ -24,8 +24,7 @@ public class BloodStaffUpdate implements IWandRodOnUpdate {
 
                 int cost;
                 String capTag = ((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag();
-                if (capTag.equals("alchemical") || capTag.equals("blood_iron"))
-                    cost = Config.bloodvis - 1;
+                if (capTag.equals("alchemical") || capTag.equals("blood_iron")) cost = Config.bloodvis - 1;
                 else cost = Config.bloodvis;
 
                 cost = Math.max(0, cost);
