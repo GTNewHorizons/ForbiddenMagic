@@ -201,7 +201,7 @@ public class ForbiddenItems {
         WAND_ROD_EQUIVALENT = new WandRod(
                 "equivalent",
                 100,
-                new ItemStack(wandCore, 1, 11),
+                new ItemStack(wandCore, 1, 14),
                 12,
                 new ResourceLocation("forbidden", "textures/models/wand_rod_equivalent.png"));
         WAND_ROD_PROFANE = new WandRod(

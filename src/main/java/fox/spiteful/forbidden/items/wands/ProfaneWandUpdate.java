@@ -4,9 +4,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandRodOnUpdate;
-import thaumcraft.api.wands.WandRod;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
@@ -37,7 +37,7 @@ public class ProfaneWandUpdate implements IWandRodOnUpdate {
             }
 
             if (tag.getInteger("contract") <= 0) {
-                ((ItemWandCasting) itemstack.getItem()).setRod(itemstack, WandRod.rods.get("profaned"));
+                ((ItemWandCasting) itemstack.getItem()).setRod(itemstack, ForbiddenItems.WAND_ROD_PROFANED);
                 Thaumcraft.addStickyWarpToPlayer(player, 1);
                 player.worldObj.spawnParticle(
                         "largeexplode",
