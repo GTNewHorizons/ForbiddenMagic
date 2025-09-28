@@ -215,7 +215,7 @@ public class ForbiddenItems {
                 "profaned",
                 50,
                 new ItemStack(Blocks.bedrock, 1),
-                1000,
+                12,
                 new ResourceLocation("forbidden", "textures/models/wand_rod_profaned.png"));
         STAFF_ROD_BLOOD = new StaffRod(
                 "blood",
