@@ -16,7 +16,7 @@ public class ManaStaffUpdate extends ManaWandUpdate {
     }
 
     @Override
-    protected float getCost(boolean vinteumCaps) {
-        return vinteumCaps ? 0.5F : 1.0F;
+    protected float getCost(boolean hasVinteumCaps) {
+        return hasVinteumCaps ? 0.5F : 1.0F;
     }
 }

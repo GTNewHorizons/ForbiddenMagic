@@ -6,7 +6,9 @@ import net.minecraft.item.ItemStack;
 import WayofTime.alchemicalWizardry.api.soulNetwork.SoulNetworkHandler;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.wands.WandCap;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class BloodWandUpdate extends DarkWandRodOnUpdate {
@@ -18,8 +20,10 @@ public class BloodWandUpdate extends DarkWandRodOnUpdate {
         try {
             SoulNetworkHandler.checkAndSetItemOwner(itemstack, player);
 
-            String capTag = ((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag();
-            int cost = capTag.equals("alchemical") || capTag.equals("blood_iron") ? Config.bloodvis - 1
+            WandCap cap = ((ItemWandCasting) itemstack.getItem()).getCap(itemstack);
+            // "blood_iron" is the Blood Iron Infused Cap from Blood Arsenal
+            int cost = cap == ForbiddenItems.WAND_CAP_ALCHEMICAL || cap.getTag().equals("blood_iron")
+                    ? Config.bloodvis - 1
                     : Config.bloodvis;
 
             cost = Math.max(0, cost);

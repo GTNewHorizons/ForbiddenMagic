@@ -7,6 +7,7 @@ import am2.api.ArsMagicaApi;
 import am2.api.IExtendedProperties;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
@@ -21,7 +22,8 @@ public class ManaWandUpdate extends DarkWandRodOnUpdate {
             IExtendedProperties prop = ArsMagicaApi.instance.getExtendedProperties(player);
             if (prop == null || prop.getCurrentMana() <= 0) return;
 
-            float cost = getCost(((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("vinteum"));
+            float cost = getCost(
+                    ((ItemWandCasting) itemstack.getItem()).getCap(itemstack) == ForbiddenItems.WAND_CAP_VINTEUM);
             int maxVis = getMaxVis(itemstack);
             for (Aspect primal : primals) {
                 int deficit = maxVis - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primal);
@@ -37,7 +39,7 @@ public class ManaWandUpdate extends DarkWandRodOnUpdate {
         } catch (Exception ignored) {}
     }
 
-    protected float getCost(boolean vinteumCaps) {
-        return vinteumCaps ? 0.8F : 1.4F;
+    protected float getCost(boolean hasVinteumCaps) {
+        return hasVinteumCaps ? 0.8F : 1.4F;
     }
 }

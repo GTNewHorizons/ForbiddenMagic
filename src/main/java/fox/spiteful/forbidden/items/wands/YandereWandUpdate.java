@@ -5,7 +5,9 @@ import net.minecraft.item.ItemStack;
 
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.wands.WandCap;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import vazkii.botania.api.mana.ManaItemHandler;
 
@@ -19,8 +21,10 @@ public class YandereWandUpdate extends DarkWandRodOnUpdate {
         }
         try {
             int cost;
-            String capTag = ((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag();
-            cost = capTag.equals("manasteel") || capTag.equals("elementium") ? Config.manavis - 2 : Config.manavis;
+            WandCap cap = ((ItemWandCasting) itemstack.getItem()).getCap(itemstack);
+            cost = cap == ForbiddenItems.WAND_CAP_MANASTEEL || cap == ForbiddenItems.WAND_CAP_ELEMENTIUM
+                    ? Config.manavis - 2
+                    : Config.manavis;
 
             cost = Math.max(0, cost);
 
