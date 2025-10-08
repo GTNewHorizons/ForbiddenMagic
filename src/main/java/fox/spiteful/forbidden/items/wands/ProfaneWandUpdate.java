@@ -16,12 +16,13 @@ public class ProfaneWandUpdate extends DarkWandRodOnUpdate {
             return;
         }
         NBTTagCompound tag = itemstack.getTagCompound();
-        int contract = tag.getInteger("contract");
+        int contract;
         if (!tag.hasKey("contract")) {
             Thaumcraft.proxy.getResearchManager().completeResearch(player, "ROD_profane");
             contract = 25000;
-        } else if (contract <= 0) {
-            return;
+        } else {
+            contract = tag.getInteger("contract");
+            if (contract <= 0) return;
         }
 
         int maxVis = getMaxVis(itemstack);
