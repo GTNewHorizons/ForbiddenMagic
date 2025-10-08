@@ -495,12 +495,12 @@ public class FMEventHandler {
             }
         }
 
-        if (event.source.getEntity() instanceof EntityPlayer) {
-            ItemStack equip = ((EntityPlayer) event.source.getEntity()).getCurrentEquippedItem();
-            if (equip != null && equip.getItem() instanceof ItemWandCasting) {
-                String capTag = ((ItemWandCasting) equip.getItem()).getCap(equip).getTag();
-                if (capTag.equals("alchemical") || capTag.equals("blood_iron")
-                        && ((ItemWandCasting) equip.getItem()).getRod(equip).getTag().startsWith("blood")) {
+        if (event.source.getEntity() instanceof EntityPlayer player) {
+            ItemStack equip = player.getCurrentEquippedItem();
+            if (equip != null && equip.getItem() instanceof ItemWandCasting wand) {
+                String capTag = wand.getCap(equip).getTag();
+                if ((capTag.equals("alchemical") || capTag.equals("blood_iron"))
+                        && wand.getRod(equip).getTag().startsWith("blood")) {
                     event.entityLiving.addPotionEffect(new PotionEffect(Potion.weakness.id, 60, 2));
                 }
             }
