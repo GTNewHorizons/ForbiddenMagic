@@ -12,7 +12,9 @@ import vazkii.botania.api.mana.ManaItemHandler;
 public class YandereWandUpdate extends DarkWandRodOnUpdate {
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
-        if (!Compat.botan || !Config.crossWand || player.ticksExisted % 40 != 0 || !checkHotbar(itemstack, player)) {
+        if (!Compat.botan || !Config.crossWand
+                || player.ticksExisted % regenTimer() != 0
+                || !checkHotbar(itemstack, player)) {
             return;
         }
         try {
@@ -33,5 +35,10 @@ public class YandereWandUpdate extends DarkWandRodOnUpdate {
                     ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
             }
         } catch (Exception ignored) {}
+    }
+
+    @Override
+    protected int regenTimer() {
+        return 40;
     }
 }

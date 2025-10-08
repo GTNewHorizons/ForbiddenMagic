@@ -12,7 +12,7 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 public class BloodWandUpdate extends DarkWandRodOnUpdate {
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
-        if (!Compat.bm || !Config.crossWand || player.ticksExisted % 100 != 0) {
+        if (!Compat.bm || !Config.crossWand || player.ticksExisted % regenTimer() != 0) {
             return;
         }
         try {

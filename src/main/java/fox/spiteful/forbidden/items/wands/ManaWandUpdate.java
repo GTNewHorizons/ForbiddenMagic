@@ -13,7 +13,7 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 public class ManaWandUpdate extends DarkWandRodOnUpdate {
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
-        if (!Compat.am2 || !Config.crossWand || player.ticksExisted % 100 != 0) {
+        if (!Compat.am2 || !Config.crossWand || player.ticksExisted % regenTimer() != 0) {
             return;
         }
 
@@ -21,8 +21,7 @@ public class ManaWandUpdate extends DarkWandRodOnUpdate {
             IExtendedProperties prop = ArsMagicaApi.instance.getExtendedProperties(player);
             if (prop == null || prop.getCurrentMana() <= 0) return;
 
-            float cost = ((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("vinteum") ? 0.8F
-                    : 1.4F;
+            float cost = getCost(((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("vinteum"));
             int maxVis = getMaxVis(itemstack);
             for (Aspect primal : primals) {
                 int deficit = maxVis - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primal);
@@ -36,5 +35,9 @@ public class ManaWandUpdate extends DarkWandRodOnUpdate {
                 }
             }
         } catch (Exception ignored) {}
+    }
+
+    protected float getCost(boolean vinteumCaps) {
+        return vinteumCaps ? 0.8F : 1.4F;
     }
 }

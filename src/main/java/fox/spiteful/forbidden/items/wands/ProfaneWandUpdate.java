@@ -12,7 +12,7 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 public class ProfaneWandUpdate extends DarkWandRodOnUpdate {
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
-        if (player.ticksExisted % 20 != 0) {
+        if (player.ticksExisted % regenTimer() != 0) {
             return;
         }
         NBTTagCompound tag = itemstack.getTagCompound();
@@ -53,5 +53,10 @@ public class ProfaneWandUpdate extends DarkWandRodOnUpdate {
 
         tag.setInteger("contract", contract);
         itemstack.setTagCompound(tag);
+    }
+
+    @Override
+    protected int regenTimer() {
+        return 20;
     }
 }

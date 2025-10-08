@@ -22,4 +22,11 @@ public abstract class DarkWandRodOnUpdate implements IWandRodOnUpdate {
         }
         return false;
     }
+
+    /**
+     * The number of ticks between when the wand core regenerates vis
+     */
+    protected int regenTimer() {
+        return 100;
+    }
 }

@@ -12,7 +12,7 @@ public class InfernalWandUpdate extends DarkWandRodOnUpdate {
     static final Aspect[] primals = { Aspect.ORDER, Aspect.ENTROPY, Aspect.AIR, Aspect.EARTH, Aspect.WATER };
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
-        if (player.ticksExisted % 100 == 0) {
+        if (player.ticksExisted % regenTimer() == 0) {
             int maxVis = getMaxVis(itemstack);
             if (player.worldObj.provider.dimensionId == -1) {
                 for (Aspect primal : primals) {

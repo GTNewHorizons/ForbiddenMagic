@@ -10,7 +10,7 @@ import thaumcraft.common.items.wands.ItemWandCasting;
 public class TaintedWandUpdate extends DarkWandRodOnUpdate {
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
-        if (player.ticksExisted % 100 != 0 || player.worldObj.getBiomeGenForCoords(
+        if (player.ticksExisted % regenTimer() != 0 || player.worldObj.getBiomeGenForCoords(
                 MathHelper.floor_double(player.posX),
                 MathHelper.floor_double(player.posZ)).biomeID != thaumcraft.common.config.Config.biomeTaintID) {
             return;
