@@ -7,41 +7,39 @@ import am2.api.ArsMagicaApi;
 import am2.api.IExtendedProperties;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.items.ForbiddenItems;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
-public class ManaWandUpdate implements IWandRodOnUpdate {
-
-    Aspect primals[] = Aspect.getPrimalAspects().toArray(new Aspect[0]);
+public class ManaWandUpdate extends DarkWandRodOnUpdate {
 
     public void onUpdate(ItemStack itemstack, EntityPlayer player) {
-        if (Compat.am2 && Config.crossWand) {
-            if (player.ticksExisted % 100 == 0) {
-
-                try {
-                    IExtendedProperties prop = ArsMagicaApi.instance.getExtendedProperties(player);
-
-                    float cost;
-                    if (((ItemWandCasting) itemstack.getItem()).getCap(itemstack).getTag().equals("vinteum"))
-                        cost = 0.8F;
-                    else cost = 1.4F;
-
-                    if (prop == null || prop.getCurrentMana() <= 0) return;
-
-                    for (int x = 0; x < primals.length; x++) {
-                        int deficit = ((ItemWandCasting) itemstack.getItem()).getMaxVis(itemstack)
-                                - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primals[x]);
-                        if (deficit > 0) {
-                            deficit = Math.min(deficit, 100);
-                            if (prop.getCurrentMana() > cost * deficit) {
-                                prop.setCurrentMana(prop.getCurrentMana() - cost * deficit);
-                                ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primals[x], 1, true);
-                            }
-                        }
-                    }
-                } catch (Throwable e) {}
-            }
+        if (!Compat.am2 || !Config.crossWand || player.ticksExisted % regenTimer() != 0) {
+            return;
         }
+
+        try {
+            IExtendedProperties prop = ArsMagicaApi.instance.getExtendedProperties(player);
+            if (prop == null || prop.getCurrentMana() <= 0) return;
+
+            float cost = getCost(
+                    ((ItemWandCasting) itemstack.getItem()).getCap(itemstack) == ForbiddenItems.WAND_CAP_VINTEUM);
+            int maxVis = getMaxVis(itemstack);
+            for (Aspect primal : primals) {
+                int deficit = maxVis - ((ItemWandCasting) itemstack.getItem()).getVis(itemstack, primal);
+                if (deficit <= 0) {
+                    continue;
+                }
+                deficit = Math.min(deficit, 100);
+                if (prop.getCurrentMana() > cost * deficit) {
+                    prop.setCurrentMana(prop.getCurrentMana() - cost * deficit);
+                    ((ItemWandCasting) itemstack.getItem()).addVis(itemstack, primal, 1, true);
+                }
+            }
+        } catch (Exception ignored) {}
+    }
+
+    protected float getCost(boolean hasVinteumCaps) {
+        return hasVinteumCaps ? 0.8F : 1.4F;
     }
 }

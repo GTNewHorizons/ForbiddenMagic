@@ -68,6 +68,7 @@ import fox.spiteful.forbidden.items.tools.ItemTaintPickaxe;
 import fox.spiteful.forbidden.potions.DarkPotions;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.entities.ITaintedMob;
+import thaumcraft.api.wands.WandCap;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.utils.Utils;
@@ -481,7 +482,7 @@ public class FMEventHandler {
 
             ItemStack wand = ((EntityPlayer) event.entityLiving).getCurrentEquippedItem();
             if (event.source.getDamageType().equals("taint")
-                    && ((ItemWandCasting) wand.getItem()).getRod(wand).getTag().equals("tainted")) {
+                    && ((ItemWandCasting) wand.getItem()).getRod(wand) == ForbiddenItems.WAND_ROD_TAINTED) {
 
                 for (int x = 0; x < 3; x++) {
                     ((ItemWandCasting) wand.getItem()).addVis(wand, primals[randy.nextInt(6)], 1, true);
@@ -489,17 +490,19 @@ public class FMEventHandler {
             }
 
             if ((event.source.getDamageType().equals("wither") || event.source.isFireDamage())
-                    && ((ItemWandCasting) wand.getItem()).getRod(wand).getTag().equals("infernal")) {
+                    && ((ItemWandCasting) wand.getItem()).getRod(wand) == ForbiddenItems.WAND_ROD_INFERNAL) {
 
                 event.setCanceled(true);
             }
         }
 
-        if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
-            ItemStack equip = ((EntityPlayer) event.source.getEntity()).getCurrentEquippedItem();
-            if (equip != null && equip.getItem() instanceof ItemWandCasting) {
-                if (((ItemWandCasting) equip.getItem()).getCap(equip).getTag().equals("alchemical")
-                        && ((ItemWandCasting) equip.getItem()).getRod(equip).getTag().startsWith("blood")) {
+        if (event.source.getEntity() instanceof EntityPlayer player) {
+            ItemStack equip = player.getCurrentEquippedItem();
+            if (equip != null && equip.getItem() instanceof ItemWandCasting wand) {
+                WandCap cap = wand.getCap(equip);
+                // "blood_iron" is the Blood Iron Infused Cap from Blood Arsenal
+                if ((cap == ForbiddenItems.WAND_CAP_ALCHEMICAL || cap.getTag().equals("blood_iron"))
+                        && wand.getRod(equip).getTag().startsWith("blood")) {
                     event.entityLiving.addPotionEffect(new PotionEffect(Potion.weakness.id, 60, 2));
                 }
             }
