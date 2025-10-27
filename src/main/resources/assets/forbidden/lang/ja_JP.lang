@@ -105,8 +105,7 @@ enchantment.impact=衝撃
 potion.blood_seal=Blood Seal
 #
 # Tooltips
-tooltip.currentowner=現在の所有者: 
-tooltip.divineorb=Stores raw Life Essence
+tooltip.currentowner=現在の所有者:
 tooltip.creativeonly=クリエイティブ限定
 tooltip.collar.owner=所有者: 
 #
