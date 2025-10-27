@@ -139,7 +139,6 @@ forbidden.upgrade.pandemonium.text=This upgrade teleports all surrounding enemie
 #
 # Tooltips
 tooltip.currentowner=Current owner:
-tooltip.divineorb.capacity=Capacity: %,d LP
 tooltip.creativeonly=Creative Only
 tooltip.collar.owner=Owner:
 #
