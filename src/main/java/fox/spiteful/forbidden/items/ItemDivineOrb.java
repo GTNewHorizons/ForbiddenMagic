@@ -37,14 +37,10 @@ public class ItemDivineOrb extends Item implements IBloodOrb, IBindable, IWarpin
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
-        list.add(StatCollector.translateToLocal("tooltip.divineorb"));
-
-        if (!(stack.stackTagCompound == null)) {
-            list.add(
-                    StatCollector.translateToLocal("tooltip.currentowner") + " "
-                            + stack.stackTagCompound.getString("ownerName"));
-        }
+    public void addInformation(ItemStack item, EntityPlayer player, List<String> tooltip, boolean advanced) {
+        tooltip.add(StatCollector.translateToLocal("tooltip.energybattery.desc"));
+        tooltip.add(StatCollector.translateToLocalFormatted("tooltip.energybattery.capacity", getMaxEssence()));
+        addBindingInformation(item, tooltip);
     }
 
     @Override
