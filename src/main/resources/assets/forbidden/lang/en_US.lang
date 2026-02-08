@@ -199,7 +199,7 @@ forbidden.research_page.TAINTPICK.1=By infusing a thaumium pickaxe with taint, y
 #
 forbidden.research_name.ROD_tainted=Tainted Wand Core
 forbidden.research_text.ROD_tainted=Squiggly vis storage
-forbidden.research_page.ROD_tainted.1=Tainted Lands are places of great and terrible power for those Thaumaturges who know how to tap into them.<BR><BR>The Tainted Wand Core can store up to 150 vis of each type and slowly replenishes itself up to 10% in every aspect as long as it is being held inside of a Tainted Land.  While the wand is held in your hand, it can also feed off of taint coursing through your veins, randomly restoring vis every time you take damage from flux taint.
+forbidden.research_page.ROD_tainted.1=Tainted Lands are places of great and terrible power for those Thaumaturges who know how to tap into them.<BR><BR>The Tainted Wand Core can store up to %d vis of each type and slowly replenishes itself up to 10% in every aspect as long as it is being held inside of a Tainted Land.  While the wand is held in your hand, it can also feed off of taint coursing through your veins, randomly restoring vis every time you take damage from flux taint.
 #
 forbidden.research_name.TAINTTREE=Tainted Tree
 forbidden.research_text.TAINTTREE=The root of flux bears gross fruit

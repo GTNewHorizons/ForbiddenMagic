@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.items.ForbiddenItems;
+import net.minecraft.util.StatCollector;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -478,7 +479,7 @@ public class ForbiddenResearch {
                 3,
                 new ItemStack(ForbiddenItems.wandCore, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_tainted.1"),
+                                new ResearchPage[] { new ResearchPage(StatCollector.translateToLocalFormatted("forbidden.research_page.ROD_tainted.1", Config.taintedCoreCap)),
                                         new ResearchPage((InfusionRecipe) recipes.get("WandRodTainted")) })
                         .setParents(new String[] { "ROD_silverwood", "TAINTSHOVEL", "INFUSION" }).setConcealed()
                         .registerResearchItem();

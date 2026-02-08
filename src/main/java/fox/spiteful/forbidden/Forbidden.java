@@ -1,5 +1,8 @@
 package fox.spiteful.forbidden;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.IReloadableResourceManager;
+import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -88,5 +91,12 @@ public class Forbidden {
         wandLord = new WandOverlord();
         WandTriggerRegistry.registerWandBlockTrigger(wandLord, 1, Blocks.obsidian, 0);
         WandTriggerRegistry.registerWandBlockTrigger(wandLord, 1, Blocks.netherrack, 0);
+
+        if (Minecraft.getMinecraft().getResourceManager() instanceof IReloadableResourceManager manager) {
+            manager.registerReloadListener(
+                    (IResourceManager manager2) -> {
+                        ForbiddenResearch.addResearch();
+                    });
+        }
     }
 }
