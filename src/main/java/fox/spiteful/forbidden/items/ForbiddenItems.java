@@ -150,14 +150,14 @@ public class ForbiddenItems {
         GameRegistry.registerItem(wandCap, "WandCaps");
         WAND_ROD_TAINTED = new WandRod(
                 "tainted",
-                150,
+                Config.taintedCoreCap,
                 new ItemStack(wandCore, 1, 0),
                 12,
                 new TaintedWandUpdate(),
                 new ResourceLocation("forbidden", "textures/models/wand_rod_tainted.png"));
         WAND_ROD_INFERNAL = new WandRod(
                 "infernal",
-                150,
+                Config.infernalCoreCap,
                 new ItemStack(wandCore, 1, 1),
                 12,
                 new InfernalWandUpdate(),
@@ -172,28 +172,28 @@ public class ForbiddenItems {
         WAND_ROD_NEUTRONIUM.setGlowing(true);
         WAND_ROD_BLOOD = new WandRod(
                 "blood",
-                100,
+                Config.bloodCoreCap,
                 new ItemStack(wandCore, 1, 3),
                 12,
                 new BloodWandUpdate(),
                 new ResourceLocation("forbidden", "textures/models/wand_rod_blood.png"));
         WAND_ROD_WITCHWOOD = new WandRod(
                 "witchwood",
-                100,
+                Config.witchwoodCoreCap,
                 new ItemStack(wandCore, 1, 4),
                 12,
                 new ManaWandUpdate(),
                 new ResourceLocation("forbidden", "textures/models/wand_rod_witchwood.png"));
         WAND_ROD_LIVINGWOOD = new WandRod(
                 "livingwood",
-                100,
+                Config.livingwoodCoreCap,
                 new ItemStack(wandCore, 1, 7),
                 12,
                 new YandereWandUpdate(),
                 new ResourceLocation("forbidden", "textures/models/wand_rod_livingwood.png"));
         WAND_ROD_DREAMWOOD = new WandRod(
                 "dreamwood",
-                100,
+                Config.dreamwoodCoreCap,
                 new ItemStack(wandCore, 1, 11),
                 12,
                 new YandereWandUpdate(),
@@ -206,7 +206,7 @@ public class ForbiddenItems {
                 new ResourceLocation("forbidden", "textures/models/wand_rod_equivalent.png"));
         WAND_ROD_PROFANE = new WandRod(
                 "profane",
-                50,
+                Config.profaneCoreCap,
                 new ItemStack(wandCore, 1, 5),
                 12,
                 new ProfaneWandUpdate(),
@@ -219,7 +219,7 @@ public class ForbiddenItems {
                 new ResourceLocation("forbidden", "textures/models/wand_rod_profaned.png"));
         STAFF_ROD_BLOOD = new StaffRod(
                 "blood",
-                50,
+                Config.bloodStaffCap,
                 new ItemStack(wandCore, 1, 9),
                 24,
                 new BloodStaffUpdate(),
@@ -234,14 +234,14 @@ public class ForbiddenItems {
         STAFF_ROD_NEUTRONIUM.setGlowing(true);
         STAFF_ROD_WITCHWOOD = new StaffRod(
                 "witchwood",
-                50,
+                Config.witchwoodStaffCap,
                 new ItemStack(wandCore, 1, 10),
                 24,
                 new ManaStaffUpdate(),
                 new ResourceLocation("forbidden", "textures/models/wand_rod_witchwood.png"));
         STAFF_ROD_DREAMWOOD = new StaffRod(
                 "dreamwood",
-                250,
+                Config.dreamwoodStaffCap,
                 new ItemStack(wandCore, 1, 13),
                 25,
                 new YandereWandUpdate(),
@@ -255,33 +255,33 @@ public class ForbiddenItems {
                 new ResourceLocation("forbidden", "textures/models/wand_cap_orichalcum.png"));
         WAND_CAP_ALCHEMICAL = new DarkWandCap(
                 "alchemical",
-                0.9F,
+                (float) (Config.alchemicalDiscount) / 100F,
                 Arrays.asList(new Aspect[] { Aspect.WATER }),
-                0.8F,
+                (float) (Config.vinteumDiscount) - .10F,
                 new ItemStack(wandCap, 1, 0),
                 7,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_alchemical.png"));
         WAND_CAP_VINTEUM = new DarkWandCap(
                 "vinteum",
-                0.9F,
+                (float) (Config.vinteumDiscount),
                 new ItemStack(wandCap, 1, 1),
                 6,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_vinteum.png"));
         WAND_CAP_MANASTEEL = new DarkWandCap(
                 "manasteel",
-                0.9F,
+                (float) (Config.manasteelDiscount),
                 new ItemStack(wandCap, 1, 3),
                 6,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_manasteel.png"));
         WAND_CAP_ELEMENTIUM = new DarkWandCap(
                 "elementium",
-                0.8F,
+                (float) (Config.elementiumDiscount),
                 new ItemStack(wandCap, 1, 5),
                 9,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_elementium.png"));
         WAND_CAP_TERRASTEEL = new DarkWandCap(
                 "terrasteel",
-                1.8F,
+                (float) (Config.terrasteelDiscount),
                 new ItemStack(wandCap, 1, 2),
                 1,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_terrasteel.png"));
