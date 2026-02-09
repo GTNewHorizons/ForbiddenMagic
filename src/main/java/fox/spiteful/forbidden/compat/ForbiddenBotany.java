@@ -14,6 +14,8 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import org.apache.logging.log4j.Level;
 
+import com.gtnewhorizon.gtnhlib.api.thaumcraft.FormattedResearchPage;
+
 import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.Config;
@@ -123,9 +125,13 @@ public class ForbiddenBotany {
                         1,
                         2,
                         2,
-                        new ItemStack(ForbiddenItems.wandCap, 1, 3))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CAP_manasteel.1"),
-                                        new ResearchPage(manasteel_cap) })
+                        new ItemStack(ForbiddenItems.wandCap, 1, 3)))
+                                .setPages(
+                                        new ResearchPage[] {
+                                                new FormattedResearchPage(
+                                                        "forbidden.research_page.CAP_manasteel.1",
+                                                        new Double[] { Config.manasteelDiscount * 100 }),
+                                                new ResearchPage(manasteel_cap) })
                                 .setParents(new String[] { "ROD_livingwood" }).setSecondary().setConcealed()
                                 .registerResearchItem();
                 BotaniaAPI.registerManaInfusionRecipe(

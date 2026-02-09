@@ -91,12 +91,5 @@ public class Forbidden {
         wandLord = new WandOverlord();
         WandTriggerRegistry.registerWandBlockTrigger(wandLord, 1, Blocks.obsidian, 0);
         WandTriggerRegistry.registerWandBlockTrigger(wandLord, 1, Blocks.netherrack, 0);
-
-        if (Minecraft.getMinecraft().getResourceManager() instanceof IReloadableResourceManager manager) {
-            manager.registerReloadListener(
-                    (IResourceManager manager2) -> {
-                        ForbiddenResearch.addResearch();
-                    });
-        }
     }
 }

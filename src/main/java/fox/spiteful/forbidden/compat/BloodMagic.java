@@ -8,6 +8,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.logging.log4j.Level;
 
+import com.gtnewhorizon.gtnhlib.api.thaumcraft.FormattedResearchPage;
+
 import WayofTime.alchemicalWizardry.api.alchemy.AlchemicalPotionCreationHandler;
 import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
 import WayofTime.alchemicalWizardry.api.bindingRegistry.BindingRegistry;
@@ -91,11 +93,13 @@ public class BloodMagic {
                         -1,
                         -3,
                         3,
-                        new ItemStack(ForbiddenItems.wandCore, 1, 3)))
-                                .setPages(
-                                        new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_blood.1"),
-                                                new ResearchPage(blood_recipe),
-                                                new ResearchPage("forbidden.research_page.ROD_blood.2") })
+                        new ItemStack(ForbiddenItems.wandCore, 1, 3))).setPages(
+                                new ResearchPage[] {
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_blood.1",
+                                                new Integer[] { Config.bloodCoreCap }),
+                                        new ResearchPage(blood_recipe),
+                                        new ResearchPage("forbidden.research_page.ROD_blood.2") })
                                 .setParents(new String[] { "ROD_silverwood", "INFUSION", "BLOODMAGIC" }).setConcealed()
                                 .registerResearchItem();
                 ThaumcraftApi.addWarpToResearch("ROD_blood", 2);
@@ -116,9 +120,13 @@ public class BloodMagic {
                         -3,
                         -2,
                         2,
-                        new ItemStack(ForbiddenItems.wandCore, 1, 9))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_blood_staff.1"),
-                                        new ResearchPage(blood_staff) })
+                        new ItemStack(ForbiddenItems.wandCore, 1, 9)))
+                                .setPages(
+                                        new ResearchPage[] {
+                                                new FormattedResearchPage(
+                                                        "forbidden.research_page.ROD_blood_staff.1",
+                                                        new Integer[] { Config.bloodStaffCap }),
+                                                new ResearchPage(blood_staff) })
                                 .setParents(new String[] { "ROD_silverwood_staff", "ROD_blood" }).setSpecial()
                                 .setConcealed().registerResearchItem();
 
@@ -138,9 +146,14 @@ public class BloodMagic {
                         -3,
                         -3,
                         2,
-                        new ItemStack(ForbiddenItems.wandCap, 1, 0))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CAP_alchemical.1"),
-                                        new ResearchPage(alchemical_recipe) })
+                        new ItemStack(ForbiddenItems.wandCap, 1, 0)))
+                                .setPages(
+                                        new ResearchPage[] {
+                                                new FormattedResearchPage(
+                                                        "forbidden.research_page.CAP_alchemical.1",
+                                                        new Double[] { Config.alchemicalDiscount * 100 - 10,
+                                                                Config.alchemicalDiscount * 100 }),
+                                                new ResearchPage(alchemical_recipe) })
                                 .setParents(new String[] { "ROD_blood", "CAP_gold" }).setSecondary().setConcealed()
                                 .registerResearchItem();
             }

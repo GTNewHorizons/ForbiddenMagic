@@ -7,6 +7,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.logging.log4j.Level;
 
+import com.gtnewhorizon.gtnhlib.api.thaumcraft.FormattedResearchPage;
 import com.pahimar.ee3.api.exchange.EnergyValueRegistryProxy;
 
 import cpw.mods.fml.common.Loader;
@@ -166,9 +167,13 @@ public class Compat {
                         -3,
                         1,
                         3,
-                        new ItemStack(ForbiddenItems.wandCore, 1, 4))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_witchwood.1"),
-                                        new ResearchPage(witchwood_recipe) })
+                        new ItemStack(ForbiddenItems.wandCore, 1, 4)))
+                                .setPages(
+                                        new ResearchPage[] {
+                                                new FormattedResearchPage(
+                                                        "forbidden.research_page.ROD_witchwood.1",
+                                                        new Integer[] { Config.witchwoodCoreCap }),
+                                                new ResearchPage(witchwood_recipe) })
                                 .setParents(new String[] { "SCHOOLS", "ROD_silverwood", "INFUSION" }).setConcealed()
                                 .registerResearchItem();
                 ThaumcraftApi.addWarpToResearch("ROD_witchwood", 2);
@@ -191,7 +196,11 @@ public class Compat {
                         1,
                         new ItemStack(ForbiddenItems.wandCap, 1, 1)))
                                 .setPages(
-                                        new ResearchPage[] { new ResearchPage("forbidden.research_page.CAP_vinteum.1"),
+                                        new ResearchPage[] {
+                                                new FormattedResearchPage(
+                                                        "forbidden.research_page.CAP_vinteum.1",
+                                                        new Double[] { Config.vinteumDiscount * 100 - 10,
+                                                                Config.vinteumDiscount * 100 }),
                                                 new ResearchPage(vinteum_recipe) })
                                 .setParents(new String[] { "ROD_witchwood", "CAP_thaumium" }).setSecondary()
                                 .setConcealed().registerResearchItem();
@@ -212,9 +221,13 @@ public class Compat {
                         -3,
                         -1,
                         2,
-                        new ItemStack(ForbiddenItems.wandCore, 1, 10))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_witchwood_staff.1"),
-                                        new ResearchPage(witchwood_staff) })
+                        new ItemStack(ForbiddenItems.wandCore, 1, 10)))
+                                .setPages(
+                                        new ResearchPage[] {
+                                                new FormattedResearchPage(
+                                                        "forbidden.research_page.ROD_witchwood_staff.1",
+                                                        new Integer[] { Config.witchwoodStaffCap }),
+                                                new ResearchPage(witchwood_staff) })
                                 .setParents(new String[] { "ROD_silverwood_staff", "ROD_witchwood" }).setSpecial()
                                 .setConcealed().registerResearchItem();
             } catch (Exception e) {

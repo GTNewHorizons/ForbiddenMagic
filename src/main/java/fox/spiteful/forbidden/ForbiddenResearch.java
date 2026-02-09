@@ -7,10 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 
+import com.gtnewhorizon.gtnhlib.api.thaumcraft.FormattedResearchPage;
+
 import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.items.ForbiddenItems;
-import net.minecraft.util.StatCollector;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -297,7 +298,10 @@ public class ForbiddenResearch {
                 3,
                 new ItemStack(ForbiddenItems.wandCore, 1, 1)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_infernal.1"),
+                                new ResearchPage[] {
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_infernal.1",
+                                                new Integer[] { Config.infernalCoreCap }),
                                         new ResearchPage((InfusionRecipe) recipes.get("WandRodInfernal")),
                                         new ResearchPage("forbidden.research_page.ROD_infernal.2") })
                         .setParents(new String[] { "ROD_silverwood", "INFUSION", "NETHERSHARDS" }).setConcealed()
@@ -479,7 +483,10 @@ public class ForbiddenResearch {
                 3,
                 new ItemStack(ForbiddenItems.wandCore, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage(StatCollector.translateToLocalFormatted("forbidden.research_page.ROD_tainted.1", Config.taintedCoreCap)),
+                                new ResearchPage[] {
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_tainted.1",
+                                                new Integer[] { Config.taintedCoreCap }),
                                         new ResearchPage((InfusionRecipe) recipes.get("WandRodTainted")) })
                         .setParents(new String[] { "ROD_silverwood", "TAINTSHOVEL", "INFUSION" }).setConcealed()
                         .registerResearchItem();
