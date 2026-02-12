@@ -257,7 +257,7 @@ public class ForbiddenItems {
                 "alchemical",
                 (float) (Config.alchemicalDiscount) / 100F,
                 Arrays.asList(new Aspect[] { Aspect.WATER }),
-                (float) (Config.vinteumDiscount) - .10F,
+                (float) (Config.alchemicalDiscount) - .10F,
                 new ItemStack(wandCap, 1, 0),
                 7,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_alchemical.png"));
