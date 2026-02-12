@@ -202,7 +202,7 @@ public class ForbiddenBotany {
                         3,
                         4,
                         new ItemStack(ForbiddenItems.wandCap, 1, 5))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CAP_elementium.1"),
+                                new ResearchPage[] { new FormattedResearchPage("forbidden.research_page.CAP_elementium.1", new Double[] {Config.elementiumDiscount * 100}),
                                         new ResearchPage(elementium_cap_inert), new ResearchPage(elementium_cap) })
                                 .setParents(new String[] { "ROD_dreamwood_staff" }).setConcealed()
                                 .registerResearchItem();
