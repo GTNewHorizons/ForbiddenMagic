@@ -60,9 +60,8 @@ public class BloodMagic {
                     -1,
                     0,
                     new ResourceLocation("alchemicalwizardry", "textures/items/SacrificialDagger.png")))
-                            .setPages(new ResearchPage[] { new ResearchPage("forbidden.research_page.BLOODMAGIC.1") })
-                            .setParents(new String[] { "SCHOOLS" }).setRound().setStub().setAutoUnlock()
-                            .registerResearchItem();
+                            .setPages(new ResearchPage("forbidden.research_page.BLOODMAGIC.1")).setParents("SCHOOLS")
+                            .setRound().setStub().setAutoUnlock().registerResearchItem();
 
             if (Config.crossWand) {
 
@@ -93,14 +92,14 @@ public class BloodMagic {
                         -1,
                         -3,
                         3,
-                        new ItemStack(ForbiddenItems.wandCore, 1, 3))).setPages(
-                                new ResearchPage[] {
+                        new ItemStack(ForbiddenItems.wandCore, 1, 3)))
+                                .setPages(
                                         new FormattedResearchPage(
                                                 "forbidden.research_page.ROD_blood.1",
                                                 new Integer[] { Config.bloodCoreCap }),
                                         new ResearchPage(blood_recipe),
-                                        new ResearchPage("forbidden.research_page.ROD_blood.2") })
-                                .setParents(new String[] { "ROD_silverwood", "INFUSION", "BLOODMAGIC" }).setConcealed()
+                                        new ResearchPage("forbidden.research_page.ROD_blood.2"))
+                                .setParents("ROD_silverwood", "INFUSION", "BLOODMAGIC").setConcealed()
                                 .registerResearchItem();
                 ThaumcraftApi.addWarpToResearch("ROD_blood", 2);
 
@@ -109,9 +108,13 @@ public class BloodMagic {
                         new ItemStack(ForbiddenItems.wandCore, 1, 9),
                         (new AspectList()).add(Aspect.ENTROPY, 26).add(Aspect.FIRE, 26).add(Aspect.WATER, 26)
                                 .add(Aspect.AIR, 26).add(Aspect.EARTH, 26).add(Aspect.ORDER, 26),
-                        new Object[] { "__D", "_B_", "B__", Character.valueOf('B'),
-                                new ItemStack(ForbiddenItems.wandCore, 1, 3), Character.valueOf('D'),
-                                new ItemStack(demonShard) });
+                        "__D",
+                        "_B_",
+                        "B__",
+                        'B',
+                        new ItemStack(ForbiddenItems.wandCore, 1, 3),
+                        Character.valueOf('D'),
+                        new ItemStack(demonShard));
                 (new DarkResearchItem(
                         "ROD_blood_staff",
                         "FORBIDDEN",
@@ -122,13 +125,12 @@ public class BloodMagic {
                         2,
                         new ItemStack(ForbiddenItems.wandCore, 1, 9)))
                                 .setPages(
-                                        new ResearchPage[] {
-                                                new FormattedResearchPage(
-                                                        "forbidden.research_page.ROD_blood_staff.1",
-                                                        new Integer[] { Config.bloodStaffCap }),
-                                                new ResearchPage(blood_staff) })
-                                .setParents(new String[] { "ROD_silverwood_staff", "ROD_blood" }).setSpecial()
-                                .setConcealed().registerResearchItem();
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_blood_staff.1",
+                                                new Integer[] { Config.bloodStaffCap }),
+                                        new ResearchPage(blood_staff))
+                                .setParents("ROD_silverwood_staff", "ROD_blood").setSpecial().setConcealed()
+                                .registerResearchItem();
 
                 InfusionRecipe alchemical_recipe = ThaumcraftApi.addInfusionCraftingRecipe(
                         "CAP_alchemical",
@@ -148,13 +150,12 @@ public class BloodMagic {
                         2,
                         new ItemStack(ForbiddenItems.wandCap, 1, 0)))
                                 .setPages(
-                                        new ResearchPage[] {
-                                                new FormattedResearchPage(
-                                                        "forbidden.research_page.CAP_alchemical.1",
-                                                        new Double[] { Config.alchemicalDiscount * 100 - 10,
-                                                                Config.alchemicalDiscount * 100 }),
-                                                new ResearchPage(alchemical_recipe) })
-                                .setParents(new String[] { "ROD_blood", "CAP_gold" }).setSecondary().setConcealed()
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.CAP_alchemical.1",
+                                                new Double[] { Config.alchemicalDiscount * 100 - 10,
+                                                        Config.alchemicalDiscount * 100 }),
+                                        new ResearchPage(alchemical_recipe))
+                                .setParents("ROD_blood", "CAP_gold").setSecondary().setConcealed()
                                 .registerResearchItem();
             }
 
@@ -162,8 +163,10 @@ public class BloodMagic {
                     "BLOODWELL",
                     new ItemStack(ForbiddenItems.bloodwell, 1, 0),
                     (new AspectList()).add(Aspect.WATER, 10).add(Aspect.EARTH, 10),
-                    new Object[] { new ItemStack(Items.feather, 1, 0), new ItemStack(bloodBucket, 1, 0),
-                            new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(crapOrb, 1, 0) });
+                    new ItemStack(Items.feather, 1, 0),
+                    new ItemStack(bloodBucket, 1, 0),
+                    new ItemStack(Items.glass_bottle, 1, 0),
+                    new ItemStack(crapOrb, 1, 0));
             (new DarkResearchItem(
                     "BLOODWELL",
                     "FORBIDDEN",
@@ -174,9 +177,9 @@ public class BloodMagic {
                     1,
                     new ItemStack(ForbiddenItems.bloodwell, 1, 0)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.BLOODWELL.1"),
-                                            new ResearchPage(bloodwell_recipe) })
-                            .setParents(new String[] { "BLOODMAGIC" }).registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.BLOODWELL.1"),
+                                    new ResearchPage(bloodwell_recipe))
+                            .setParents("BLOODMAGIC").registerResearchItem();
 
             InfusionRecipe blood_rapier = ThaumcraftApi.addInfusionCraftingRecipe(
                     "BLOODRAPIER",
@@ -199,10 +202,9 @@ public class BloodMagic {
                     3,
                     new ItemStack(ForbiddenItems.bloodRapier, 1, 0)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.BLOODRAPIER.1"),
-                                            new ResearchPage(blood_rapier) })
-                            .setParents(new String[] { "BLOODMAGIC", "INFUSION", "VOIDMETAL" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.BLOODRAPIER.1"),
+                                    new ResearchPage(blood_rapier))
+                            .setParents("BLOODMAGIC", "INFUSION", "VOIDMETAL").setConcealed().registerResearchItem();
             ThaumcraftApi.addWarpToResearch("BLOODRAPIER", 2);
             ThaumcraftApi.addWarpToItem(new ItemStack(ForbiddenItems.bloodRapier), 2);
 
@@ -231,10 +233,10 @@ public class BloodMagic {
                     4,
                     new ItemStack(ForbiddenItems.bloodOrb, 1, 0)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.ELDRITCHORB.1"),
-                                            new ResearchPage(eldritch_orb) })
-                            .setParents(new String[] { "BLOODMAGIC", "INFUSION", "PRIMPEARL", "VOIDMETAL" })
-                            .setConcealed().setSpecial().registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.ELDRITCHORB.1"),
+                                    new ResearchPage(eldritch_orb))
+                            .setParents("BLOODMAGIC", "INFUSION", "PRIMPEARL", "VOIDMETAL").setConcealed().setSpecial()
+                            .registerResearchItem();
             ThaumcraftApi.addWarpToResearch("ELDRITCHORB", 3);
             ThaumcraftApi.addWarpToItem(new ItemStack(ForbiddenItems.bloodOrb), 5);
 
