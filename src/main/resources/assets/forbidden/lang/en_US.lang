@@ -199,7 +199,7 @@ forbidden.research_page.TAINTPICK.1=By infusing a thaumium pickaxe with taint, y
 #
 forbidden.research_name.ROD_tainted=Tainted Wand Core
 forbidden.research_text.ROD_tainted=Squiggly vis storage
-forbidden.research_page.ROD_tainted.1=Tainted Lands are places of great and terrible power for those Thaumaturges who know how to tap into them.<BR><BR>The Tainted Wand Core can store up to %d vis of each type and slowly replenishes itself up to 10% in every aspect as long as it is being held inside of a Tainted Land.  While the wand is held in your hand, it can also feed off of taint coursing through your veins, randomly restoring vis every time you take damage from flux taint.
+forbidden.research_page.ROD_tainted.1=Tainted Lands are places of great and terrible power for those Thaumaturges who know how to tap into them.<BR><BR>The Tainted Wand Core can store up to %d vis of each type and slowly replenishes itself up to 10%% in every aspect as long as it is being held inside of a Tainted Land.  While the wand is held in your hand, it can also feed off of taint coursing through your veins, randomly restoring vis every time you take damage from flux taint.
 #
 forbidden.research_name.TAINTTREE=Tainted Tree
 forbidden.research_text.TAINTTREE=The root of flux bears gross fruit
@@ -211,7 +211,7 @@ forbidden.research_page.TAINTSTONE.1=Tainted Lands aren't very safe places to be
 #
 forbidden.research_name.ROD_infernal=Infernal Wand Core
 forbidden.research_text.ROD_infernal=Devilish vis storage
-forbidden.research_page.ROD_infernal.1=A great and powerful thaumaturge like you deserves a powerful and imposing wand befitting your station. Some hippy silverwood wand just won't cut it. You need a wand that will serve as your scepter of authority.<BR><BR>You've discovered a way to create a wand infused with the power of the Nether.  The Infernal Wand Core can hold up to %s vis and will slowly replenish its supply of Ignis up to 20%.  While within the Nether, the wand will also replenish its other aspects to 10%.
+forbidden.research_page.ROD_infernal.1=A great and powerful thaumaturge like you deserves a powerful and imposing wand befitting your station. Some hippy silverwood wand just won't cut it. You need a wand that will serve as your scepter of authority.<BR><BR>You've discovered a way to create a wand infused with the power of the Nether.  The Infernal Wand Core can hold up to %s vis and will slowly replenish its supply of Ignis up to 20%%.  While within the Nether, the wand will also replenish its other aspects to 10%%.
 forbidden.research_page.ROD_infernal.2=The wand also imbues you with some protection from the Nether's hazards, extinguishing you if you are on fire or protecting you from the effects of Withering as long as it is in your inventory.  While the wand is held in your hand, it will completely protect you from all fire damage.
 #
 forbidden.research_name.ROD_profane=Profane Wand
@@ -249,11 +249,11 @@ forbidden.research_page.ROD_dreamwood_staff.1=Livingwood is a useful material, b
 #
 forbidden.research_name.CAP_alchemical=Alchemical Caps
 forbidden.research_text.CAP_alchemical=When Thaumium isn't bloody enough
-forbidden.research_page.CAP_alchemical.1=You've developed a wand cap that merges Thaumaturgy and Alchemical Wizardry.  Alchemical Caps are very effective at channeling Aqua, only using %s% of the normal vis cost.  For everything else, they offer only a %s% rate.<BR><BR>If combined with a Bloody Wand Core, Alchemical Caps discount the amount of LP consumed by the wand, costing only 900 LP per vis.  The caps also cause all attacks from a blood wand to inflict Weakness.
+forbidden.research_page.CAP_alchemical.1=You've developed a wand cap that merges Thaumaturgy and Alchemical Wizardry.  Alchemical Caps are very effective at channeling Aqua, only using %s%% of the normal vis cost.  For everything else, they offer only a %s%% rate.<BR><BR>If combined with a Bloody Wand Core, Alchemical Caps discount the amount of LP consumed by the wand, costing only 900 LP per vis.  The caps also cause all attacks from a blood wand to inflict Weakness.
 #
 forbidden.research_name.CAP_vinteum=Vinteum Caps
 forbidden.research_text.CAP_vinteum=Magical wand caps
-forbidden.research_page.CAP_vinteum.1=By infusing a Thaumium cap with Vinteum, you create a cap that, when combined with a Witchwood Wand Core, lowers its mana cost to only %s% per point of vis.<BR><BR>The Thaumium cap seems to meld well with Vinteum, offering the same %s% vis rate.
+forbidden.research_page.CAP_vinteum.1=By infusing a Thaumium cap with Vinteum, you create a cap that, when combined with a Witchwood Wand Core, lowers its mana cost to only %s%% per point of vis.<BR><BR>The Thaumium cap seems to meld well with Vinteum, offering the same %s%% vis rate.
 #
 forbidden.research_name.CAP_soul=Ender Caps
 forbidden.research_text.CAP_soul=Protection for your soul
@@ -261,7 +261,7 @@ forbidden.research_page.CAP_soul.1=You've created a wand cap that can safely cha
 #
 forbidden.research_name.CAP_manasteel=Manasteel Caps
 forbidden.research_text.CAP_manasteel=The secret of mana
-forbidden.research_page.CAP_manasteel.1=Manasteel has very useful properties when it comes to mana manipulation. When crafted into a wand cap, it offers a %s% vis rate. If combined with a wand that can consume mana, it also makes the mana conversion process more efficient.<BR><BR>In order to be used in the creation of a wand, the Inert Manasteel Caps must be infused in a Mana Pool.
+forbidden.research_page.CAP_manasteel.1=Manasteel has very useful properties when it comes to mana manipulation. When crafted into a wand cap, it offers a %s%% vis rate. If combined with a wand that can consume mana, it also makes the mana conversion process more efficient.<BR><BR>In order to be used in the creation of a wand, the Inert Manasteel Caps must be infused in a Mana Pool.
 #
 forbidden.research_name.CAP_elementium=Elementium Caps
 forbidden.research_text.CAP_elementium=Eco Friendly Wand Caps
