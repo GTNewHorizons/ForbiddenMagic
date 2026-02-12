@@ -213,7 +213,7 @@ public class ForbiddenItems {
                 new ResourceLocation("forbidden", "textures/models/wand_rod_profane.png"));
         WAND_ROD_PROFANED = new WandRod(
                 "profaned",
-                50,
+                Config.profaneCoreCap,
                 new ItemStack(Blocks.bedrock, 1),
                 12,
                 new ResourceLocation("forbidden", "textures/models/wand_rod_profaned.png"));
