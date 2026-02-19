@@ -2,7 +2,7 @@
 
 dependencies {
     api('thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev')
-    api('com.github.GTNewHorizons:Baubles:1.0.4:dev')
+    api("com.github.GTNewHorizons:Baubles-Expanded:2.2.6-GTNH")
 
     compileOnly('com.github.GTNewHorizons:BloodMagic:1.8.5:dev')
     compileOnly('com.github.GTNewHorizons:Botania:1.13.4-GTNH:api')
@@ -10,4 +10,15 @@ dependencies {
 
 
     compileOnly('curse.maven:ee3-65509:2305023')
+
+    // deps may transitively add Baubles, so we replace it
+    project.getConfigurations()
+            .all(c -> {
+                final DependencySubstitutions ds = c.getResolutionStrategy()
+                        .getDependencySubstitution();
+                ds.substitute(ds.module("com.github.GTNewHorizons:Baubles"))
+                        .using(ds.module("com.github.GTNewHorizons:Baubles-Expanded:2.2.6-GTNH"))
+                        .withClassifier("dev")
+                        .because("Baubles-Expanded replaces Baubles");
+            });
 }
