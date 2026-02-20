@@ -1,5 +1,7 @@
 package fox.spiteful.forbidden.items.tools;
 
+import static fox.spiteful.forbidden.items.ForbiddenItems.isEffective;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,7 +17,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -161,7 +162,7 @@ public class ItemMorphPickaxe extends ItemPickaxe implements IRepairable, IWarpi
             return super.onBlockDestroyed(stack, world, block, x, y, z, player);
         if (!player.worldObj.isRemote) {
             int meta = world.getBlockMetadata(x, y, z);
-            if (isEffective(stack, block, meta)) {
+            if (isEffective(stack, block, meta, materials)) {
                 for (int aa = -1; aa <= 1; ++aa) {
                     for (int bb = -1; bb <= 1; ++bb) {
                         int xx = 0;
@@ -183,7 +184,7 @@ public class ItemMorphPickaxe extends ItemPickaxe implements IRepairable, IWarpi
                             Block bl = world.getBlock(x + xx, y + yy, z + zz);
                             meta = world.getBlockMetadata(x + xx, y + yy, z + zz);
                             if (bl.getBlockHardness(world, x + xx, y + yy, z + zz) >= 0.0F
-                                    && isEffective(stack, bl, meta)) {
+                                    && isEffective(stack, bl, meta, materials)) {
                                 stack.damageItem(1, player);
                                 BlockUtils.harvestBlock(world, (EntityPlayer) player, x + xx, y + yy, z + zz, true, 2);
                             }
@@ -196,13 +197,4 @@ public class ItemMorphPickaxe extends ItemPickaxe implements IRepairable, IWarpi
         return super.onBlockDestroyed(stack, world, block, x, y, z, player);
     }
 
-    public boolean isEffective(ItemStack stack, Block block, int meta) {
-        if (ForgeHooks.isToolEffective(stack, block, meta)) {
-            return true;
-        } else {
-            Material material = block.getMaterial();
-            for (Material m : materials) if (m == material) return true;
-        }
-        return false;
-    }
 }
