@@ -1,6 +1,9 @@
 package fox.spiteful.forbidden.items.tools;
 
+import static fox.spiteful.forbidden.items.ForbiddenItems.isEffective;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -14,7 +17,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,6 +31,9 @@ public class ItemMorphShovel extends ItemSpade implements IRepairable, IWarpingG
 
     public IIcon[] icon;
     int side;
+
+    static Material[] materials = { Material.grass, Material.ground, Material.sand, Material.snow, Material.craftedSnow,
+            Material.clay };
 
     public ItemMorphShovel(ToolMaterial enumtoolmaterial) {
         super(enumtoolmaterial);
@@ -152,7 +157,7 @@ public class ItemMorphShovel extends ItemSpade implements IRepairable, IWarpingG
             return super.onBlockDestroyed(stack, world, block, x, y, z, player);
         if (!player.worldObj.isRemote) {
             int meta = world.getBlockMetadata(x, y, z);
-            if (ForgeHooks.isToolEffective(stack, block, meta)) {
+            if (isEffective(stack, block, meta, materials)) {
                 for (int aa = -1; aa <= 1; ++aa) {
                     for (int bb = -1; bb <= 1; ++bb) {
                         int xx = 0;
@@ -174,7 +179,7 @@ public class ItemMorphShovel extends ItemSpade implements IRepairable, IWarpingG
                             Block bl = world.getBlock(x + xx, y + yy, z + zz);
                             meta = world.getBlockMetadata(x + xx, y + yy, z + zz);
                             if (bl.getBlockHardness(world, x + xx, y + yy, z + zz) >= 0.0F
-                                    && ForgeHooks.isToolEffective(stack, bl, meta)) {
+                                    && isEffective(stack, bl, meta, materials)) {
                                 stack.damageItem(1, player);
                                 BlockUtils.harvestBlock(world, (EntityPlayer) player, x + xx, y + yy, z + zz, true, 2);
                             }
