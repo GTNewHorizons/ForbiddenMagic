@@ -2,11 +2,14 @@ package fox.spiteful.forbidden.items;
 
 import java.util.Arrays;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.oredict.OreDictionary;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -344,5 +347,15 @@ public class ForbiddenItems {
             FocusUpgradeType.types = temp;
         }
         return new FocusUpgradeType(id, icon, name, text, aspects);
+    }
+
+    public static boolean isEffective(ItemStack stack, Block block, int meta, Material[] materials) {
+        if (ForgeHooks.isToolEffective(stack, block, meta)) {
+            return true;
+        } else {
+            Material material = block.getMaterial();
+            for (Material m : materials) if (m == material) return true;
+        }
+        return false;
     }
 }
