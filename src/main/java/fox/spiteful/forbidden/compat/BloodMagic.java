@@ -113,7 +113,7 @@ public class BloodMagic {
                         "B__",
                         'B',
                         new ItemStack(ForbiddenItems.wandCore, 1, 3),
-                        Character.valueOf('D'),
+                        'D',
                         new ItemStack(demonShard));
                 (new DarkResearchItem(
                         "ROD_blood_staff",

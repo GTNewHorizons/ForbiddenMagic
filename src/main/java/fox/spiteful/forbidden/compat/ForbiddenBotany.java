@@ -302,10 +302,14 @@ public class ForbiddenBotany {
                     whisperweed,
                     (new AspectList()).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10)
                             .add(Aspect.AIR, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
-                    (Object) new ItemStack[] { new ItemStack(Blocks.tallgrass, 1, 1), new ItemStack(resource, 1, 2),
-                            new ItemStack(resource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 9),
-                            new ItemStack(petal, 1, 7), new ItemStack(petal, 1, 10), new ItemStack(rune, 1, 14),
-                            new ItemStack(ConfigItems.itemResource, 1, 6) });
+                    new ItemStack(Blocks.tallgrass, 1, 1),
+                    new ItemStack(resource, 1, 2),
+                    new ItemStack(resource, 1, 6),
+                    new ItemStack(ConfigItems.itemResource, 1, 9),
+                    new ItemStack(petal, 1, 7),
+                    new ItemStack(petal, 1, 10),
+                    new ItemStack(rune, 1, 14),
+                    new ItemStack(ConfigItems.itemResource, 1, 6));
             (new DarkResearchItem(
                     "WHISPERWEED",
                     "FORBIDDEN",

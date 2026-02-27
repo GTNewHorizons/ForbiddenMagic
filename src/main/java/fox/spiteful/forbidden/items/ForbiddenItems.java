@@ -1,6 +1,6 @@
 package fox.spiteful.forbidden.items;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -258,33 +258,33 @@ public class ForbiddenItems {
                 new ResourceLocation("forbidden", "textures/models/wand_cap_orichalcum.png"));
         WAND_CAP_ALCHEMICAL = new DarkWandCap(
                 "alchemical",
-                (float) (Config.alchemicalDiscount) / 100F,
-                Arrays.asList(new Aspect[] { Aspect.WATER }),
-                (float) (Config.alchemicalDiscount) - .10F,
+                (float) Config.alchemicalDiscount,
+                Collections.singletonList(Aspect.WATER),
+                (float) Config.alchemicalDiscount - .10F,
                 new ItemStack(wandCap, 1, 0),
                 7,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_alchemical.png"));
         WAND_CAP_VINTEUM = new DarkWandCap(
                 "vinteum",
-                (float) (Config.vinteumDiscount),
+                (float) Config.vinteumDiscount,
                 new ItemStack(wandCap, 1, 1),
                 6,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_vinteum.png"));
         WAND_CAP_MANASTEEL = new DarkWandCap(
                 "manasteel",
-                (float) (Config.manasteelDiscount),
+                (float) Config.manasteelDiscount,
                 new ItemStack(wandCap, 1, 3),
                 6,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_manasteel.png"));
         WAND_CAP_ELEMENTIUM = new DarkWandCap(
                 "elementium",
-                (float) (Config.elementiumDiscount),
+                (float) Config.elementiumDiscount,
                 new ItemStack(wandCap, 1, 5),
                 9,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_elementium.png"));
         WAND_CAP_TERRASTEEL = new DarkWandCap(
                 "terrasteel",
-                (float) (Config.terrasteelDiscount),
+                (float) Config.terrasteelDiscount,
                 new ItemStack(wandCap, 1, 2),
                 1,
                 new ResourceLocation("forbidden", "textures/models/wand_cap_terrasteel.png"));

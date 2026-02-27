@@ -62,7 +62,7 @@ public class Compat {
                 try {
                     kami = Class.forName("thaumic.tinkerer.common.core.handler.ConfigHandler").getField("enableKami")
                             .getBoolean(null);
-                } catch (Exception e) {}
+                } catch (Exception ignored) {}
             }
 
             if (kami) {
@@ -142,8 +142,8 @@ public class Compat {
 
         if (Config.crossWand && am2) {
             try {
-                Class amItems = Class.forName("am2.items.ItemsCommonProxy");
-                Class amBlocks = Class.forName("am2.blocks.BlocksCommonProxy");
+                Class<?> amItems = Class.forName("am2.items.ItemsCommonProxy");
+                Class<?> amBlocks = Class.forName("am2.blocks.BlocksCommonProxy");
                 Item essence = (Item) (amItems.getField("essence").get(null));
                 Item amOre = (Item) (amItems.getField("itemOre").get(null));
                 Block witchwood = (Block) (amBlocks.getField("witchwoodLog").get(null));
@@ -169,12 +169,11 @@ public class Compat {
                         3,
                         new ItemStack(ForbiddenItems.wandCore, 1, 4)))
                                 .setPages(
-                                        new ResearchPage[] {
-                                                new FormattedResearchPage(
-                                                        "forbidden.research_page.ROD_witchwood.1",
-                                                        new Integer[] { Config.witchwoodCoreCap }),
-                                                new ResearchPage(witchwood_recipe) })
-                                .setParents(new String[] { "SCHOOLS", "ROD_silverwood", "INFUSION" }).setConcealed()
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_witchwood.1",
+                                                new Integer[] { Config.witchwoodCoreCap }),
+                                        new ResearchPage(witchwood_recipe))
+                                .setParents("SCHOOLS", "ROD_silverwood", "INFUSION").setConcealed()
                                 .registerResearchItem();
                 ThaumcraftApi.addWarpToResearch("ROD_witchwood", 2);
 
@@ -196,23 +195,26 @@ public class Compat {
                         1,
                         new ItemStack(ForbiddenItems.wandCap, 1, 1)))
                                 .setPages(
-                                        new ResearchPage[] {
-                                                new FormattedResearchPage(
-                                                        "forbidden.research_page.CAP_vinteum.1",
-                                                        new Double[] { Config.vinteumDiscount * 100 - 10,
-                                                                Config.vinteumDiscount * 100 }),
-                                                new ResearchPage(vinteum_recipe) })
-                                .setParents(new String[] { "ROD_witchwood", "CAP_thaumium" }).setSecondary()
-                                .setConcealed().registerResearchItem();
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.CAP_vinteum.1",
+                                                new Double[] { Config.vinteumDiscount * 100 - 10,
+                                                        Config.vinteumDiscount * 100 }),
+                                        new ResearchPage(vinteum_recipe))
+                                .setParents("ROD_witchwood", "CAP_thaumium").setSecondary().setConcealed()
+                                .registerResearchItem();
 
                 IArcaneRecipe witchwood_staff = ThaumcraftApi.addArcaneCraftingRecipe(
                         "ROD_witchwood_staff",
                         new ItemStack(ForbiddenItems.wandCore, 1, 10),
                         (new AspectList()).add(Aspect.ENTROPY, 26).add(Aspect.FIRE, 26).add(Aspect.WATER, 26)
                                 .add(Aspect.AIR, 26).add(Aspect.EARTH, 26).add(Aspect.ORDER, 26),
-                        new Object[] { "__D", "_B_", "B__", Character.valueOf('B'),
-                                new ItemStack(ForbiddenItems.wandCore, 1, 4), Character.valueOf('D'),
-                                new ItemStack(essence, 1, 10) });
+                        "__D",
+                        "_B_",
+                        "B__",
+                        'B',
+                        new ItemStack(ForbiddenItems.wandCore, 1, 4),
+                        'D',
+                        new ItemStack(essence, 1, 10));
                 (new DarkResearchItem(
                         "ROD_witchwood_staff",
                         "FORBIDDEN",
@@ -223,13 +225,12 @@ public class Compat {
                         2,
                         new ItemStack(ForbiddenItems.wandCore, 1, 10)))
                                 .setPages(
-                                        new ResearchPage[] {
-                                                new FormattedResearchPage(
-                                                        "forbidden.research_page.ROD_witchwood_staff.1",
-                                                        new Integer[] { Config.witchwoodStaffCap }),
-                                                new ResearchPage(witchwood_staff) })
-                                .setParents(new String[] { "ROD_silverwood_staff", "ROD_witchwood" }).setSpecial()
-                                .setConcealed().registerResearchItem();
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_witchwood_staff.1",
+                                                new Integer[] { Config.witchwoodStaffCap }),
+                                        new ResearchPage(witchwood_staff))
+                                .setParents("ROD_silverwood_staff", "ROD_witchwood").setSpecial().setConcealed()
+                                .registerResearchItem();
             } catch (Exception e) {
                 LogHandler.log(Level.INFO, e, "Forbidden Magic was slain by a Hecate.");
                 am2 = false;
