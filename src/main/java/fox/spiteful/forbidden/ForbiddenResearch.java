@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 
+import com.gtnewhorizon.gtnhlib.api.thaumcraft.FormattedResearchPage;
+
 import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.items.ForbiddenItems;
@@ -42,9 +44,9 @@ public class ForbiddenResearch {
                 1,
                 new ItemStack(ForbiddenItems.crystalwell, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CRYSTALWELL.1"),
-                                        new ResearchPage((IArcaneRecipe) recipes.get("Crystalwell")) })
-                        .setParents(new String[] { "RESEARCH" }).registerResearchItem();
+                                new ResearchPage("forbidden.research_page.CRYSTALWELL.1"),
+                                new ResearchPage((IArcaneRecipe) recipes.get("Crystalwell")))
+                        .setParents("RESEARCH").registerResearchItem();
         else(new DarkResearchItem(
                 "CRYSTALWELL",
                 "FORBIDDEN",
@@ -54,9 +56,9 @@ public class ForbiddenResearch {
                 1,
                 new ItemStack(ForbiddenItems.crystalwell, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CRYSTALWELL.1b"),
-                                        new ResearchPage((IArcaneRecipe) recipes.get("Crystalwell")) })
-                        .setParents(new String[] { "RESEARCH" }).registerResearchItem();
+                                new ResearchPage("forbidden.research_page.CRYSTALWELL.1b"),
+                                new ResearchPage((IArcaneRecipe) recipes.get("Crystalwell")))
+                        .setParents("RESEARCH").registerResearchItem();
 
         (new DarkResearchItem(
                 "PRIMEWELL",
@@ -67,9 +69,9 @@ public class ForbiddenResearch {
                 1,
                 new ItemStack(ForbiddenItems.primewell, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.PRIMEWELL.1"),
-                                        new ResearchPage((IArcaneRecipe) recipes.get("Primewell")) })
-                        .setParents(new String[] { "PRIMPEARL" }).setConcealed().registerResearchItem();
+                                new ResearchPage("forbidden.research_page.PRIMEWELL.1"),
+                                new ResearchPage((IArcaneRecipe) recipes.get("Primewell")))
+                        .setParents("PRIMPEARL").setConcealed().registerResearchItem();
         if (Config.emeraldTrans) (new DarkResearchItem(
                 "TRANSEMERALD",
                 "FORBIDDEN",
@@ -79,9 +81,9 @@ public class ForbiddenResearch {
                 3,
                 new ItemStack(ForbiddenItems.resource, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.TRANSEMERALD.1"),
-                                        new ResearchPage((CrucibleRecipe) recipes.get("TransEmerald")) })
-                        .setSecondary().setConcealed().setParents(new String[] { "TRANSGOLD" }).registerResearchItem();
+                                new ResearchPage("forbidden.research_page.TRANSEMERALD.1"),
+                                new ResearchPage((CrucibleRecipe) recipes.get("TransEmerald")))
+                        .setSecondary().setConcealed().setParents("TRANSGOLD").registerResearchItem();
         (new DarkResearchItem(
                 "BLACKFLOWER",
                 "FORBIDDEN",
@@ -91,10 +93,10 @@ public class ForbiddenResearch {
                 1,
                 new ItemStack(ForbiddenBlocks.blackFlower, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.BLACKFLOWER.1"),
-                                        new ResearchPage((CrucibleRecipe) recipes.get("BlackFlower")),
-                                        new ResearchPage((IRecipe) recipes.get("BlackInk")) })
-                        .setAspectTriggers(new Aspect[] { Aspect.SENSES }).registerResearchItem();
+                                new ResearchPage("forbidden.research_page.BLACKFLOWER.1"),
+                                new ResearchPage((CrucibleRecipe) recipes.get("BlackFlower")),
+                                new ResearchPage((IRecipe) recipes.get("BlackInk")))
+                        .setAspectTriggers(Aspect.SENSES).registerResearchItem();
         (new DarkResearchItem(
                 "RIDINGCROP",
                 "FORBIDDEN",
@@ -104,8 +106,8 @@ public class ForbiddenResearch {
                 0,
                 new ItemStack(ForbiddenItems.ridingCrop)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.RIDINGCROP.1"),
-                                        new ResearchPage((IRecipe) recipes.get("RidingCrop")) })
+                                new ResearchPage("forbidden.research_page.RIDINGCROP.1"),
+                                new ResearchPage((IRecipe) recipes.get("RidingCrop")))
                         .setStub().setRound().setAutoUnlock().registerResearchItem();
 
         if (Config.enchanting) {
@@ -118,10 +120,9 @@ public class ForbiddenResearch {
                     1,
                     new ResourceLocation("forbidden", "textures/misc/consuming.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.CONSUMING.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Consuming")) })
-                            .setParents(new String[] { "INFUSIONENCHANTMENT" }).setSecondary().setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.CONSUMING.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Consuming")))
+                            .setParents("INFUSIONENCHANTMENT").setSecondary().setConcealed().registerResearchItem();
             (new DarkResearchItem(
                     "EDUCATIONAL",
                     "FORBIDDEN",
@@ -131,10 +132,9 @@ public class ForbiddenResearch {
                     2,
                     new ResourceLocation("forbidden", "textures/misc/educational.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.EDUCATIONAL.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Educational")) })
-                            .setParents(new String[] { "INFUSIONENCHANTMENT" }).setSecondary().setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.EDUCATIONAL.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Educational")))
+                            .setParents("INFUSIONENCHANTMENT").setSecondary().setConcealed().registerResearchItem();
         }
 
         if (Compat.botan || Compat.bm || Compat.am2) (new DarkResearchItem(
@@ -144,8 +144,7 @@ public class ForbiddenResearch {
                 -1,
                 1,
                 0,
-                new ItemStack(Blocks.enchanting_table)))
-                        .setPages(new ResearchPage[] { new ResearchPage("forbidden.research_page.SCHOOLS.1") })
+                new ItemStack(Blocks.enchanting_table))).setPages(new ResearchPage("forbidden.research_page.SCHOOLS.1"))
                         .setRound().setStub().setAutoUnlock().registerResearchItem();
     }
 
@@ -159,9 +158,9 @@ public class ForbiddenResearch {
                 0,
                 new ItemStack(ForbiddenItems.deadlyShards, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.NETHERSHARDS.1"),
-                                        new ResearchPage("forbidden.research_page.NETHERSHARDS.2"),
-                                        new ResearchPage("forbidden.research_page.NETHERSHARDS.3") })
+                                new ResearchPage("forbidden.research_page.NETHERSHARDS.1"),
+                                new ResearchPage("forbidden.research_page.NETHERSHARDS.2"),
+                                new ResearchPage("forbidden.research_page.NETHERSHARDS.3"))
                         .setStub().setRound().setAutoUnlock().registerResearchItem();
         else(new DarkResearchItem(
                 "NETHERSHARDS",
@@ -172,9 +171,9 @@ public class ForbiddenResearch {
                 0,
                 new ItemStack(ForbiddenItems.deadlyShards, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.NETHERSHARDS.1"),
-                                        new ResearchPage("forbidden.research_page.NETHERSHARDS.2b"),
-                                        new ResearchPage("forbidden.research_page.NETHERSHARDS.3") })
+                                new ResearchPage("forbidden.research_page.NETHERSHARDS.1"),
+                                new ResearchPage("forbidden.research_page.NETHERSHARDS.2b"),
+                                new ResearchPage("forbidden.research_page.NETHERSHARDS.3"))
                         .setStub().setRound().setAutoUnlock().registerResearchItem();
 
         (new DarkResearchItem(
@@ -184,11 +183,9 @@ public class ForbiddenResearch {
                 -8,
                 -8,
                 1,
-                new ItemStack(Blocks.fire)))
-                        .setPages(new ResearchPage[] { new ResearchPage("forbidden.research_page.HELLFIRE.1") })
-                        .setRound().registerResearchItem().setHidden()
-                        .setAspectTriggers(new Aspect[] { DarkAspects.NETHER })
-                        .setParents(new String[] { "NETHERSHARDS" });
+                new ItemStack(Blocks.fire))).setPages(new ResearchPage("forbidden.research_page.HELLFIRE.1")).setRound()
+                        .registerResearchItem().setHidden().setAspectTriggers(DarkAspects.NETHER)
+                        .setParents("NETHERSHARDS");
         (new DarkResearchItem(
                 "ROD_profane",
                 "FORBIDDEN",
@@ -197,9 +194,8 @@ public class ForbiddenResearch {
                 -8,
                 0,
                 new ItemStack(ForbiddenItems.wandCore, 1, 5)))
-                        .setPages(new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_profane.1") })
-                        .setRound().registerResearchItem().setHidden().setParents(new String[] { "NETHERSHARDS" })
-                        .setStub();
+                        .setPages(new ResearchPage("forbidden.research_page.ROD_profane.1")).setRound()
+                        .registerResearchItem().setHidden().setParents("NETHERSHARDS").setStub();
         if (!Config.noLust) (new DarkResearchItem(
                 "SUBCOLLAR",
                 "FORBIDDEN",
@@ -210,10 +206,10 @@ public class ForbiddenResearch {
                 2,
                 new ItemStack(ForbiddenItems.subCollar)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.SUBCOLLAR.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("SubCollar")) })
-                        .setParents(new String[] { "NETHERSHARDS", "VISAMULET", "INFUSION" }).setHidden()
-                        .setAspectTriggers(new Aspect[] { DarkAspects.LUST }).registerResearchItem();
+                                new ResearchPage("forbidden.research_page.SUBCOLLAR.1"),
+                                new ResearchPage((InfusionRecipe) recipes.get("SubCollar")))
+                        .setParents("NETHERSHARDS", "VISAMULET", "INFUSION").setHidden()
+                        .setAspectTriggers(DarkAspects.LUST).registerResearchItem();
 
         (new DarkResearchItem(
                 "SKULLAXE",
@@ -224,10 +220,9 @@ public class ForbiddenResearch {
                 2,
                 new ItemStack(ForbiddenItems.skullAxe)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.SKULLAXE.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("SkullAxe")) })
-                        .setParents(new String[] { "NETHERSHARDS", "THAUMIUM", "INFUSION" }).setConcealed()
-                        .registerResearchItem();
+                                new ResearchPage("forbidden.research_page.SKULLAXE.1"),
+                                new ResearchPage((InfusionRecipe) recipes.get("SkullAxe")))
+                        .setParents("NETHERSHARDS", "THAUMIUM", "INFUSION").setConcealed().registerResearchItem();
         ThaumcraftApi.addWarpToResearch("SKULLAXE", 1);
         if (Config.gluttony != 1) {
             (new DarkResearchItem(
@@ -239,9 +234,9 @@ public class ForbiddenResearch {
                     2,
                     new ItemStack(ForbiddenItems.ringFood)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.RINGFOOD.1"),
-                                            new ResearchPage((IArcaneRecipe) recipes.get("RingFood")) })
-                            .setParents(new String[] { "NETHERSHARDS" }).registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.RINGFOOD.1"),
+                                    new ResearchPage((IArcaneRecipe) recipes.get("RingFood")))
+                            .setParents("NETHERSHARDS").registerResearchItem();
             (new DarkResearchItem(
                     "ARCANECAKE",
                     "FORBIDDEN",
@@ -251,11 +246,10 @@ public class ForbiddenResearch {
                     2,
                     new ItemStack(ForbiddenItems.arcaneCakeItem)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.ARCANECAKE.1"),
-                                            new ResearchPage((InfusionRecipe) recipes.get("ArcaneCake")) })
-                            .setParents(new String[] { "NETHERSHARDS", "INFUSION" })
-                            .setAspectTriggers(new Aspect[] { DarkAspects.GLUTTONY }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.ARCANECAKE.1"),
+                                    new ResearchPage((InfusionRecipe) recipes.get("ArcaneCake")))
+                            .setParents("NETHERSHARDS", "INFUSION").setAspectTriggers(DarkAspects.GLUTTONY)
+                            .setConcealed().registerResearchItem();
         }
         (new DarkResearchItem(
                 "FOCUSBLINK",
@@ -267,9 +261,9 @@ public class ForbiddenResearch {
                 2,
                 new ItemStack(ForbiddenItems.blinkFocus)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.FOCUSBLINK.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("FocusBlink")) })
-                        .setConcealed().setParents(new String[] { "NETHERSHARDS", "INFUSION" }).registerResearchItem();
+                                new ResearchPage("forbidden.research_page.FOCUSBLINK.1"),
+                                new ResearchPage((InfusionRecipe) recipes.get("FocusBlink")))
+                        .setConcealed().setParents("NETHERSHARDS", "INFUSION").registerResearchItem();
         (new DarkResearchItem(
                 "MORPHTOOLS",
                 "FORBIDDEN",
@@ -279,13 +273,13 @@ public class ForbiddenResearch {
                 4,
                 new ItemStack(ForbiddenItems.morphPickaxe)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.MORPHTOOLS.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("MorphPick")),
-                                        new ResearchPage((InfusionRecipe) recipes.get("MorphSword")),
-                                        new ResearchPage((InfusionRecipe) recipes.get("MorphShovel")),
-                                        new ResearchPage((InfusionRecipe) recipes.get("MorphAxe")) })
-                        .setParentsHidden(new String[] { "THAUMIUM", "INFUSIONENCHANTMENT" })
-                        .setParents(new String[] { "NETHERSHARDS" }).setConcealed().registerResearchItem();
+                                new ResearchPage("forbidden.research_page.MORPHTOOLS.1"),
+                                new ResearchPage((InfusionRecipe) recipes.get("MorphPick")),
+                                new ResearchPage((InfusionRecipe) recipes.get("MorphSword")),
+                                new ResearchPage((InfusionRecipe) recipes.get("MorphShovel")),
+                                new ResearchPage((InfusionRecipe) recipes.get("MorphAxe")))
+                        .setParentsHidden("THAUMIUM", "INFUSIONENCHANTMENT").setParents("NETHERSHARDS").setConcealed()
+                        .registerResearchItem();
         ThaumcraftApi.addWarpToResearch("MORPHTOOLS", 4);
         (new DarkResearchItem(
                 "ROD_infernal",
@@ -296,11 +290,12 @@ public class ForbiddenResearch {
                 3,
                 new ItemStack(ForbiddenItems.wandCore, 1, 1)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_infernal.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("WandRodInfernal")),
-                                        new ResearchPage("forbidden.research_page.ROD_infernal.2") })
-                        .setParents(new String[] { "ROD_silverwood", "INFUSION", "NETHERSHARDS" }).setConcealed()
-                        .registerResearchItem();
+                                new FormattedResearchPage(
+                                        "forbidden.research_page.ROD_infernal.1",
+                                        new Integer[] { Config.infernalCoreCap }),
+                                new ResearchPage((InfusionRecipe) recipes.get("WandRodInfernal")),
+                                new ResearchPage("forbidden.research_page.ROD_infernal.2"))
+                        .setParents("ROD_silverwood", "INFUSION", "NETHERSHARDS").setConcealed().registerResearchItem();
         ThaumcraftApi.addWarpToResearch("ROD_infernal", 2);
 
         if (Config.enchanting) {
@@ -313,10 +308,9 @@ public class ForbiddenResearch {
                     4,
                     new ResourceLocation("forbidden", "textures/misc/wrath.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.WRATH.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Wrath")) })
-                            .setParents(new String[] { "NETHERSHARDS", "INFUSIONENCHANTMENT" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.WRATH.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Wrath")))
+                            .setParents("NETHERSHARDS", "INFUSIONENCHANTMENT").setConcealed().registerResearchItem();
             ThaumcraftApi.addWarpToResearch("WRATH", 3);
             if (Config.greedyEnch) (new DarkResearchItem(
                     "GREEDY",
@@ -327,10 +321,9 @@ public class ForbiddenResearch {
                     2,
                     new ResourceLocation("forbidden", "textures/misc/greedy.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.GREEDY.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Greedy")) })
-                            .setParents(new String[] { "NETHERSHARDS", "INFUSIONENCHANTMENT" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.GREEDY.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Greedy")))
+                            .setParents("NETHERSHARDS", "INFUSIONENCHANTMENT").setConcealed().registerResearchItem();
             (new DarkResearchItem(
                     "CORRUPTING",
                     "FORBIDDEN",
@@ -340,10 +333,9 @@ public class ForbiddenResearch {
                     1,
                     new ResourceLocation("forbidden", "textures/misc/corrupting.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.CORRUPTING.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Corrupting")) })
-                            .setParents(new String[] { "NETHERSHARDS", "INFUSIONENCHANTMENT" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.CORRUPTING.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Corrupting")))
+                            .setParents("NETHERSHARDS", "INFUSIONENCHANTMENT").setConcealed().registerResearchItem();
 
             (new DarkResearchItem(
                     "CLUSTER",
@@ -354,9 +346,9 @@ public class ForbiddenResearch {
                     3,
                     new ResourceLocation("forbidden", "textures/misc/lucrative.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.CLUSTER.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Cluster")) })
-                            .setParents(new String[] { "MORPHTOOLS", "ELEMENTALPICK" }).setSecondary().setConcealed()
+                                    new ResearchPage("forbidden.research_page.CLUSTER.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Cluster")))
+                            .setParents("MORPHTOOLS", "ELEMENTALPICK").setSecondary().setConcealed()
                             .registerResearchItem();
             (new DarkResearchItem(
                     "IMPACT",
@@ -368,10 +360,9 @@ public class ForbiddenResearch {
                     3,
                     new ResourceLocation("forbidden", "textures/misc/impact.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.IMPACT.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Impact")) })
-                            .setParents(new String[] { "MORPHTOOLS", "ELEMENTALSHOVEL" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.IMPACT.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Impact")))
+                            .setParents("MORPHTOOLS", "ELEMENTALSHOVEL").setConcealed().registerResearchItem();
             (new DarkResearchItem(
                     "VOIDTOUCHED",
                     "FORBIDDEN",
@@ -382,10 +373,9 @@ public class ForbiddenResearch {
                     4,
                     new ResourceLocation("forbidden", "textures/misc/voidtouched.png")))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.VOIDTOUCHED.1"),
-                                            new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Voidtouched")) })
-                            .setParents(new String[] { "MORPHTOOLS", "VOIDMETAL" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.VOIDTOUCHED.1"),
+                                    new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Voidtouched")))
+                            .setParents("MORPHTOOLS", "VOIDMETAL").setConcealed().registerResearchItem();
             ThaumcraftApi.addWarpToResearch("VOIDTOUCHED", 3);
         }
 
@@ -399,11 +389,11 @@ public class ForbiddenResearch {
                     0,
                     new ItemStack(ForbiddenItems.fork)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.FORK.1"),
-                                            new ResearchPage((InfusionRecipe) recipes.get("Fork")),
-                                            new ResearchPage("WRATHCAGE", "forbidden.research_page.FORK.wc") })
-                            .setParents(new String[] { "INFUSION", "NETHERSHARDS", "THAUMIUM" }).setSecondary()
-                            .setConcealed().registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.FORK.1"),
+                                    new ResearchPage((InfusionRecipe) recipes.get("Fork")),
+                                    new ResearchPage("WRATHCAGE", "forbidden.research_page.FORK.wc"))
+                            .setParents("INFUSION", "NETHERSHARDS", "THAUMIUM").setSecondary().setConcealed()
+                            .registerResearchItem();
             if (Config.wrathCost > 0) (new DarkResearchItem(
                     "WRATHCAGE",
                     "FORBIDDEN",
@@ -413,14 +403,13 @@ public class ForbiddenResearch {
                     4,
                     new ItemStack(ForbiddenBlocks.wrathCage)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.WRATHCAGE.1"),
-                                            new ResearchPage((InfusionRecipe) recipes.get("WrathCage")),
-                                            new ResearchPage("forbidden.research_page.WRATHCAGE.2"),
-                                            new ResearchPage("forbidden.research_page.WRATHCAGE.3"),
-                                            new ResearchPage((CrucibleRecipe) recipes.get("MobCrystal")) })
-                            .setParents(new String[] { "FORK" })
-                            .setParentsHidden(new String[] { "INFUSION", "THAUMIUM", "DISTILESSENTIA" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.WRATHCAGE.1"),
+                                    new ResearchPage((InfusionRecipe) recipes.get("WrathCage")),
+                                    new ResearchPage("forbidden.research_page.WRATHCAGE.2"),
+                                    new ResearchPage("forbidden.research_page.WRATHCAGE.3"),
+                                    new ResearchPage((CrucibleRecipe) recipes.get("MobCrystal")))
+                            .setParents("FORK").setParentsHidden("INFUSION", "THAUMIUM", "DISTILESSENTIA")
+                            .setConcealed().registerResearchItem();
             else(new DarkResearchItem(
                     "WRATHCAGE",
                     "FORBIDDEN",
@@ -430,13 +419,12 @@ public class ForbiddenResearch {
                     4,
                     new ItemStack(ForbiddenBlocks.wrathCage)))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.WRATHCAGE.1"),
-                                            new ResearchPage((InfusionRecipe) recipes.get("WrathCage")),
-                                            new ResearchPage("forbidden.research_page.WRATHCAGE.3"),
-                                            new ResearchPage((CrucibleRecipe) recipes.get("MobCrystal")) })
-                            .setParents(new String[] { "FORK" })
-                            .setParentsHidden(new String[] { "INFUSION", "THAUMIUM", "DISTILESSENTIA" }).setConcealed()
-                            .registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.WRATHCAGE.1"),
+                                    new ResearchPage((InfusionRecipe) recipes.get("WrathCage")),
+                                    new ResearchPage("forbidden.research_page.WRATHCAGE.3"),
+                                    new ResearchPage((CrucibleRecipe) recipes.get("MobCrystal")))
+                            .setParents("FORK").setParentsHidden("INFUSION", "THAUMIUM", "DISTILESSENTIA")
+                            .setConcealed().registerResearchItem();
             ThaumcraftApi.addWarpToResearch("WRATHCAGE", 3);
             ThaumcraftApi.addWarpToItem(new ItemStack(ForbiddenBlocks.wrathCage, 1), 5);
         }
@@ -452,11 +440,10 @@ public class ForbiddenResearch {
                 2,
                 new ItemStack(ForbiddenItems.taintShovel)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.TAINTSHOVEL.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("TaintShovel")),
-                                        new ResearchPage("forbidden.research_page.TAINTSHOVEL.2") })
-                        .setParents(new String[] { "THAUMIUM", "INFUSION", "ETHEREALBLOOM" }).setConcealed()
-                        .registerResearchItem();
+                                new ResearchPage("forbidden.research_page.TAINTSHOVEL.1"),
+                                new ResearchPage((InfusionRecipe) recipes.get("TaintShovel")),
+                                new ResearchPage("forbidden.research_page.TAINTSHOVEL.2"))
+                        .setParents("THAUMIUM", "INFUSION", "ETHEREALBLOOM").setConcealed().registerResearchItem();
         (new DarkResearchItem(
                 "TAINTPICK",
                 "FORBIDDEN",
@@ -466,9 +453,9 @@ public class ForbiddenResearch {
                 2,
                 new ItemStack(ForbiddenItems.taintPickaxe)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.TAINTPICK.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("TaintPick")) })
-                        .setParents(new String[] { "THAUMIUM", "INFUSION" }).setConcealed().registerResearchItem();
+                                new ResearchPage("forbidden.research_page.TAINTPICK.1"),
+                                new ResearchPage((InfusionRecipe) recipes.get("TaintPick")))
+                        .setParents("THAUMIUM", "INFUSION").setConcealed().registerResearchItem();
         (new DarkResearchItem(
                 "ROD_tainted",
                 "FORBIDDEN",
@@ -478,10 +465,11 @@ public class ForbiddenResearch {
                 3,
                 new ItemStack(ForbiddenItems.wandCore, 1, 0)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_tainted.1"),
-                                        new ResearchPage((InfusionRecipe) recipes.get("WandRodTainted")) })
-                        .setParents(new String[] { "ROD_silverwood", "TAINTSHOVEL", "INFUSION" }).setConcealed()
-                        .registerResearchItem();
+                                new FormattedResearchPage(
+                                        "forbidden.research_page.ROD_tainted.1",
+                                        new Integer[] { Config.taintedCoreCap }),
+                                new ResearchPage((InfusionRecipe) recipes.get("WandRodTainted")))
+                        .setParents("ROD_silverwood", "TAINTSHOVEL", "INFUSION").setConcealed().registerResearchItem();
         (new DarkResearchItem(
                 "TAINTTREE",
                 "FORBIDDEN",
@@ -491,12 +479,11 @@ public class ForbiddenResearch {
                 3,
                 new ItemStack(ForbiddenBlocks.taintSapling)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.TAINTTREE.1"),
-                                        new ResearchPage((CrucibleRecipe) recipes.get("TaintTree")),
-                                        new ResearchPage((IRecipe) recipes.get("TaintPlank")),
-                                        new ResearchPage(new ItemStack(ForbiddenBlocks.taintLog, 1, 0)) })
-                        .setParents(new String[] { "THAUMIUM", "INFUSION", "ETHEREALBLOOM" }).setConcealed()
-                        .registerResearchItem();
+                                new ResearchPage("forbidden.research_page.TAINTTREE.1"),
+                                new ResearchPage((CrucibleRecipe) recipes.get("TaintTree")),
+                                new ResearchPage((IRecipe) recipes.get("TaintPlank")),
+                                new ResearchPage(new ItemStack(ForbiddenBlocks.taintLog, 1, 0)))
+                        .setParents("THAUMIUM", "INFUSION", "ETHEREALBLOOM").setConcealed().registerResearchItem();
         ThaumcraftApi.addWarpToResearch("TAINTTREE", 1);
         ThaumcraftApi.addWarpToItem(new ItemStack(ForbiddenBlocks.taintSapling, 1, 0), 1);
         (new DarkResearchItem(
@@ -508,11 +495,10 @@ public class ForbiddenResearch {
                 2,
                 new ItemStack(ForbiddenBlocks.taintStone, 1, 1)))
                         .setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.TAINTSTONE.1"),
-                                        new ResearchPage((IArcaneRecipe) recipes.get("TaintStone")),
-                                        new ResearchPage((IRecipe) recipes.get("TaintBrick")) })
-                        .setParents(new String[] { "THAUMIUM", "INFUSION", "ETHEREALBLOOM" }).setConcealed()
-                        .registerResearchItem();
+                                new ResearchPage("forbidden.research_page.TAINTSTONE.1"),
+                                new ResearchPage((IArcaneRecipe) recipes.get("TaintStone")),
+                                new ResearchPage((IRecipe) recipes.get("TaintBrick")))
+                        .setParents("THAUMIUM", "INFUSION", "ETHEREALBLOOM").setConcealed().registerResearchItem();
         ThaumcraftApi.addWarpToResearch("ROD_tainted", 2);
     }
 }

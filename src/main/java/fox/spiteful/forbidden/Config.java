@@ -63,6 +63,23 @@ public class Config {
     public static boolean emc = true;
     // public static boolean eewand = true;
 
+    public static int infernalCoreCap = 150;
+    public static int witchwoodCoreCap = 100;
+    public static int livingwoodCoreCap = 100;
+    public static int dreamwoodCoreCap = 100;
+    public static int taintedCoreCap = 150;
+    public static int profaneCoreCap = 50;
+    public static int bloodCoreCap = 100;
+    public static int dreamwoodStaffCap = 250;
+    public static int bloodStaffCap = 50;
+    public static int witchwoodStaffCap = 50;
+
+    public static double vinteumDiscount = .9;
+    public static double alchemicalDiscount = .9;
+    public static double manasteelDiscount = .9;
+    public static double elementiumDiscount = .8;
+    public static double terrasteelDiscount = 1.8;
+
     public static int bloodvis = 5;
     public static int manavis = 8;
 
@@ -191,6 +208,93 @@ public class Config {
                     .getInt(bloodvis);
             manavis = conf.get("power converters", "Mana to Vis", manavis, "How much Mana 0.01 Vis is worth")
                     .getInt(manavis);
+
+            infernalCoreCap = conf.get(
+                    "wand cores",
+                    "infernalCoreCap",
+                    infernalCoreCap,
+                    "How much capacity the Inferal Wand Core will have (Default: 150)").getInt(infernalCoreCap);
+            taintedCoreCap = conf.get(
+                    "wand cores",
+                    "taintedCoreCap",
+                    taintedCoreCap,
+                    "How much capacity the Tainted Wand Core will have (Default: 150)").getInt(taintedCoreCap);
+            profaneCoreCap = conf.get(
+                    "wand cores",
+                    "profaneCoreCap",
+                    profaneCoreCap,
+                    "How much capacity the Profane Wand Core will have (Default: 50)").getInt(profaneCoreCap);
+            witchwoodCoreCap = conf
+                    .get(
+                            "wand cores",
+                            "witchwoodCoreCap",
+                            witchwoodCoreCap,
+                            "How much capacity the Witchwood Wand Core will have (Default: 100)")
+                    .getInt(witchwoodCoreCap);
+            livingwoodCoreCap = conf
+                    .get(
+                            "wand cores",
+                            "livingwoodCoreCap",
+                            livingwoodCoreCap,
+                            "How much capacity the Livingwood Wand Core will have (Default: 150)")
+                    .getInt(livingwoodCoreCap);
+            dreamwoodCoreCap = conf.get(
+                    "wand cores",
+                    "dreamwoodCoreCap",
+                    dreamwoodCoreCap,
+                    "How much capacity the Dreamwood Wand Core will  (Default: 100)").getInt(dreamwoodCoreCap);
+            bloodCoreCap = conf.get(
+                    "wand cores",
+                    "bloodCoreCap",
+                    bloodCoreCap,
+                    "How much capacity the Blood Wand Core will have (Default: 100)").getInt(bloodCoreCap);
+            dreamwoodStaffCap = conf.get(
+                    "wand cores",
+                    "dreamwoodStaffCap",
+                    dreamwoodStaffCap,
+                    "How much capacity the Dreamwood Staff will have (Default: 250)").getInt(dreamwoodStaffCap);
+            bloodStaffCap = conf.get(
+                    "wand cores",
+                    "bloodStaffCap",
+                    bloodStaffCap,
+                    "How much capacity the Blood Staff will have (Default: 50)").getInt(bloodStaffCap);
+            witchwoodStaffCap = conf.get(
+                    "wand cores",
+                    "witchwoodStaffCap",
+                    witchwoodStaffCap,
+                    "How much capacity the Witchwood Staff will have (Default: 50)").getInt(witchwoodStaffCap);
+
+            vinteumDiscount = conf.get(
+                    "wand caps",
+                    "vinteumDiscount",
+                    vinteumDiscount,
+                    "How much discount the Vinteum Caps will have (Default: .9)").getDouble(vinteumDiscount);
+            alchemicalDiscount = conf.get(
+                    "wand caps",
+                    "alchemicalDiscount",
+                    alchemicalDiscount,
+                    "How much discount the Alchemical Caps will have (Default: .9)" + '\n'
+                            + "Has a 10% additional discount on Aqua")
+                    .getDouble(alchemicalDiscount);
+            manasteelDiscount = conf.get(
+                    "wand caps",
+                    "manasteelDiscount",
+                    manasteelDiscount,
+                    "How much discount the Manasteel Caps will have Default: .9)").getDouble(manasteelDiscount);
+            elementiumDiscount = conf
+                    .get(
+                            "wand caps",
+                            "elementiumDiscount",
+                            elementiumDiscount,
+                            "How much discount the Elementium Caps will have (Default: .8)")
+                    .getDouble(elementiumDiscount);
+            terrasteelDiscount = conf
+                    .get(
+                            "wand caps",
+                            "terrasteelDiscount",
+                            terrasteelDiscount,
+                            "How much discount the Terrasteel Caps will have (Default: 1.8)")
+                    .getDouble(terrasteelDiscount);
         } catch (Exception e) {
             LogHandler.log(Level.ERROR, e, "Had a problem loading its configuration.");
         } finally {
