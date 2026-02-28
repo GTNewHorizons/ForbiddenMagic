@@ -127,7 +127,7 @@ public class BloodMagic {
                                 .setPages(
                                         new FormattedResearchPage(
                                                 "forbidden.research_page.ROD_blood_staff.1",
-                                                new Integer[] { Config.bloodStaffCap }),
+                                                new Integer[] { Config.bloodStaffCap, Config.bloodCoreCap }),
                                         new ResearchPage(blood_staff))
                                 .setParents("ROD_silverwood_staff", "ROD_blood").setSpecial().setConcealed()
                                 .registerResearchItem();

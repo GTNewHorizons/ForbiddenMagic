@@ -111,7 +111,9 @@ public class ForbiddenBotany {
                         3,
                         new ItemStack(ForbiddenItems.wandCore, 1, 7)))
                                 .setPages(
-                                        new ResearchPage("forbidden.research_page.ROD_livingwood.1"),
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_livingwood.1",
+                                                new Integer[] { Config.livingwoodCoreCap }),
                                         new ResearchPage(livingwood_rod))
                                 .setParents("BOTANY", "ROD_silverwood", "INFUSION").setConcealed()
                                 .registerResearchItem();
@@ -187,7 +189,9 @@ public class ForbiddenBotany {
                         2,
                         new ItemStack(ForbiddenItems.wandCore, 1, 13)))
                                 .setPages(
-                                        new ResearchPage("forbidden.research_page.ROD_dreamwood_staff.1"),
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_dreamwood_staff.1",
+                                                new Integer[] { Config.dreamwoodCoreCap, Config.dreamwoodStaffCap }),
                                         new ResearchPage(dreamwood_staff),
                                         new ResearchPage(dreamwood_rod))
                                 .setParents("ROD_livingwood", "ROD_silverwood_staff").setSiblings("ROD_dreamwood")
@@ -247,7 +251,9 @@ public class ForbiddenBotany {
                         1,
                         new ItemStack(ForbiddenItems.wandCap, 1, 2)))
                                 .setPages(
-                                        new ResearchPage("forbidden.research_page.CAP_terrasteel.1"),
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.CAP_terrasteel.1",
+                                                new Double[] { Config.terrasteelDiscount * 100 }),
                                         new ResearchPage(terrasteel_cap))
                                 .setParents("CAP_manasteel").setConcealed().setSecondary().registerResearchItem();
             }
