@@ -197,8 +197,7 @@ public class Compat {
                                 .setPages(
                                         new FormattedResearchPage(
                                                 "forbidden.research_page.CAP_vinteum.1",
-                                                new Double[] { Config.vinteumDiscount * 100 - 10,
-                                                        Config.vinteumDiscount * 100 }),
+                                                new Double[] { Config.vinteumDiscount * 100 }),
                                         new ResearchPage(vinteum_recipe))
                                 .setParents("ROD_witchwood", "CAP_thaumium").setSecondary().setConcealed()
                                 .registerResearchItem();
