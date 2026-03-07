@@ -65,21 +65,22 @@ public class ItemWandCores extends Item {
                 new AspectList().add(Aspect.FIRE, 5000).add(Aspect.WATER, 5000).add(Aspect.EARTH, 5000)
                         .add(Aspect.AIR, 5000).add(Aspect.ORDER, 5000).add(Aspect.ENTROPY, 5000));
         list.add(wand);
-        if (Compat.bm && Config.crossWand) {
+        if (!Config.crossWand) return;
+        if (Compat.bm) {
             list.add(buildWand(ForbiddenItems.WAND_CAP_ALCHEMICAL, ForbiddenItems.WAND_ROD_BLOOD));
             list.add(buildWand(ForbiddenItems.WAND_CAP_ALCHEMICAL, ForbiddenItems.STAFF_ROD_BLOOD));
         }
-        if (Compat.am2 && Config.crossWand) {
+        if (Compat.am2) {
             list.add(buildWand(ForbiddenItems.WAND_CAP_VINTEUM, ForbiddenItems.WAND_ROD_WITCHWOOD));
             list.add(buildWand(ForbiddenItems.WAND_CAP_VINTEUM, ForbiddenItems.STAFF_ROD_WITCHWOOD));
         }
-        if (Compat.botan && Config.crossWand) {
+        if (Compat.botan) {
             list.add(buildWand(ForbiddenItems.WAND_CAP_MANASTEEL, ForbiddenItems.WAND_ROD_LIVINGWOOD));
             list.add(buildWand(ForbiddenItems.WAND_CAP_ELEMENTIUM, ForbiddenItems.WAND_ROD_DREAMWOOD));
             list.add(buildWand(ForbiddenItems.WAND_CAP_ELEMENTIUM, ForbiddenItems.STAFF_ROD_DREAMWOOD));
             list.add(buildWand(ForbiddenItems.WAND_CAP_TERRASTEEL, ConfigItems.WAND_ROD_WOOD));
         }
-        if (Compat.ee3 && Config.crossWand) {
+        if (Compat.ee3) {
             list.add(buildWand(ConfigItems.WAND_CAP_VOID, ForbiddenItems.WAND_ROD_EQUIVALENT));
         }
     }
