@@ -72,7 +72,10 @@ public class VillagerHereticManager implements IVillageTradeHandler {
                             new ItemStack(Items.emerald, 1),
                             new ItemStack(Items.glowstone_dust, 8 + random.nextInt(9))));
 
-            ItemStack wand = new ItemStack(ConfigItems.itemWandCasting, 1, 36);
+            ItemStack wand = new ItemStack(
+                    ConfigItems.itemWandCasting,
+                    1,
+                    ConfigItems.WAND_CAP_IRON.getCraftCost() * ForbiddenItems.WAND_ROD_PROFANE.getCraftCost());
             ((ItemWandCasting) wand.getItem()).setCap(wand, ConfigItems.WAND_CAP_IRON);
             ((ItemWandCasting) wand.getItem()).setRod(wand, ForbiddenItems.WAND_ROD_PROFANE);
             ((ItemWandCasting) wand.getItem()).storeAllVis(
