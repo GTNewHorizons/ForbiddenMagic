@@ -23,6 +23,7 @@ import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -38,6 +39,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -518,16 +520,8 @@ public class FMEventHandler {
                 int doses = 3 * (int) Math.min(event.ammount, event.entityLiving.getHealth());
                 if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
                     EntityPlayer dom = (EntityPlayer) event.source.getEntity();
-                    int chance = 1;
                     if (dom.getHeldItem() != null && dom.getHeldItem().getItem() instanceof ItemRidingCrop) {
                         doses += 3;
-                        chance += 3;
-                    }
-                    if (player.worldObj.provider.dimensionId == -1 && randy.nextInt(30) < chance) {
-                        EntityItem ent = player.entityDropItem(new ItemStack(ForbiddenItems.deadlyShards, 1, 4), 1.0F);
-                        ent.motionY += player.worldObj.rand.nextFloat() * 0.05F;
-                        ent.motionX += (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.1F;
-                        ent.motionZ += (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.1F;
                     }
                 }
                 ItemSubCollar collar = ((ItemSubCollar) ForbiddenItems.subCollar);
@@ -535,6 +529,24 @@ public class FMEventHandler {
                     collar.addVis(amulet, primals[randy.nextInt(6)], 1, true);
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void onBabySpawn(EntityJoinWorldEvent event) {
+        if (!Config.noLust && !event.world.isRemote
+                && event.world.provider.dimensionId == -1
+                && event.entity instanceof EntityAnimal baby
+                && baby.getGrowingAge() < 0
+                && randy.nextInt(3) == 1) {
+            EntityItem ent = new EntityItem(
+                    event.world,
+                    baby.posX,
+                    baby.posY,
+                    baby.posZ,
+                    new ItemStack(ForbiddenItems.deadlyShards, 1, 4));
+            ent.delayBeforeCanPickup = 10;
+            event.world.spawnEntityInWorld(ent);
         }
     }
 

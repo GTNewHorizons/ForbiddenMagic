@@ -173,7 +173,7 @@ public class ForbiddenResearch {
                         .setPages(
                                 new ResearchPage("forbidden.research_page.NETHERSHARDS.1"),
                                 new ResearchPage("forbidden.research_page.NETHERSHARDS.2b"),
-                                new ResearchPage("forbidden.research_page.NETHERSHARDS.3"))
+                                new ResearchPage("forbidden.research_page.NETHERSHARDS.3b"))
                         .setStub().setRound().setAutoUnlock().registerResearchItem();
 
         (new DarkResearchItem(
