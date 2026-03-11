@@ -537,7 +537,8 @@ public class FMEventHandler {
         if (!Config.noLust && !event.world.isRemote
                 && event.world.provider.dimensionId == -1
                 && event.entity instanceof EntityAnimal baby
-                && baby.getGrowingAge() < 0) {
+                && baby.getGrowingAge() < 0
+                && randy.nextInt(3) == 1) {
             EntityItem ent = new EntityItem(
                     event.world,
                     baby.posX,
