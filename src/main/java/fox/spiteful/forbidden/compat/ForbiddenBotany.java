@@ -14,6 +14,8 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import org.apache.logging.log4j.Level;
 
+import com.gtnewhorizon.gtnhlib.api.thaumcraft.FormattedResearchPage;
+
 import WayofTime.alchemicalWizardry.api.altarRecipeRegistry.AltarRecipeRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.Config;
@@ -46,36 +48,45 @@ public class ForbiddenBotany {
             Item lexicon = Compat.getItem("Botania", "lexicon");
 
             try {
-                Class stupidLib = Class.forName("vazkii.botania.common.lib.LibOreDict");
+                Class<?> stupidLib = Class.forName("vazkii.botania.common.lib.LibOreDict");
                 Field nugget = stupidLib.getDeclaredField("MANASTEEL_NUGGET");
 
             } catch (Exception e) {
-                e.printStackTrace();
-                LogHandler.log(Level.INFO, "Somebody's using an outdated version of Botania.");
+                LogHandler.log(Level.INFO, e, "Somebody's using an outdated version of Botania.");
 
                 CraftingManager.getInstance().addRecipe(
                         new ItemStack(resource, 1, 0),
-                        new Object[] { "###", "###", "###", Character.valueOf('#'),
-                                new ItemStack(ForbiddenItems.resource, 1, 2) });
+                        "###",
+                        "###",
+                        "###",
+                        '#',
+                        new ItemStack(ForbiddenItems.resource, 1, 2));
                 CraftingManager.getInstance().addRecipe(
                         new ItemStack(ForbiddenItems.resource, 9, 2),
-                        new Object[] { "#", Character.valueOf('#'), new ItemStack(resource, 1, 0) });
+                        "#",
+                        '#',
+                        new ItemStack(resource, 1, 0));
 
                 CraftingManager.getInstance().addRecipe(
                         new ItemStack(resource, 1, 7),
-                        new Object[] { "###", "###", "###", Character.valueOf('#'),
-                                new ItemStack(ForbiddenItems.resource, 1, 4) });
+                        "###",
+                        "###",
+                        "###",
+                        '#',
+                        new ItemStack(ForbiddenItems.resource, 1, 4));
                 CraftingManager.getInstance().addRecipe(
                         new ItemStack(ForbiddenItems.resource, 9, 4),
-                        new Object[] { "#", Character.valueOf('#'), new ItemStack(resource, 1, 7) });
+                        "#",
+                        '#',
+                        new ItemStack(resource, 1, 7));
             }
 
             OreDictionary.registerOre("nuggetManasteel", new ItemStack(ForbiddenItems.resource, 1, 2));
             OreDictionary.registerOre("nuggetElvenElementium", new ItemStack(ForbiddenItems.resource, 1, 4));
 
             (new DarkResearchItem("BOTANY", "FORBIDDEN", "[B]", new AspectList(), -3, 3, 0, new ItemStack(lexicon)))
-                    .setPages(new ResearchPage[] { new ResearchPage("forbidden.research_page.BOTANY.1") })
-                    .setParents(new String[] { "SCHOOLS" }).setRound().setStub().setAutoUnlock().registerResearchItem();
+                    .setPages(new ResearchPage("forbidden.research_page.BOTANY.1")).setParents("SCHOOLS").setRound()
+                    .setStub().setAutoUnlock().registerResearchItem();
 
             if (Config.crossWand) {
 
@@ -98,10 +109,13 @@ public class ForbiddenBotany {
                         -1,
                         3,
                         3,
-                        new ItemStack(ForbiddenItems.wandCore, 1, 7))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_livingwood.1"),
-                                        new ResearchPage(livingwood_rod) })
-                                .setParents(new String[] { "BOTANY", "ROD_silverwood", "INFUSION" }).setConcealed()
+                        new ItemStack(ForbiddenItems.wandCore, 1, 7)))
+                                .setPages(
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_livingwood.1",
+                                                new Integer[] { Config.livingwoodCoreCap }),
+                                        new ResearchPage(livingwood_rod))
+                                .setParents("BOTANY", "ROD_silverwood", "INFUSION").setConcealed()
                                 .registerResearchItem();
                 ThaumcraftApi.addWarpToResearch("ROD_livingwood", 2);
                 BotaniaAPI.registerManaInfusionRecipe(
@@ -114,7 +128,10 @@ public class ForbiddenBotany {
                         new ItemStack(ForbiddenItems.wandCap, 1, 4),
                         (new AspectList()).add(Aspect.ENTROPY, 6).add(Aspect.FIRE, 6).add(Aspect.WATER, 6)
                                 .add(Aspect.AIR, 6).add(Aspect.EARTH, 6).add(Aspect.ORDER, 6),
-                        new Object[] { "NNN", "N N", Character.valueOf('N'), "nuggetManasteel" });
+                        "NNN",
+                        "N N",
+                        'N',
+                        "nuggetManasteel");
                 (new DarkResearchItem(
                         "CAP_manasteel",
                         "FORBIDDEN",
@@ -123,11 +140,13 @@ public class ForbiddenBotany {
                         1,
                         2,
                         2,
-                        new ItemStack(ForbiddenItems.wandCap, 1, 3))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CAP_manasteel.1"),
-                                        new ResearchPage(manasteel_cap) })
-                                .setParents(new String[] { "ROD_livingwood" }).setSecondary().setConcealed()
-                                .registerResearchItem();
+                        new ItemStack(ForbiddenItems.wandCap, 1, 3)))
+                                .setPages(
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.CAP_manasteel.1",
+                                                new Double[] { Config.manasteelDiscount * 100 }),
+                                        new ResearchPage(manasteel_cap))
+                                .setParents("ROD_livingwood").setSecondary().setConcealed().registerResearchItem();
                 BotaniaAPI.registerManaInfusionRecipe(
                         new ItemStack(ForbiddenItems.wandCap, 1, 3),
                         new ItemStack(ForbiddenItems.wandCap, 1, 4),
@@ -149,9 +168,13 @@ public class ForbiddenBotany {
                         new ItemStack(ForbiddenItems.wandCore, 1, 13),
                         (new AspectList()).add(Aspect.ENTROPY, 26).add(Aspect.FIRE, 26).add(Aspect.WATER, 26)
                                 .add(Aspect.AIR, 26).add(Aspect.EARTH, 26).add(Aspect.ORDER, 26),
-                        new Object[] { "__D", "_B_", "B__", Character.valueOf('B'),
-                                new ItemStack(ForbiddenItems.wandCore, 1, 11), Character.valueOf('D'),
-                                new ItemStack(resource, 1, 9) });
+                        "__D",
+                        "_B_",
+                        "B__",
+                        'B',
+                        new ItemStack(ForbiddenItems.wandCore, 1, 11),
+                        'D',
+                        new ItemStack(resource, 1, 9));
                 BotaniaAPI.registerManaInfusionRecipe(
                         new ItemStack(ForbiddenItems.wandCore, 1, 11),
                         new ItemStack(ForbiddenItems.wandCore, 1, 12),
@@ -164,11 +187,15 @@ public class ForbiddenBotany {
                         1,
                         3,
                         2,
-                        new ItemStack(ForbiddenItems.wandCore, 1, 13))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.ROD_dreamwood_staff.1"),
-                                        new ResearchPage(dreamwood_staff), new ResearchPage(dreamwood_rod) })
-                                .setParents(new String[] { "ROD_livingwood", "ROD_silverwood_staff" })
-                                .setSiblings(new String[] { "ROD_dreamwood" }).setConcealed().registerResearchItem();
+                        new ItemStack(ForbiddenItems.wandCore, 1, 13)))
+                                .setPages(
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.ROD_dreamwood_staff.1",
+                                                new Integer[] { Config.dreamwoodCoreCap, Config.dreamwoodStaffCap }),
+                                        new ResearchPage(dreamwood_staff),
+                                        new ResearchPage(dreamwood_rod))
+                                .setParents("ROD_livingwood", "ROD_silverwood_staff").setSiblings("ROD_dreamwood")
+                                .setConcealed().registerResearchItem();
                 (new DarkResearchItem("ROD_dreamwood", "FORBIDDEN")).setVirtual().registerResearchItem();
 
                 IArcaneRecipe elementium_cap_inert = ThaumcraftApi.addArcaneCraftingRecipe(
@@ -176,7 +203,10 @@ public class ForbiddenBotany {
                         new ItemStack(ForbiddenItems.wandCap, 1, 6),
                         (new AspectList()).add(Aspect.ENTROPY, 27).add(Aspect.FIRE, 27).add(Aspect.WATER, 27)
                                 .add(Aspect.AIR, 27).add(Aspect.EARTH, 27).add(Aspect.ORDER, 27),
-                        new Object[] { "NNN", "N N", Character.valueOf('N'), "nuggetElvenElementium" });
+                        "NNN",
+                        "N N",
+                        'N',
+                        "nuggetElvenElementium");
                 InfusionRecipe elementium_cap = ThaumcraftApi.addInfusionCraftingRecipe(
                         "CAP_elementium",
                         new ItemStack(ForbiddenItems.wandCap, 1, 5),
@@ -195,15 +225,21 @@ public class ForbiddenBotany {
                         3,
                         3,
                         4,
-                        new ItemStack(ForbiddenItems.wandCap, 1, 5))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CAP_elementium.1"),
-                                        new ResearchPage(elementium_cap_inert), new ResearchPage(elementium_cap) })
-                                .setParents(new String[] { "ROD_dreamwood_staff" }).setConcealed()
-                                .registerResearchItem();
+                        new ItemStack(ForbiddenItems.wandCap, 1, 5)))
+                                .setPages(
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.CAP_elementium.1",
+                                                new Double[] { Config.elementiumDiscount * 100 }),
+                                        new ResearchPage(elementium_cap_inert),
+                                        new ResearchPage(elementium_cap))
+                                .setParents("ROD_dreamwood_staff").setConcealed().registerResearchItem();
 
                 IRecipe terrasteel_cap = new ShapedOreRecipe(
                         new ItemStack(ForbiddenItems.wandCap, 1, 2),
-                        new Object[] { "NNN", "N N", Character.valueOf('N'), "nuggetTerrasteel" });
+                        "NNN",
+                        "N N",
+                        'N',
+                        "nuggetTerrasteel");
                 CraftingManager.getInstance().getRecipeList().add(terrasteel_cap);
                 (new DarkResearchItem(
                         "CAP_terrasteel",
@@ -213,11 +249,13 @@ public class ForbiddenBotany {
                         3,
                         2,
                         1,
-                        new ItemStack(ForbiddenItems.wandCap, 1, 2))).setPages(
-                                new ResearchPage[] { new ResearchPage("forbidden.research_page.CAP_terrasteel.1"),
-                                        new ResearchPage(terrasteel_cap) })
-                                .setParents(new String[] { "CAP_manasteel" }).setConcealed().setSecondary()
-                                .registerResearchItem();
+                        new ItemStack(ForbiddenItems.wandCap, 1, 2)))
+                                .setPages(
+                                        new FormattedResearchPage(
+                                                "forbidden.research_page.CAP_terrasteel.1",
+                                                new Double[] { Config.terrasteelDiscount * 100 }),
+                                        new ResearchPage(terrasteel_cap))
+                                .setParents("CAP_manasteel").setConcealed().setSecondary().registerResearchItem();
             }
 
             BotaniaAPI.registerSubTile("euclidaisy", SubTileEuclidaisy.class);
@@ -250,9 +288,9 @@ public class ForbiddenBotany {
                     2,
                     euclidaisy))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.EUCLIDAISY.1"),
-                                            new ResearchPage(euclid) })
-                            .setParents(new String[] { "BOTANY", "INFUSION" }).setConcealed().registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.EUCLIDAISY.1"),
+                                    new ResearchPage(euclid))
+                            .setParents("BOTANY", "INFUSION").setConcealed().registerResearchItem();
 
             BotaniaAPI.registerSubTile("whisperweed", SubTileWhisperweed.class);
             BotaniaAPI.registerSubTileSignature(SubTileWhisperweed.class, new DarkSignature("whisperweed"));
@@ -270,10 +308,14 @@ public class ForbiddenBotany {
                     whisperweed,
                     (new AspectList()).add(Aspect.FIRE, 10).add(Aspect.WATER, 10).add(Aspect.EARTH, 10)
                             .add(Aspect.AIR, 10).add(Aspect.ORDER, 10).add(Aspect.ENTROPY, 10),
-                    new ItemStack[] { new ItemStack(Blocks.tallgrass, 1, 1), new ItemStack(resource, 1, 2),
-                            new ItemStack(resource, 1, 6), new ItemStack(ConfigItems.itemResource, 1, 9),
-                            new ItemStack(petal, 1, 7), new ItemStack(petal, 1, 10), new ItemStack(rune, 1, 14),
-                            new ItemStack(ConfigItems.itemResource, 1, 6) });
+                    new ItemStack(Blocks.tallgrass, 1, 1),
+                    new ItemStack(resource, 1, 2),
+                    new ItemStack(resource, 1, 6),
+                    new ItemStack(ConfigItems.itemResource, 1, 9),
+                    new ItemStack(petal, 1, 7),
+                    new ItemStack(petal, 1, 10),
+                    new ItemStack(rune, 1, 14),
+                    new ItemStack(ConfigItems.itemResource, 1, 6));
             (new DarkResearchItem(
                     "WHISPERWEED",
                     "FORBIDDEN",
@@ -284,9 +326,9 @@ public class ForbiddenBotany {
                     1,
                     whisperweed))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.WHISPERWEED.1"),
-                                            new ResearchPage(whispercraft) })
-                            .setParents(new String[] { "BOTANY" }).setConcealed().registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.WHISPERWEED.1"),
+                                    new ResearchPage(whispercraft))
+                            .setParents("BOTANY").setConcealed().registerResearchItem();
 
             BotaniaAPI.registerSubTile("tainthistle", SubTileTainthistle.class);
             BotaniaAPI.registerSubTileSignature(SubTileTainthistle.class, new DarkSignature("tainthistle"));
@@ -318,9 +360,9 @@ public class ForbiddenBotany {
                     2,
                     tainthistle))
                             .setPages(
-                                    new ResearchPage[] { new ResearchPage("forbidden.research_page.TAINTHISTLE.1"),
-                                            new ResearchPage(thistlecraft) })
-                            .setParents(new String[] { "BOTANY", "INFUSION" }).setConcealed().registerResearchItem();
+                                    new ResearchPage("forbidden.research_page.TAINTHISTLE.1"),
+                                    new ResearchPage(thistlecraft))
+                            .setParents("BOTANY", "INFUSION").setConcealed().registerResearchItem();
 
             if (Compat.bm) {
                 BotaniaAPI.registerSubTile("bloodthorn", SubTileBloodthorn.class);
