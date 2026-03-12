@@ -13,6 +13,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.gtnewhorizon.gtnhlib.blocks.util.BFSLeafDecay;
+
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,8 +24,6 @@ import thaumcraft.common.config.Config;
 import thaumcraft.common.config.ConfigBlocks;
 
 public class BlockLeavesTainted extends BlockLeaves {
-
-    int[] decayThingy;
 
     @SideOnly(Side.CLIENT)
     private IIcon opaqueIcon;
@@ -96,97 +96,18 @@ public class BlockLeavesTainted extends BlockLeaves {
     /**
      * Ticks the block if it's been scheduled
      */
+    @Override
     public void updateTick(World world, int x, int y, int z, Random rand) {
         if (!world.isRemote) {
-            int l = world.getBlockMetadata(x, y, z);
-
-            if ((l & 8) != 0 && (l & 4) == 0) {
-                byte b0 = 4;
-                int i1 = b0 + 1;
-                byte b1 = 32;
-                int j1 = b1 * b1;
-                int k1 = b1 / 2;
-
-                if (this.decayThingy == null) {
-                    this.decayThingy = new int[b1 * b1 * b1];
-                }
-
-                int l1;
-
-                if (world.checkChunksExist(x - i1, y - i1, z - i1, x + i1, y + i1, z + i1)) {
-                    int i2;
-                    int j2;
-
-                    for (l1 = -b0; l1 <= b0; ++l1) {
-                        for (i2 = -b0; i2 <= b0; ++i2) {
-                            for (j2 = -b0; j2 <= b0; ++j2) {
-                                Block block = world.getBlock(x + l1, y + i2, z + j2);
-
-                                if (block != ForbiddenBlocks.taintLog) {
-                                    if (block.isLeaves(world, x + l1, y + i2, z + j2)) {
-                                        this.decayThingy[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = -2;
-                                    } else {
-                                        this.decayThingy[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = -1;
-                                    }
-                                } else {
-                                    this.decayThingy[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = 0;
-                                }
-                            }
-                        }
-                    }
-
-                    for (l1 = 1; l1 <= 4; ++l1) {
-                        for (i2 = -b0; i2 <= b0; ++i2) {
-                            for (j2 = -b0; j2 <= b0; ++j2) {
-                                for (int k2 = -b0; k2 <= b0; ++k2) {
-                                    if (this.decayThingy[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1] == l1 - 1) {
-                                        if (this.decayThingy[(i2 + k1 - 1) * j1 + (j2 + k1) * b1 + k2 + k1] == -2) {
-                                            this.decayThingy[(i2 + k1 - 1) * j1 + (j2 + k1) * b1 + k2 + k1] = l1;
-                                        }
-
-                                        if (this.decayThingy[(i2 + k1 + 1) * j1 + (j2 + k1) * b1 + k2 + k1] == -2) {
-                                            this.decayThingy[(i2 + k1 + 1) * j1 + (j2 + k1) * b1 + k2 + k1] = l1;
-                                        }
-
-                                        if (this.decayThingy[(i2 + k1) * j1 + (j2 + k1 - 1) * b1 + k2 + k1] == -2) {
-                                            this.decayThingy[(i2 + k1) * j1 + (j2 + k1 - 1) * b1 + k2 + k1] = l1;
-                                        }
-
-                                        if (this.decayThingy[(i2 + k1) * j1 + (j2 + k1 + 1) * b1 + k2 + k1] == -2) {
-                                            this.decayThingy[(i2 + k1) * j1 + (j2 + k1 + 1) * b1 + k2 + k1] = l1;
-                                        }
-
-                                        if (this.decayThingy[(i2 + k1) * j1 + (j2 + k1) * b1 + (k2 + k1 - 1)] == -2) {
-                                            this.decayThingy[(i2 + k1) * j1 + (j2 + k1) * b1 + (k2 + k1 - 1)] = l1;
-                                        }
-
-                                        if (this.decayThingy[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1 + 1] == -2) {
-                                            this.decayThingy[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1 + 1] = l1;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                l1 = this.decayThingy[k1 * j1 + k1 * b1 + k1];
-
-                if (l1 >= 0) {
-                    world.setBlockMetadataWithNotify(x, y, z, l & -9, 4);
-                } else {
-                    this.removeLeaves(world, x, y, z);
-                }
+            final int meta = world.getBlockMetadata(x, y, z);
+            if ((meta & 8) != 0 && (meta & 4) == 0) {
+                BFSLeafDecay.handleDecayChecked(this, world, x, y, z, meta, 4);
             }
         }
     }
 
-    private void removeLeaves(World world, int x, int y, int z) {
-        this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-        world.setBlockToAir(x, y, z);
-    }
-
     @SideOnly(Side.CLIENT)
+    @Override
     public int getBlockColor() {
         return 0xFFFFFF;
     }
@@ -205,6 +126,7 @@ public class BlockLeavesTainted extends BlockLeaves {
      * when first determining what to render.
      */
     @SideOnly(Side.CLIENT)
+    @Override
     public int colorMultiplier(IBlockAccess p_149720_1_, int p_149720_2_, int p_149720_3_, int p_149720_4_) {
         return 0xFFFFFF;
     }
