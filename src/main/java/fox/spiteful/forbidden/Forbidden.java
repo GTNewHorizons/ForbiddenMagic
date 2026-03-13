@@ -25,7 +25,7 @@ import thaumcraft.api.wands.WandTriggerRegistry;
         modid = "ForbiddenMagic",
         name = "Forbidden Magic",
         version = "GRADLETOKEN_VERSION",
-        dependencies = "required-after:Thaumcraft@[4.2.2.0,);after:ThaumicTinkerer;after:AWWayofTime;after:Botania")
+        dependencies = "required-after:gtnhlib@[0.9.41,);required-after:Thaumcraft@[4.2.2.0,);after:ThaumicTinkerer;after:AWWayofTime;after:Botania")
 public class Forbidden {
 
     @Instance("ForbiddenMagic")
