@@ -45,6 +45,7 @@ public class ItemWandCores extends Item {
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIconFromDamage(int meta) {
+        if (meta >= icon.length) meta = 0;
         return this.icon[meta];
     }
 
@@ -97,6 +98,8 @@ public class ItemWandCores extends Item {
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        return super.getUnlocalizedName() + "." + types[stack.getItemDamage()];
+        int meta = stack.getItemDamage();
+        if (meta >= types.length) meta = 0;
+        return super.getUnlocalizedName() + "." + types[meta];
     }
 }
