@@ -35,12 +35,13 @@ public class ItemWandCaps extends Item {
     @SideOnly(Side.CLIENT)
     @Override
     public IIcon getIconFromDamage(int meta) {
+        if (meta >= icon.length) meta = 0;
         return this.icon[meta];
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void getSubItems(Item item, CreativeTabs xCreativeTabs, List list) {
+    public void getSubItems(Item item, CreativeTabs xCreativeTabs, List<ItemStack> list) {
         for (int x = 0; x < types.length; x++) {
             list.add(new ItemStack(this, 1, x));
         }
@@ -48,6 +49,8 @@ public class ItemWandCaps extends Item {
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
-        return super.getUnlocalizedName() + "." + types[stack.getItemDamage()];
+        int meta = stack.getItemDamage();
+        if (meta >= types.length) meta = 0;
+        return super.getUnlocalizedName() + "." + types[meta];
     }
 }
