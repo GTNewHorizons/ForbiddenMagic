@@ -324,5 +324,10 @@ public class DarkAspects {
         ThaumcraftApi.registerObjectTag(
                 new ItemStack(ForbiddenBlocks.taintStone, 1, 1),
                 (new AspectList()).add(Aspect.EARTH, 1));
+        if (Config.consumptionCincture) {
+            ThaumcraftApi.registerObjectTag(
+                    new ItemStack(ForbiddenItems.consumptionCincture, 1, OreDictionary.WILDCARD_VALUE),
+                    new AspectList().add(Aspect.CLOTH, 8).add(GLUTTONY, 8).add(Aspect.HUNGER, 8));
+        }
     }
 }

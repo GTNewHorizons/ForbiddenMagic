@@ -430,6 +430,27 @@ public class ForbiddenRecipes {
                         new ItemStack(ForbiddenItems.ridingCrop, 1, 0),
                         new Object[] { "X", "#", "#", Character.valueOf('#'), Items.stick, Character.valueOf('X'),
                                 Items.leather }));
+        if (Config.consumptionCincture) {
+            ForbiddenResearch.recipes.put(
+                    "ConsumptionCincture",
+                    ThaumcraftApi.addArcaneCraftingRecipe(
+                            "CONSUMPTIONCINCTURE",
+                            new ItemStack(ForbiddenItems.consumptionCincture),
+                            new AspectList().add(Aspect.WATER, 25).add(Aspect.EARTH, 25).add(Aspect.AIR, 10),
+                            "LCL",
+                            "SBS",
+                            "LKL",
+                            'L',
+                            new ItemStack(Items.leather),
+                            'C',
+                            new ItemStack(ConfigBlocks.blockChestHungry),
+                            'S',
+                            new ItemStack(ForbiddenItems.gluttonyShard),
+                            'B',
+                            new ItemStack(ConfigItems.itemBaubleBlanks, 1, 2),
+                            'K',
+                            new ItemStack(Items.cookie)));
+        }
         ThaumcraftApi.addSmeltingBonus(new ItemStack(Items.emerald), new ItemStack(ForbiddenItems.resource, 0, 0));
 
         GameRegistry.registerFuelHandler(new IFuelHandler() {

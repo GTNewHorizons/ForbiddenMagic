@@ -50,6 +50,7 @@ public class Config {
     public static byte gluttony = 0;
     public static boolean enchanting = true;
     public static int hereticID = 666;
+    public static boolean consumptionCincture = true;
 
     public static boolean crossMod = true;
     public static boolean crossWand = true;
@@ -165,6 +166,12 @@ public class Config {
                     "Whether gluttony research is enabled. 0 = Enabled, 1 = Disabled, 2 = Hardcore").getInt(0);
             if (gluttony < 0 || gluttony > 2) gluttony = 0;
             hereticID = conf.get("general", "Heretic Villager ID", hereticID).getInt(hereticID);
+            consumptionCincture = conf.get(
+                    "general",
+                    "Cincture of Consumption",
+                    consumptionCincture,
+                    "Enable the Cincture of Consumption, a belt that makes eating faster and possible at full hunger.")
+                    .getBoolean(true);
 
             String trashlist = conf.get(
                     "general",
