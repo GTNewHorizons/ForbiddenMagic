@@ -9,6 +9,7 @@ This mod requires the following mods:
 * [Thaumcraft 4](http://www.minecraftforum.net/topic/2011841-)
 * [Baubles](https://github.com/GTNewHorizons/Baubles-Expanded/)
 * [GTNHLib](https://github.com/GTNewHorizons/GTNHLib)
+* [UniMixins](https://github.com/LegacyModdingMC/UniMixins)
 
 Extra content is available if any of the following mods are also present:
 * [Botania](https://github.com/GTNewHorizons/Botania/): Wand cores and caps that regenerate vis with Botania's mana and three new magical flowers.

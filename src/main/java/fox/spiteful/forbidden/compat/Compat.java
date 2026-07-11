@@ -39,6 +39,7 @@ public class Compat {
     public static boolean special = false;
     public static boolean twilight = false;
     public static boolean ee3 = false;
+    public static boolean baublesExpanded = true;
 
     public static void initiate() {
         if (!Config.crossMod) return;
@@ -51,6 +52,7 @@ public class Compat {
         special = Config.wrathCage && Config.special && Loader.isModLoaded("SpecialMobs");
         twilight = Config.wrathCage && Config.twilight && Loader.isModLoaded("TwilightForest");
         ee3 = (Config.emc /* || Config.eewand */) && Loader.isModLoaded("EE3");
+        baublesExpanded = Loader.isModLoaded("Baubles|Expanded");
     }
 
     public static void compatify() {
