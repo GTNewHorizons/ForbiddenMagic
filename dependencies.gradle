@@ -9,6 +9,8 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:Botania:1.13.21-GTNH:api")
     compileOnly("com.github.GTNewHorizons:AppleCore:3.3.11:dev")
     compileOnly("curse.maven:ee3-65509:2305023")
+    compileOnly(rfg.deobf("curse.maven:minefactory-reloaded-66672:2277486"))
+    compileOnly(rfg.deobf("curse.maven:cofh-core-69162:2388750")) // For MFR
 
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:AspectRecipeIndex:1.1.0:dev")
 }
