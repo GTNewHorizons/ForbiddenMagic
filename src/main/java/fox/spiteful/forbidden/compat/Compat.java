@@ -1,6 +1,7 @@
 package fox.spiteful.forbidden.compat;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -18,6 +19,11 @@ import fox.spiteful.forbidden.DarkResearchItem;
 import fox.spiteful.forbidden.LogHandler;
 import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import fox.spiteful.forbidden.items.ForbiddenItems;
+import powercrystals.minefactoryreloaded.MFRRegistry;
+import powercrystals.minefactoryreloaded.farmables.fertilizables.FertilizableStandard;
+import powercrystals.minefactoryreloaded.farmables.harvestables.HarvestableTreeLeaves;
+import powercrystals.minefactoryreloaded.farmables.harvestables.HarvestableWood;
+import powercrystals.minefactoryreloaded.farmables.plantables.PlantableSapling;
 import thaumcraft.api.ItemApi;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -39,6 +45,7 @@ public class Compat {
     public static boolean special = false;
     public static boolean twilight = false;
     public static boolean ee3 = false;
+    public static boolean mfr = false;
 
     public static void initiate() {
         if (!Config.crossMod) return;
@@ -51,6 +58,7 @@ public class Compat {
         special = Config.wrathCage && Config.special && Loader.isModLoaded("SpecialMobs");
         twilight = Config.wrathCage && Config.twilight && Loader.isModLoaded("TwilightForest");
         ee3 = (Config.emc /* || Config.eewand */) && Loader.isModLoaded("EE3");
+        mfr = Loader.isModLoaded("MineFactoryReloaded");
     }
 
     public static void compatify() {
@@ -491,6 +499,10 @@ public class Compat {
             Config.spawnerMobs.put("TwilightForest.Yeti", Aspect.COLD);
             Config.spawnerMobs.put("TwilightForest.WinterWolf", Aspect.COLD);
         }
+
+        if (mfr) {
+            MFRCompat.run();
+        }
     }
 
     public static Item getItem(String mod, String item) throws ItemNotFoundException {
@@ -503,6 +515,17 @@ public class Compat {
 
         public ItemNotFoundException(String mod, String item) {
             super("Unable to find item " + item + " in mod " + mod + "! Are you using the correct version of the mod?");
+        }
+    }
+
+    // To avoid class loading issues without MFR
+    private static class MFRCompat {
+
+        public static void run() {
+            MFRRegistry.registerPlantable(new PlantableSapling(ForbiddenBlocks.taintSapling));
+            MFRRegistry.registerFertilizable(new FertilizableStandard((IGrowable) ForbiddenBlocks.taintSapling));
+            MFRRegistry.registerHarvestable(new HarvestableTreeLeaves(ForbiddenBlocks.taintLeaves));
+            MFRRegistry.registerHarvestable(new HarvestableWood(ForbiddenBlocks.taintLog));
         }
     }
 }
