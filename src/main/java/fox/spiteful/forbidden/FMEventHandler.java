@@ -28,6 +28,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -64,6 +65,7 @@ import fox.spiteful.forbidden.blocks.ForbiddenBlocks;
 import fox.spiteful.forbidden.compat.Compat;
 import fox.spiteful.forbidden.enchantments.DarkEnchantments;
 import fox.spiteful.forbidden.items.ForbiddenItems;
+import fox.spiteful.forbidden.items.baubles.ItemConsumptionCincture;
 import fox.spiteful.forbidden.items.baubles.ItemSubCollar;
 import fox.spiteful.forbidden.items.tools.ItemRidingCrop;
 import fox.spiteful.forbidden.items.tools.ItemTaintPickaxe;
@@ -430,7 +432,19 @@ public class FMEventHandler {
     }
 
     @SubscribeEvent
-    public void onEat(PlayerUseItemEvent.Finish event) {
+    public void onStartEating(PlayerUseItemEvent.Start event) {
+        if (edible(event.item) && ItemConsumptionCincture.wearingBelt(event.entityPlayer)) {
+            event.duration = 1;
+        }
+    }
+
+    private static boolean edible(ItemStack item) {
+        return item.getItem() != null && (item.getItem().getItemUseAction(item) == EnumAction.eat
+                || item.getItem().getItemUseAction(item) == EnumAction.drink);
+    }
+
+    @SubscribeEvent
+    public void onFinishEating(PlayerUseItemEvent.Finish event) {
         if (event.entityPlayer.worldObj.isRemote) return;
         if (event.item.getItem() instanceof ItemFood) {
             if (event.entityPlayer.worldObj.provider.dimensionId == -1

@@ -24,7 +24,7 @@ import thaumcraft.api.research.ResearchPage;
 
 public class ForbiddenResearch {
 
-    public static HashMap recipes = new HashMap();
+    public static HashMap<String, Object> recipes = new HashMap<>();
 
     public static void addResearch() {
         ResearchCategories.registerCategory(
@@ -377,6 +377,21 @@ public class ForbiddenResearch {
                                     new ResearchPage((InfusionEnchantmentRecipe) recipes.get("Voidtouched")))
                             .setParents("MORPHTOOLS", "VOIDMETAL").setConcealed().registerResearchItem();
             ThaumcraftApi.addWarpToResearch("VOIDTOUCHED", 3);
+            if (Config.consumptionCincture) {
+                new DarkResearchItem(
+                        "CONSUMPTIONCINCTURE",
+                        "FORBIDDEN",
+                        new AspectList().add(Aspect.HUNGER, 8).add(Aspect.FLESH, 8).add(Aspect.CLOTH, 8)
+                                .add(DarkAspects.GLUTTONY, 16),
+                        -12,
+                        -7,
+                        4,
+                        new ItemStack(ForbiddenItems.consumptionCincture))
+                                .setPages(
+                                        new ResearchPage("forbidden.research_page.CONSUMPTIONCINCTURE.1"),
+                                        new ResearchPage((IArcaneRecipe) recipes.get("ConsumptionCincture")))
+                                .setParents("RINGFOOD", "HUNGRYCHEST").setConcealed().registerResearchItem();
+            }
         }
 
         if (Config.wrathCage) {

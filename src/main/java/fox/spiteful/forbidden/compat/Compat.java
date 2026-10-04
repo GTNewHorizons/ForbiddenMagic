@@ -45,6 +45,7 @@ public class Compat {
     public static boolean special = false;
     public static boolean twilight = false;
     public static boolean ee3 = false;
+    public static boolean baublesExpanded = false;
     public static boolean mfr = false;
 
     public static void initiate() {
@@ -58,6 +59,7 @@ public class Compat {
         special = Config.wrathCage && Config.special && Loader.isModLoaded("SpecialMobs");
         twilight = Config.wrathCage && Config.twilight && Loader.isModLoaded("TwilightForest");
         ee3 = (Config.emc /* || Config.eewand */) && Loader.isModLoaded("EE3");
+        baublesExpanded = Loader.isModLoaded("Baubles|Expanded");
         mfr = Loader.isModLoaded("MineFactoryReloaded");
     }
 

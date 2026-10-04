@@ -15,6 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.Config;
 import fox.spiteful.forbidden.compat.Compat;
+import fox.spiteful.forbidden.items.baubles.ItemConsumptionCincture;
 import fox.spiteful.forbidden.items.baubles.ItemRingNutrition;
 import fox.spiteful.forbidden.items.baubles.ItemSubCollar;
 import fox.spiteful.forbidden.items.scribes.ItemBloodwell;
@@ -54,6 +55,7 @@ import thaumcraft.api.wands.WandRod;
 
 public class ForbiddenItems {
 
+    public static Item consumptionCincture;
     public static Item deadlyShards;
     public static Item gluttonyShard;
     public static Item skullAxe;
@@ -337,6 +339,11 @@ public class ForbiddenItems {
 
         blinkFocus = new ItemFocusBlink().setUnlocalizedName("BlinkFocus");
         GameRegistry.registerItem(blinkFocus, "BlinkFocus");
+
+        if (Config.consumptionCincture) {
+            consumptionCincture = new ItemConsumptionCincture().setUnlocalizedName("consumption_cincture");
+            GameRegistry.registerItem(consumptionCincture, "consumption_cincture");
+        }
     }
 
     public static FocusUpgradeType getUpgrade(int id, ResourceLocation icon, String name, String text,
