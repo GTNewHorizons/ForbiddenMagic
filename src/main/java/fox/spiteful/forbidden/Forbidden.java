@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -30,6 +31,8 @@ public class Forbidden {
 
     @Instance("ForbiddenMagic")
     public static Forbidden instance;
+
+    public static final boolean SALIS_ARCANA_LOADED = Loader.isModLoaded("salisarcana");
 
     public static CreativeTabs tab = new CreativeTabs("forbidden") {
 

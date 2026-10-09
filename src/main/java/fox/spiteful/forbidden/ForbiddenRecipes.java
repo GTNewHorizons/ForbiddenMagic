@@ -446,7 +446,11 @@ public class ForbiddenRecipes {
             }
         });
 
-        OreDictionary
-                .registerOre("logWood", new ItemStack(ConfigBlocks.blockMagicalLog, 1, OreDictionary.WILDCARD_VALUE));
+        // Salis Arcana registers this entry itself.
+        if (!Forbidden.SALIS_ARCANA_LOADED) {
+            OreDictionary.registerOre(
+                    "logWood",
+                    new ItemStack(ConfigBlocks.blockMagicalLog, 1, OreDictionary.WILDCARD_VALUE));
+        }
     }
 }
