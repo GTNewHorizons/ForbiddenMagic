@@ -587,7 +587,7 @@ public class FMEventHandler {
                 } catch (Throwable e) {
                     Compat.bm = false;
                 }
-            } else lastLP.remove(name);
+            } else if (lastLP.containsKey(name)) lastLP.remove(name);
         }
     }
 
