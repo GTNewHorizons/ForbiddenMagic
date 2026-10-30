@@ -209,6 +209,8 @@ public class FMEventHandler {
                 ItemStack heldItem = ((EntityPlayer) event.source.getEntity()).getCurrentEquippedItem();
                 if (heldItem != null) {
                     if (heldItem.getItem() instanceof ItemTool) {
+                        // FIXME: This doesn't work! `get()` returns a _collection_ of `AttributeModifier`s!
+
                         Multimap map = heldItem.getItem().getAttributeModifiers(heldItem);
                         Collection collect = map
                                 .get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName());
@@ -513,13 +515,11 @@ public class FMEventHandler {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onFeelPain(LivingHurtEvent event) {
-        if (!Config.noLust && event.ammount > 0 && event.entityLiving instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.entityLiving;
+        if (!Config.noLust && event.ammount > 0 && event.entityLiving instanceof EntityPlayer player) {
             ItemStack amulet = BaublesApi.getBaubles(player).getStackInSlot(0);
             if (amulet != null && amulet.getItem() == ForbiddenItems.subCollar) {
                 int doses = 3 * (int) Math.min(event.ammount, event.entityLiving.getHealth());
-                if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
-                    EntityPlayer dom = (EntityPlayer) event.source.getEntity();
+                if (event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer dom) {
                     if (dom.getHeldItem() != null && dom.getHeldItem().getItem() instanceof ItemRidingCrop) {
                         doses += 3;
                     }
@@ -534,10 +534,12 @@ public class FMEventHandler {
 
     @SubscribeEvent
     public void onBabySpawn(EntityJoinWorldEvent event) {
+        // FIXME: Make this triggered from EntityAgeable#interact, rather than on every load.
+
         if (!Config.noLust && !event.world.isRemote
                 && event.world.provider.dimensionId == -1
                 && event.entity instanceof EntityAnimal baby
-                && baby.getGrowingAge() < 0
+                && baby.getGrowingAge() <= -24000
                 && randy.nextInt(3) == 1) {
             EntityItem ent = new EntityItem(
                     event.world,
@@ -572,9 +574,8 @@ public class FMEventHandler {
     @SubscribeEvent
     public void onEntityUpdate(LivingUpdateEvent event) {
         if (Compat.bm && event.entityLiving != null
-                && event.entityLiving instanceof EntityPlayer
+                && event.entityLiving instanceof EntityPlayer player
                 && !event.entityLiving.worldObj.isRemote) {
-            EntityPlayer player = (EntityPlayer) event.entityLiving;
             String name = player.getDisplayName();
             if (player.isPotionActive(DarkPotions.bloodSeal)) {
                 try {
