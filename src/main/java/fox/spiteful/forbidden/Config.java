@@ -171,7 +171,7 @@ public class Config {
                     "Cincture of Consumption",
                     consumptionCincture,
                     "Enable the Cincture of Consumption, a belt that makes eating faster and possible at full hunger.")
-                    .getBoolean(true);
+                    .getBoolean(consumptionCincture);
 
             String trashlist = conf.get(
                     "general",

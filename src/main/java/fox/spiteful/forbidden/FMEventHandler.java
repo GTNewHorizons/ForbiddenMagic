@@ -433,7 +433,8 @@ public class FMEventHandler {
 
     @SubscribeEvent
     public void onStartEating(PlayerUseItemEvent.Start event) {
-        if (edible(event.item) && ItemConsumptionCincture.wearingBelt(event.entityPlayer)) {
+        if (Config.consumptionCincture && edible(event.item)
+                && ItemConsumptionCincture.wearingBelt(event.entityPlayer)) {
             event.duration = 1;
         }
     }

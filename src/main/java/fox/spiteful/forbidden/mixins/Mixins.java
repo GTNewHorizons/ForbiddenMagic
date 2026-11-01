@@ -5,10 +5,12 @@ import javax.annotation.Nonnull;
 import com.gtnewhorizon.gtnhmixins.builders.IMixins;
 import com.gtnewhorizon.gtnhmixins.builders.MixinBuilder;
 
+import fox.spiteful.forbidden.Config;
+
 public enum Mixins implements IMixins {
 
-    CONSUMPTION_CINCTURE(
-            new MixinBuilder().setPhase(Phase.EARLY).addCommonMixins("MixinEntityPlayer_ConsumptionCincture"));
+    CONSUMPTION_CINCTURE(new MixinBuilder().setPhase(Phase.EARLY)
+            .addCommonMixins("MixinEntityPlayer_ConsumptionCincture").setApplyIf(() -> Config.consumptionCincture));
 
     private final MixinBuilder builder;
 
